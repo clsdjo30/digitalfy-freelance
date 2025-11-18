@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\BlogPost;
+use App\Entity\Category;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -50,7 +51,7 @@ class BlogPostFixtures extends Fixture implements DependentFixtureInterface
             $post->setSlug($slugify->slugify($postData['title']));
             $post->setExcerpt($postData['excerpt']);
             $post->setContent($postData['content']);
-            $post->setCategory($this->getReference('category-' . $postData['category']));
+            $post->setCategory($this->getReference('category-' . $postData['category'], Category::class));
             $post->setStatus($postData['status']);
             $post->setMetaTitle($postData['metaTitle']);
             $post->setMetaDescription($postData['metaDescription']);
