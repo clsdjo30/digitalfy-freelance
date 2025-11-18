@@ -1,128 +1,95 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ post.metaTitle ?? post.title }} | Blog Digitalfy{% endblock %}
+{% block title %}{{ post.title }} | Digitalfy{% endblock %}
 
 {% block meta_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
 
-{% block body %}
-<article class="blog-post">
-    <header class="post-header">
-        <div class="container">
-            <nav class="breadcrumb" aria-label="Fil d'Ariane">
-                <a href="{{ path('home') }}">Accueil</a>
-                <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('blog') }}">Blog</a>
-                <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('blog_category', {slug: post.category.slug}) }}">
-                    {{ post.category.name }}
-                </a>
-                <span class="breadcrumb-separator">/</span>
-                <span aria-current="page">{{ post.title }}</span>
-            </nav>
-
-            <h1>{{ post.title }}</h1>
-
-            <div class="post-meta">
-                <time class="post-date" datetime="{{ post.publishedAt|date('Y-m-d') }}">
-                    {{ post.publishedAt|date('d/m/Y') }}
-                </time>
-                <span class="post-category">
-                    <a href="{{ path('blog_category', {slug: post.category.slug}) }}">
-                        {{ post.category.name }}
-                    </a>
-                </span>
-            </div>
-
-            {% if post.featuredImage %}
-                <div class="post-featured-image">
-                    <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
-                         alt="{{ post.title }}"
-                         loading="eager">
-                </div>
-            {% endif %}
-        </div>
-    </header>
-
-    <div class="post-content">
-        <div class="container">
-            {{ post.content|raw }}
-        </div>
-    </div>
-
-    <footer class="post-footer">
-        <div class="container">
-            <div class="share-buttons">
-                <span class="share-label">Partager cet article :</span>
-                <a href="https://twitter.com/intent/tweet?url={{ url('blog_post', {slug: post.slug}) }}&text={{ post.title|url_encode }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="share-button share-twitter"
-                   aria-label="Partager sur Twitter">
-                    <span>Twitter</span>
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('blog_post', {slug: post.slug}) }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="share-button share-linkedin"
-                   aria-label="Partager sur LinkedIn">
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('blog_post', {slug: post.slug}) }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="share-button share-facebook"
-                   aria-label="Partager sur Facebook">
-                    <span>Facebook</span>
-                </a>
-            </div>
-        </div>
-    </footer>
-
-    {% if relatedPosts|length > 0 %}
-        <section class="related-posts">
-            <div class="container">
-                <h2>Articles similaires</h2>
-                <div class="blog-grid">
-                    {% for relatedPost in relatedPosts %}
-                        {% include 'components/_blog-card.html.twig' with {post: relatedPost} %}
-                    {% endfor %}
-                </div>
-            </div>
-        </section>
-    {% endif %}
-</article>
-
-{# Schema.org Article structured data for SEO #}
 {% block head_scripts %}
+{# Schema.org BlogPosting #}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "{{ post.title|escape('js') }}",
-    {% if post.featuredImage %}
-    "image": "{{ absolute_url(asset('uploads/blog/' ~ post.featuredImage)) }}",
-    {% endif %}
-    "datePublished": "{{ post.publishedAt|date('c') }}",
-    "dateModified": "{{ post.updatedAt|date('c') }}",
+    "headline": "{{ post.title }}",
+    "description": "{{ post.excerpt }}",
+    "datePublished": "{{ post.publishedAt|date('Y-m-d') }}",
+    "dateModified": "{{ post.updatedAt|date('Y-m-d') }}",
     "author": {
         "@type": "Person",
-        "name": "Marc Dubois",
-        "url": "{{ url('home') }}"
-    },
-    "publisher": {
-        "@type": "Organization",
-        "name": "Digitalfy",
-        "logo": {
-            "@type": "ImageObject",
-            "url": "{{ absolute_url(asset('images/logo.png')) }}"
-        }
-    },
-    "description": "{{ (post.excerpt ?? post.metaDescription)|escape('js') }}",
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{ url('blog_post', {slug: post.slug}) }}"
+        "name": "Digitalfy"
     }
 }
 </script>
 {% endblock %}
+
+{% block body %}
+<section class="section section--cream">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('blog') }}" class="breadcrumb__link">Blog</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('blog_category', {slug: post.category.slug}) }}" class="breadcrumb__link">{{ post.category.name }}</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <span class="breadcrumb__current">{{ post.title }}</span>
+                </li>
+            </ol>
+        </nav>
+
+        <article>
+            <header class="text-center mb-8">
+                <span class="blog-card__category">{{ post.category.name }}</span>
+                <h1 class="mt-4 mb-4">{{ post.title }}</h1>
+                <div class="text-gray flex flex--center flex--gap-4">
+                    <span>📅 {{ post.publishedAt|date('d/m/Y') }}</span>
+                    {% if post.readingTime %}
+                        <span>⏱️ {{ post.readingTime }} min de lecture</span>
+                    {% endif %}
+                </div>
+            </header>
+
+            {% if post.featuredImage %}
+                <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
+                     alt="{{ post.title }}"
+                     class="rounded-xl shadow-lg mb-8"
+                     style="width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; display: block;">
+            {% endif %}
+
+            <div class="card" style="max-width: 900px; margin: 0 auto; padding: 3rem;">
+                <div class="post-content">
+                    {{ post.content|raw }}
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+{# Related Posts #}
+{% if relatedPosts|length > 0 %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center mb-12">Articles similaires</h2>
+        <div class="grid grid--3-cols">
+            {% for relatedPost in relatedPosts %}
+                {% include 'components/_blog-card.html.twig' with {post: relatedPost} %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{# CTA Section #}
+<section class="section section--gradient">
+    <div class="container text-center">
+        <h2 class="mb-4">Besoin d'aide pour votre projet digital ?</h2>
+        <p class="text-xl mb-8">Contactez-moi pour discuter de vos besoins</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--light btn--lg">Prendre contact</a>
+    </div>
+</section>
 {% endblock %}
