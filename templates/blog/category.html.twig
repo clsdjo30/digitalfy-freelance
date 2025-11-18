@@ -1,19 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ slug|title }} - Catégorie Blog - Digitalfy{% endblock %}
+{% block title %}{{ category.name }} – Articles Blog | Digitalfy{% endblock %}
+
+{% block meta_description %}Découvrez tous les articles de la catégorie {{ category.name }} sur le blog Digitalfy. Conseils et actualités développement web et mobile.{% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <div class="container">
-        <h1>Catégorie : {{ slug|replace({'-': ' '})|title }}</h1>
-    </div>
-</div>
+<div class="blog-category-page">
+    <section class="category-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                <a href="{{ path('home') }}">Accueil</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="{{ path('blog') }}">Blog</a>
+                <span class="breadcrumb-separator">/</span>
+                <span aria-current="page">{{ category.name }}</span>
+            </nav>
 
-<section class="blog-category">
-    <div class="container">
-        <div class="blog-grid">
-            {# Category posts will be populated from controller #}
+            <h1>{{ category.name }}</h1>
+            {% if category.description %}
+                <p class="category-description">{{ category.description }}</p>
+            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="category-content">
+        <div class="container">
+            {% if posts|length > 0 %}
+                <div class="blog-grid">
+                    {% for post in posts %}
+                        {% include 'components/_blog-card.html.twig' with {post: post} %}
+                    {% endfor %}
+                </div>
+
+                {# Pagination if needed #}
+                {% if posts|length >= 12 %}
+                    <nav class="pagination" aria-label="Pagination de la catégorie">
+                        {% if currentPage > 1 %}
+                            <a href="{{ path('blog_category', {slug: category.slug, page: currentPage - 1}) }}"
+                               class="pagination-prev"
+                               aria-label="Page précédente">
+                                ← Précédent
+                            </a>
+                        {% endif %}
+
+                        <a href="{{ path('blog_category', {slug: category.slug, page: currentPage + 1}) }}"
+                           class="pagination-next"
+                           aria-label="Page suivante">
+                            Suivant →
+                        </a>
+                    </nav>
+                {% endif %}
+            {% else %}
+                <div class="category-empty">
+                    <p>Aucun article dans cette catégorie pour le moment.</p>
+                    <a href="{{ path('blog') }}" class="btn btn-primary">Voir tous les articles</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
 {% endblock %}

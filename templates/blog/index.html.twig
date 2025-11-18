@@ -1,22 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Blog - Actualités Web & Mobile - Digitalfy Nîmes{% endblock %}
+{% block title %}Blog – Actualités développement web & mobile | Digitalfy{% endblock %}
 
-{% block meta_description %}Blog SEO, développement web Symfony, applications mobiles React Native. Conseils et actualités pour TPE/PME à Nîmes.{% endblock %}
+{% block meta_description %}Conseils, actualités et astuces sur le développement web Symfony et mobile React Native. Articles SEO pour TPE/PME à Nîmes et alentours.{% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <div class="container">
-        <h1>Blog</h1>
-        <p class="lead">Actualités et conseils en développement web & mobile</p>
-    </div>
-</div>
-
-<section class="blog-list">
-    <div class="container">
-        <div class="blog-grid">
-            {# Blog posts will be populated from controller #}
+<div class="blog-page">
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Blog</h1>
+            <p>Conseils, actualités et astuces sur le développement web et mobile</p>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="blog-content">
+        <div class="container">
+            {% if posts|length > 0 %}
+                <div class="blog-grid">
+                    {% for post in posts %}
+                        {% include 'components/_blog-card.html.twig' with {post: post} %}
+                    {% endfor %}
+                </div>
+
+                {# Pagination #}
+                {% if totalPages > 1 %}
+                    <nav class="pagination" aria-label="Pagination du blog">
+                        {% if currentPage > 1 %}
+                            <a href="{{ path('blog', {page: currentPage - 1}) }}"
+                               class="pagination-prev"
+                               aria-label="Page précédente">
+                                ← Précédent
+                            </a>
+                        {% endif %}
+
+                        <div class="pagination-pages">
+                            {% for page in 1..totalPages %}
+                                {% if page == currentPage %}
+                                    <span class="pagination-page active" aria-current="page">{{ page }}</span>
+                                {% else %}
+                                    <a href="{{ path('blog', {page: page}) }}"
+                                       class="pagination-page"
+                                       aria-label="Page {{ page }}">
+                                        {{ page }}
+                                    </a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+
+                        {% if currentPage < totalPages %}
+                            <a href="{{ path('blog', {page: currentPage + 1}) }}"
+                               class="pagination-next"
+                               aria-label="Page suivante">
+                                Suivant →
+                            </a>
+                        {% endif %}
+                    </nav>
+                {% endif %}
+            {% else %}
+                <div class="blog-empty">
+                    <p>Aucun article publié pour le moment. Revenez bientôt !</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+</div>
 {% endblock %}

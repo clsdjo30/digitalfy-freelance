@@ -16,28 +16,72 @@ class BlogPostRepository extends ServiceEntityRepository
         parent::__construct($registry, BlogPost::class);
     }
 
-    //    /**
-    //     * @return BlogPost[] Returns an array of BlogPost objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('b.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Find published blog posts with pagination
+     *
+     * @return BlogPost[]
+     */
+    public function findPublishedPaginated(int $page, int $limit): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.status = :status')
+            ->setParameter('status', 'published')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 
-    //    public function findOneBySomeField($value): ?BlogPost
-    //    {
-    //        return $this->createQueryBuilder('b')
-    //            ->andWhere('b.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    /**
+     * Count published blog posts
+     */
+    public function countPublished(): int
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->where('p.status = :status')
+            ->setParameter('status', 'published')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Find related blog posts (same category, excluding current post)
+     *
+     * @return BlogPost[]
+     */
+    public function findRelated(BlogPost $post, int $limit): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.category = :category')
+            ->andWhere('p.id != :id')
+            ->andWhere('p.status = :status')
+            ->setParameter('category', $post->getCategory())
+            ->setParameter('id', $post->getId())
+            ->setParameter('status', 'published')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Find published posts by category with pagination
+     *
+     * @return BlogPost[]
+     */
+    public function findByCategory($category, int $page, int $limit = 12): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.category = :category')
+            ->andWhere('p.status = :status')
+            ->setParameter('category', $category)
+            ->setParameter('status', 'published')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->setFirstResult(($page - 1) * $limit)
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }
