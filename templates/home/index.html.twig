@@ -1,8 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Digitalfy - Développeur Web & Mobile Freelance à Nîmes{% endblock %}
+{% block title %}Développeur Freelance à Nîmes – Sites web & applications mobiles | Digitalfy{% endblock %}
 
-{% block meta_description %}Développeur freelance à Nîmes spécialisé en Symfony et React Native. Création de sites web, applications mobiles et solutions digitales pour TPE/PME.{% endblock %}
+{% block meta_description %}Développeur web & mobile freelance à Nîmes. Création de sites internet, applications mobiles React Native, et solutions digitales pour TPE/PME et restaurateurs.{% endblock %}
+
+{% block head_scripts %}
+{# Schema.org LocalBusiness #}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Digitalfy",
+    "description": "Développeur web et mobile freelance à Nîmes",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nîmes",
+        "addressRegion": "Occitanie",
+        "addressCountry": "FR"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.8367,
+        "longitude": 4.3601
+    },
+    "url": "{{ url('app_home') }}",
+    "priceRange": "€€",
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+    }
+}
+</script>
+{% endblock %}
 
 {% block body %}
 <div class="hero">
@@ -19,30 +50,124 @@
 
 <section class="services-preview">
     <div class="container">
-        <h2>Mes Services</h2>
+        <h2>Ce que je peux faire pour vous</h2>
+        <p class="section-intro">Des solutions digitales adaptées à vos besoins et à votre budget</p>
+
         <div class="services-grid">
-            {# Services cards will be populated here #}
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Application Mobile</h3>
+                <p>Applications iOS et Android avec React Native pour moderniser votre activité.</p>
+                <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}" class="btn-link">En savoir plus →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🌐</div>
+                <h3>Site Internet</h3>
+                <p>Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.</p>
+                <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}" class="btn-link">En savoir plus →</a>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">🍽️</div>
+                <h3>Solutions Restauration</h3>
+                <p>Outils digitaux pour restaurants : réservation, click & collect, site web.</p>
+                <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}" class="btn-link">En savoir plus →</a>
+            </div>
         </div>
     </div>
 </section>
 
+<section class="why-local">
+    <div class="container">
+        <h2>Pourquoi un développeur local à Nîmes ?</h2>
+        <div class="why-grid">
+            <div class="why-item">
+                <h3>🤝 Proximité</h3>
+                <p>Échanges en personne possibles, meilleure compréhension de vos besoins</p>
+            </div>
+            <div class="why-item">
+                <h3>⚡ Réactivité</h3>
+                <p>Disponible rapidement pour vous accompagner</p>
+            </div>
+            <div class="why-item">
+                <h3>💼 Connaissance locale</h3>
+                <p>Je comprends le marché nîmois et ses spécificités</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% if featuredProjects is not empty %}
 <section class="projects-preview">
     <div class="container">
         <h2>Projets Réalisés</h2>
         <div class="projects-grid">
-            {# Projects cards will be populated here #}
+            {% for project in featuredProjects %}
+                <div class="project-card">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                    {% if project.technologies %}
+                        <div class="tech-tags">
+                            {% for tech in project.technologies %}
+                                <span class="tech-tag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <a href="{{ path('app_project_show', {slug: project.slug}) }}" class="btn-link">Voir le projet →</a>
+                </div>
+            {% endfor %}
         </div>
-        <a href="{{ path('app_projects') }}" class="btn">Voir tous les projets</a>
+        <div class="text-center">
+            <a href="{{ path('app_projects') }}" class="btn">Voir tous les projets</a>
+        </div>
     </div>
 </section>
+{% endif %}
 
+{% if recentPosts is not empty %}
 <section class="blog-preview">
     <div class="container">
-        <h2>Derniers Articles</h2>
+        <h2>Derniers Articles du Blog</h2>
         <div class="blog-grid">
-            {# Blog posts will be populated here #}
+            {% for post in recentPosts %}
+                <article class="blog-card">
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.excerpt }}</p>
+                    <div class="blog-meta">
+                        <span>{{ post.category.name }}</span>
+                        <span>{{ post.publishedAt|date('d/m/Y') }}</span>
+                    </div>
+                    <a href="{{ path('app_blog_show', {slug: post.slug}) }}" class="btn-link">Lire l'article →</a>
+                </article>
+            {% endfor %}
         </div>
-        <a href="{{ path('app_blog') }}" class="btn">Lire tous les articles</a>
+        <div class="text-center">
+            <a href="{{ path('app_blog') }}" class="btn">Lire tous les articles</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="faq-section">
+    <div class="container">
+        <h2>Questions fréquentes</h2>
+        <div class="faq-list">
+            <div class="faq-item">
+                <h3>Combien coûte un site internet ou une application ?</h3>
+                <p>Le tarif dépend de vos besoins spécifiques. Après un premier échange, je vous fournis un devis détaillé. Comptez généralement entre 2000€ et 10000€ selon la complexité.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Combien de temps faut-il pour réaliser un projet ?</h3>
+                <p>Un site vitrine simple : 2-3 semaines. Un site professionnel ou une application : 4-8 semaines. Je vous donne un planning précis dès le début du projet.</p>
+            </div>
+
+            <div class="faq-item">
+                <h3>Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
+                <p>Je travaille principalement à Nîmes et dans le Gard, mais aussi dans toute l'Occitanie et en France à distance selon le projet.</p>
+            </div>
+        </div>
     </div>
 </section>
 
