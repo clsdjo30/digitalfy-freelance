@@ -1,0 +1,329 @@
+// ============================================
+// Card Component - Design System Digitalfy
+// ============================================
+
+.card {
+    @include card;
+
+    &__header {
+        margin-bottom: $spacing-4;
+    }
+
+    &__title {
+        font-size: $text-xl;
+        font-weight: $font-semibold;
+        color: $primary-black;
+        margin-bottom: $spacing-2;
+    }
+
+    &__subtitle {
+        font-size: $text-sm;
+        color: $gray-500;
+    }
+
+    &__body {
+        margin-bottom: $spacing-6;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__footer {
+        padding-top: $spacing-4;
+        border-top: 1px solid $gray-200;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $spacing-4;
+    }
+
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: $radius-lg;
+        margin-bottom: $spacing-4;
+
+        @include md {
+            height: 240px;
+        }
+    }
+
+    // ============================================
+    // Variants
+    // ============================================
+
+    &--flat {
+        box-shadow: none;
+        border: 1px solid $gray-200;
+
+        &:hover {
+            box-shadow: none;
+            border-color: $primary-orange;
+        }
+    }
+
+    &--elevated {
+        box-shadow: $shadow-lg;
+
+        &:hover {
+            box-shadow: $shadow-2xl;
+        }
+    }
+
+    &--gradient {
+        background: $gradient-orange;
+        color: $white;
+
+        .card__title {
+            color: $white;
+        }
+
+        .card__subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .card__footer {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+    }
+
+    &--dark {
+        background-color: $primary-black;
+        color: $white;
+
+        .card__title {
+            color: $white;
+        }
+
+        .card__subtitle {
+            color: $gray-400;
+        }
+
+        .card__footer {
+            border-top-color: $gray-700;
+        }
+    }
+
+    // ============================================
+    // Sizes
+    // ============================================
+
+    &--sm {
+        padding: $spacing-4;
+
+        .card__title {
+            font-size: $text-lg;
+        }
+
+        .card__image {
+            height: 150px;
+        }
+    }
+
+    &--lg {
+        padding: $spacing-10;
+
+        .card__title {
+            font-size: $text-2xl;
+        }
+
+        .card__image {
+            height: 280px;
+        }
+    }
+
+    // ============================================
+    // Special cards
+    // ============================================
+
+    &--horizontal {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-6;
+
+        @include md {
+            grid-template-columns: 300px 1fr;
+        }
+
+        .card__image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 0;
+
+            @include md {
+                height: 100%;
+            }
+        }
+    }
+
+    &--interactive {
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            box-shadow: $shadow-xl;
+            transform: translateY(-4px);
+        }
+
+        &:active {
+            transform: translateY(-2px);
+        }
+    }
+
+    &--no-hover {
+        &:hover {
+            box-shadow: $shadow-md;
+            transform: none;
+        }
+    }
+}
+
+// ============================================
+// Blog Card
+// ============================================
+
+.blog-card {
+    @include card;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: $radius-lg;
+        margin-bottom: $spacing-4;
+
+        @include md {
+            height: 240px;
+        }
+    }
+
+    &__category {
+        display: inline-block;
+        padding: $spacing-1 $spacing-3;
+        background-color: $secondary-cream;
+        color: $primary-orange;
+        font-size: $text-xs;
+        font-weight: $font-semibold;
+        border-radius: $radius-sm;
+        margin-bottom: $spacing-3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    &__title {
+        font-size: $text-xl;
+        font-weight: $font-semibold;
+        color: $primary-black;
+        margin-bottom: $spacing-3;
+        @include line-clamp(2);
+    }
+
+    &__excerpt {
+        color: $gray-600;
+        margin-bottom: $spacing-4;
+        flex-grow: 1;
+        @include line-clamp(3);
+    }
+
+    &__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: $spacing-4;
+        border-top: 1px solid $gray-200;
+        font-size: $text-sm;
+        color: $gray-500;
+    }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        gap: $spacing-2;
+    }
+
+    &__link {
+        color: $primary-orange;
+        font-weight: $font-medium;
+        display: flex;
+        align-items: center;
+        gap: $spacing-1;
+        transition: gap $transition-base;
+
+        &:hover {
+            gap: $spacing-2;
+        }
+    }
+}
+
+// ============================================
+// Project Card
+// ============================================
+
+.project-card {
+    @include card;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    &__image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: $radius-lg;
+        margin-bottom: $spacing-4;
+        background-color: $gray-100;
+
+        @include md {
+            height: 240px;
+        }
+    }
+
+    &__title {
+        font-size: $text-xl;
+        font-weight: $font-semibold;
+        color: $primary-black;
+        margin-bottom: $spacing-3;
+    }
+
+    &__description {
+        color: $gray-600;
+        margin-bottom: $spacing-4;
+        flex-grow: 1;
+        @include line-clamp(3);
+    }
+
+    &__technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-2;
+        margin-bottom: $spacing-4;
+    }
+
+    &__tag {
+        display: inline-block;
+        padding: $spacing-1 $spacing-3;
+        background-color: $gray-100;
+        color: $gray-700;
+        font-size: $text-xs;
+        font-weight: $font-medium;
+        border-radius: $radius-sm;
+    }
+
+    &__link {
+        color: $primary-orange;
+        font-weight: $font-medium;
+        display: inline-flex;
+        align-items: center;
+        gap: $spacing-1;
+        transition: gap $transition-base;
+
+        &:hover {
+            gap: $spacing-2;
+        }
+    }
+}

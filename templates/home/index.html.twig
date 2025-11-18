@@ -36,146 +36,137 @@
 {% endblock %}
 
 {% block body %}
-<div class="hero">
+{# Hero Section #}
+<section class="section section--hero section--gradient">
     <div class="container">
-        <h1>Développeur Web & Mobile Freelance à Nîmes</h1>
-        <p class="lead">Spécialisé Symfony & React Native</p>
-        <p>Solutions digitales sur mesure pour TPE, PME et professionnels à Nîmes et alentours</p>
-        <div class="hero-actions">
-            <a href="{{ path('app_contact') }}" class="btn btn-primary">Discutons de votre projet</a>
-            <a href="{{ path('app_services') }}" class="btn btn-secondary">Découvrir mes services</a>
+        <h1 class="text-center mb-6">Développeur Web & Mobile Freelance à Nîmes</h1>
+        <p class="text-center text-xl mb-4">Spécialisé Symfony & React Native</p>
+        <p class="text-center mb-8">Solutions digitales sur mesure pour TPE, PME et professionnels à Nîmes et alentours</p>
+        <div class="flex flex--center flex--gap-4 flex--wrap">
+            <a href="{{ path('app_contact') }}" class="btn btn--light btn--lg">Discutons de votre projet</a>
+            <a href="{{ path('app_services') }}" class="btn btn--outline btn--lg" style="border-color: white; color: white;">Découvrir mes services</a>
         </div>
     </div>
-</div>
+</section>
 
-<section class="services-preview">
+{# Services Preview #}
+<section class="section">
     <div class="container">
-        <h2>Ce que je peux faire pour vous</h2>
-        <p class="section-intro">Des solutions digitales adaptées à vos besoins et à votre budget</p>
+        <h2 class="text-center mb-4">Ce que je peux faire pour vous</h2>
+        <p class="text-center text-gray mb-12">Des solutions digitales adaptées à vos besoins et à votre budget</p>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>Application Mobile</h3>
-                <p>Applications iOS et Android avec React Native pour moderniser votre activité.</p>
-                <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}" class="btn-link">En savoir plus →</a>
+        <div class="grid grid--3-cols">
+            <div class="card card--no-hover text-center">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+                <h3 class="card__title">Application Mobile</h3>
+                <p class="card__body">Applications iOS et Android avec React Native pour moderniser votre activité.</p>
+                <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
             </div>
 
-            <div class="service-card">
-                <div class="service-icon">🌐</div>
-                <h3>Site Internet</h3>
-                <p>Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.</p>
-                <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}" class="btn-link">En savoir plus →</a>
+            <div class="card card--no-hover text-center">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
+                <h3 class="card__title">Site Internet</h3>
+                <p class="card__body">Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.</p>
+                <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
             </div>
 
-            <div class="service-card">
-                <div class="service-icon">🍽️</div>
-                <h3>Solutions Restauration</h3>
-                <p>Outils digitaux pour restaurants : réservation, click & collect, site web.</p>
-                <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}" class="btn-link">En savoir plus →</a>
+            <div class="card card--no-hover text-center">
+                <div style="font-size: 3rem; margin-bottom: 1rem;">🍽️</div>
+                <h3 class="card__title">Solutions Restauration</h3>
+                <p class="card__body">Outils digitaux pour restaurants : réservation, click & collect, site web.</p>
+                <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class="why-local">
+{# Why Local Section #}
+<section class="section section--cream">
     <div class="container">
-        <h2>Pourquoi un développeur local à Nîmes ?</h2>
-        <div class="why-grid">
-            <div class="why-item">
-                <h3>🤝 Proximité</h3>
+        <h2 class="text-center mb-12">Pourquoi un développeur local à Nîmes ?</h2>
+        <div class="grid grid--3-cols">
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
+                <h3 class="card__title">Proximité</h3>
                 <p>Échanges en personne possibles, meilleure compréhension de vos besoins</p>
             </div>
-            <div class="why-item">
-                <h3>⚡ Réactivité</h3>
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+                <h3 class="card__title">Réactivité</h3>
                 <p>Disponible rapidement pour vous accompagner</p>
             </div>
-            <div class="why-item">
-                <h3>💼 Connaissance locale</h3>
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">💼</div>
+                <h3 class="card__title">Connaissance locale</h3>
                 <p>Je comprends le marché nîmois et ses spécificités</p>
             </div>
         </div>
     </div>
 </section>
 
+{# Featured Projects #}
 {% if featuredProjects is not empty %}
-<section class="projects-preview">
+<section class="section">
     <div class="container">
-        <h2>Projets Réalisés</h2>
-        <div class="projects-grid">
+        <h2 class="text-center mb-12">Projets Réalisés</h2>
+        <div class="grid grid--3-cols">
             {% for project in featuredProjects %}
-                <div class="project-card">
-                    <h3>{{ project.title }}</h3>
-                    <p>{{ project.description }}</p>
-                    {% if project.technologies %}
-                        <div class="tech-tags">
-                            {% for tech in project.technologies %}
-                                <span class="tech-tag">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                    <a href="{{ path('app_project_show', {slug: project.slug}) }}" class="btn-link">Voir le projet →</a>
-                </div>
+                {% include 'components/_project-card.html.twig' with {'project': project} %}
             {% endfor %}
         </div>
-        <div class="text-center">
-            <a href="{{ path('app_projects') }}" class="btn">Voir tous les projets</a>
+        <div class="text-center mt-8">
+            <a href="{{ path('app_projects') }}" class="btn btn--primary btn--lg">Voir tous les projets</a>
         </div>
     </div>
 </section>
 {% endif %}
 
+{# Recent Blog Posts #}
 {% if recentPosts is not empty %}
-<section class="blog-preview">
+<section class="section section--gray">
     <div class="container">
-        <h2>Derniers Articles du Blog</h2>
-        <div class="blog-grid">
+        <h2 class="text-center mb-12">Derniers Articles du Blog</h2>
+        <div class="grid grid--3-cols">
             {% for post in recentPosts %}
-                <article class="blog-card">
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.excerpt }}</p>
-                    <div class="blog-meta">
-                        <span>{{ post.category.name }}</span>
-                        <span>{{ post.publishedAt|date('d/m/Y') }}</span>
-                    </div>
-                    <a href="{{ path('app_blog_show', {slug: post.slug}) }}" class="btn-link">Lire l'article →</a>
-                </article>
+                {% include 'components/_blog-card.html.twig' with {'post': post} %}
             {% endfor %}
         </div>
-        <div class="text-center">
-            <a href="{{ path('app_blog') }}" class="btn">Lire tous les articles</a>
+        <div class="text-center mt-8">
+            <a href="{{ path('app_blog') }}" class="btn btn--primary btn--lg">Lire tous les articles</a>
         </div>
     </div>
 </section>
 {% endif %}
 
-<section class="faq-section">
+{# FAQ Section #}
+<section class="section">
     <div class="container">
-        <h2>Questions fréquentes</h2>
-        <div class="faq-list">
-            <div class="faq-item">
-                <h3>Combien coûte un site internet ou une application ?</h3>
+        <h2 class="text-center mb-12">Questions fréquentes</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="card mb-6">
+                <h3 class="card__title">Combien coûte un site internet ou une application ?</h3>
                 <p>Le tarif dépend de vos besoins spécifiques. Après un premier échange, je vous fournis un devis détaillé. Comptez généralement entre 2000€ et 10000€ selon la complexité.</p>
             </div>
 
-            <div class="faq-item">
-                <h3>Combien de temps faut-il pour réaliser un projet ?</h3>
+            <div class="card mb-6">
+                <h3 class="card__title">Combien de temps faut-il pour réaliser un projet ?</h3>
                 <p>Un site vitrine simple : 2-3 semaines. Un site professionnel ou une application : 4-8 semaines. Je vous donne un planning précis dès le début du projet.</p>
             </div>
 
-            <div class="faq-item">
-                <h3>Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
+            <div class="card">
+                <h3 class="card__title">Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
                 <p>Je travaille principalement à Nîmes et dans le Gard, mais aussi dans toute l'Occitanie et en France à distance selon le projet.</p>
             </div>
         </div>
     </div>
 </section>
 
-<section class="cta">
-    <div class="container">
-        <h2>Prêt à démarrer votre projet ?</h2>
-        <p>Contactez-moi pour un devis gratuit et sans engagement</p>
-        <a href="{{ path('app_contact') }}" class="btn btn-primary">Demander un devis</a>
+{# CTA Section #}
+<section class="section section--gradient">
+    <div class="container text-center">
+        <h2 class="mb-4">Prêt à démarrer votre projet ?</h2>
+        <p class="text-xl mb-8">Contactez-moi pour un devis gratuit et sans engagement</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--light btn--xl">Demander un devis</a>
     </div>
 </section>
 {% endblock %}

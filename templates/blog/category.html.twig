@@ -1,62 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ category.name }} – Articles Blog | Digitalfy{% endblock %}
+{% block title %}{{ category.name }} – Blog | Digitalfy{% endblock %}
 
-{% block meta_description %}Découvrez tous les articles de la catégorie {{ category.name }} sur le blog Digitalfy. Conseils et actualités développement web et mobile.{% endblock %}
+{% block meta_description %}Articles de blog sur {{ category.name|lower }}. Développement web et mobile à Nîmes.{% endblock %}
 
 {% block body %}
-<div class="blog-category-page">
-    <section class="category-hero">
-        <div class="container">
-            <nav class="breadcrumb" aria-label="Fil d'Ariane">
-                <a href="{{ path('home') }}">Accueil</a>
-                <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('app_blog') }}">Blog</a>
-                <span class="breadcrumb-separator">/</span>
-                <span aria-current="page">{{ category.name }}</span>
-            </nav>
+<section class="section section--hero section--cream">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('blog') }}" class="breadcrumb__link">Blog</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <span class="breadcrumb__current">{{ category.name }}</span>
+                </li>
+            </ol>
+        </nav>
 
-            <h1>{{ category.name }}</h1>
-            {% if category.description %}
-                <p class="category-description">{{ category.description }}</p>
-            {% endif %}
-        </div>
-    </section>
+        <h1 class="mb-4">{{ category.name }}</h1>
+        {% if category.description %}
+            <p class="text-lg text-gray">{{ category.description }}</p>
+        {% endif %}
+    </div>
+</section>
 
-    <section class="category-content">
-        <div class="container">
-            {% if posts|length > 0 %}
-                <div class="blog-grid">
-                    {% for post in posts %}
-                        {% include 'components/_blog-card.html.twig' with {post: post} %}
-                    {% endfor %}
-                </div>
+<section class="section">
+    <div class="container">
+        {% if posts|length > 0 %}
+            <div class="grid grid--3-cols">
+                {% for post in posts %}
+                    {% include 'components/_blog-card.html.twig' with {post: post} %}
+                {% endfor %}
+            </div>
 
-                {# Pagination if needed #}
-                {% if posts|length >= 12 %}
-                    <nav class="pagination" aria-label="Pagination de la catégorie">
+            {# Pagination #}
+            {% if totalPages > 1 %}
+                <nav class="pagination" aria-label="Pagination">
+                    <ul class="pagination__list">
                         {% if currentPage > 1 %}
-                            <a href="{{ path('app_blog_category', {slug: category.slug, page: currentPage - 1}) }}"
-                               class="pagination-prev"
-                               aria-label="Page précédente">
-                                ← Précédent
-                            </a>
+                            <li class="pagination__item">
+                                <a href="{{ path('blog_category', {slug: category.slug, page: currentPage - 1}) }}"
+                                   class="pagination__link pagination__prev">
+                                    ← Précédent
+                                </a>
+                            </li>
                         {% endif %}
 
-                        <a href="{{ path('app_blog_category', {slug: category.slug, page: currentPage + 1}) }}"
-                           class="pagination-next"
-                           aria-label="Page suivante">
-                            Suivant →
-                        </a>
-                    </nav>
-                {% endif %}
-            {% else %}
-                <div class="category-empty">
-                    <p>Aucun article dans cette catégorie pour le moment.</p>
-                    <a href="{{ path('app_blog') }}" class="btn btn-primary">Voir tous les articles</a>
-                </div>
+                        {% for page in 1..totalPages %}
+                            <li class="pagination__item">
+                                {% if page == currentPage %}
+                                    <span class="pagination__link pagination__link--active">{{ page }}</span>
+                                {% else %}
+                                    <a href="{{ path('blog_category', {slug: category.slug, page: page}) }}"
+                                       class="pagination__link">
+                                        {{ page }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+
+                        {% if currentPage < totalPages %}
+                            <li class="pagination__item">
+                                <a href="{{ path('blog_category', {slug: category.slug, page: currentPage + 1}) }}"
+                                   class="pagination__link pagination__next">
+                                    Suivant →
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
             {% endif %}
-        </div>
-    </section>
-</div>
+        {% else %}
+            <div class="card text-center">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+                <h2 class="card__title">Aucun article dans cette catégorie</h2>
+                <a href="{{ path('blog') }}" class="btn btn--primary mt-4">Voir tous les articles</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
 {% endblock %}

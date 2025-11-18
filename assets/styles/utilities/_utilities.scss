@@ -1,0 +1,165 @@
+// ============================================
+// Utilities - Design System Digitalfy
+// ============================================
+
+// ============================================
+// Spacing Utilities
+// ============================================
+
+// Margin
+.m-0 { margin: $spacing-0 !important; }
+.m-1 { margin: $spacing-1 !important; }
+.m-2 { margin: $spacing-2 !important; }
+.m-3 { margin: $spacing-3 !important; }
+.m-4 { margin: $spacing-4 !important; }
+.m-6 { margin: $spacing-6 !important; }
+.m-8 { margin: $spacing-8 !important; }
+
+// Margin top
+.mt-0 { margin-top: $spacing-0 !important; }
+.mt-2 { margin-top: $spacing-2 !important; }
+.mt-4 { margin-top: $spacing-4 !important; }
+.mt-6 { margin-top: $spacing-6 !important; }
+.mt-8 { margin-top: $spacing-8 !important; }
+.mt-12 { margin-top: $spacing-12 !important; }
+.mt-16 { margin-top: $spacing-16 !important; }
+
+// Margin bottom
+.mb-0 { margin-bottom: $spacing-0 !important; }
+.mb-2 { margin-bottom: $spacing-2 !important; }
+.mb-4 { margin-bottom: $spacing-4 !important; }
+.mb-6 { margin-bottom: $spacing-6 !important; }
+.mb-8 { margin-bottom: $spacing-8 !important; }
+.mb-12 { margin-bottom: $spacing-12 !important; }
+.mb-16 { margin-bottom: $spacing-16 !important; }
+
+// Padding
+.p-0 { padding: $spacing-0 !important; }
+.p-2 { padding: $spacing-2 !important; }
+.p-4 { padding: $spacing-4 !important; }
+.p-6 { padding: $spacing-6 !important; }
+.p-8 { padding: $spacing-8 !important; }
+
+// ============================================
+// Text Utilities
+// ============================================
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+.text-xs { font-size: $text-xs !important; }
+.text-sm { font-size: $text-sm !important; }
+.text-base { font-size: $text-base !important; }
+.text-lg { font-size: $text-lg !important; }
+.text-xl { font-size: $text-xl !important; }
+.text-2xl { font-size: $text-2xl !important; }
+.text-3xl { font-size: $text-3xl !important; }
+
+.font-normal { font-weight: $font-normal !important; }
+.font-medium { font-weight: $font-medium !important; }
+.font-semibold { font-weight: $font-semibold !important; }
+.font-bold { font-weight: $font-bold !important; }
+
+.text-primary { color: $primary-orange !important; }
+.text-black { color: $primary-black !important; }
+.text-gray { color: $gray-600 !important; }
+.text-white { color: $white !important; }
+
+.uppercase { text-transform: uppercase !important; }
+.lowercase { text-transform: lowercase !important; }
+.capitalize { text-transform: capitalize !important; }
+
+// ============================================
+// Display Utilities
+// ============================================
+
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+.d-inline { display: inline !important; }
+.d-inline-block { display: inline-block !important; }
+.d-flex { display: flex !important; }
+.d-grid { display: grid !important; }
+
+@include sm {
+    .d-sm-none { display: none !important; }
+    .d-sm-block { display: block !important; }
+    .d-sm-flex { display: flex !important; }
+}
+
+@include md {
+    .d-md-none { display: none !important; }
+    .d-md-block { display: block !important; }
+    .d-md-flex { display: flex !important; }
+}
+
+@include lg {
+    .d-lg-none { display: none !important; }
+    .d-lg-block { display: block !important; }
+    .d-lg-flex { display: flex !important; }
+}
+
+// ============================================
+// Background Utilities
+// ============================================
+
+.bg-white { background-color: $white !important; }
+.bg-gray { background-color: $gray-50 !important; }
+.bg-cream { background-color: $secondary-cream !important; }
+.bg-black { background-color: $primary-black !important; }
+.bg-primary { background-color: $primary-orange !important; }
+.bg-gradient { background: $gradient-orange !important; }
+
+// ============================================
+// Border Utilities
+// ============================================
+
+.rounded { border-radius: $radius-md !important; }
+.rounded-lg { border-radius: $radius-lg !important; }
+.rounded-xl { border-radius: $radius-xl !important; }
+.rounded-full { border-radius: $radius-full !important; }
+
+// ============================================
+// Shadow Utilities
+// ============================================
+
+.shadow-sm { box-shadow: $shadow-sm !important; }
+.shadow-md { box-shadow: $shadow-md !important; }
+.shadow-lg { box-shadow: $shadow-lg !important; }
+.shadow-xl { box-shadow: $shadow-xl !important; }
+.shadow-none { box-shadow: none !important; }
+
+// ============================================
+// Position Utilities
+// ============================================
+
+.position-relative { position: relative !important; }
+.position-absolute { position: absolute !important; }
+.position-fixed { position: fixed !important; }
+.position-sticky { position: sticky !important; }
+
+// ============================================
+// Width & Height Utilities
+// ============================================
+
+.w-full { width: 100% !important; }
+.w-auto { width: auto !important; }
+.h-full { height: 100% !important; }
+.h-auto { height: auto !important; }
+
+// ============================================
+// Overflow Utilities
+// ============================================
+
+.overflow-hidden { overflow: hidden !important; }
+.overflow-auto { overflow: auto !important; }
+.overflow-scroll { overflow: scroll !important; }
+
+// ============================================
+// Gap Utilities
+// ============================================
+
+.gap-2 { gap: $spacing-2 !important; }
+.gap-4 { gap: $spacing-4 !important; }
+.gap-6 { gap: $spacing-6 !important; }
+.gap-8 { gap: $spacing-8 !important; }
