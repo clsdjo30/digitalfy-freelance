@@ -1,19 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ slug|title }} - Portfolio Digitalfy{% endblock %}
+{% block title %}{{ project.title }} – Étude de cas | Digitalfy{% endblock %}
+
+{% block meta_description %}{{ project.description }}{% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <div class="container">
-        <h1>{{ slug|replace({'-': ' '})|title }}</h1>
-    </div>
-</div>
+<article class="project-page">
+    <section class="project-hero">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                <a href="{{ path('home') }}">Accueil</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="{{ path('projects') }}">Projets</a>
+                <span class="breadcrumb-separator">/</span>
+                <span aria-current="page">{{ project.title }}</span>
+            </nav>
 
-<section class="project-detail">
-    <div class="container">
-        <div class="project-content">
-            {# Project case study will be populated dynamically #}
+            <h1>{{ project.title }}</h1>
+            <p class="project-excerpt">{{ project.description }}</p>
+
+            {% if project.technologies|length > 0 %}
+                <div class="project-tags">
+                    {% for tech in project.technologies %}
+                        <span class="tag">{{ tech }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
-    </div>
-</section>
+    </section>
+
+    {% if project.thumbnail %}
+        <section class="project-thumbnail">
+            <div class="container">
+                <img src="{{ asset('uploads/projects/' ~ project.thumbnail) }}"
+                     alt="{{ project.title }}"
+                     class="project-thumbnail-image"
+                     loading="eager">
+            </div>
+        </section>
+    {% endif %}
+
+    {% if project.context %}
+        <section class="project-section">
+            <div class="container">
+                <h2>Contexte & objectifs</h2>
+                <div class="project-section-content">
+                    {{ project.context|raw }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if project.solution %}
+        <section class="project-section project-section-alt">
+            <div class="container">
+                <h2>Solution mise en place</h2>
+                <div class="project-section-content">
+                    {{ project.solution|raw }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {% if project.results %}
+        <section class="project-section">
+            <div class="container">
+                <h2>Résultats & perspectives</h2>
+                <div class="project-section-content">
+                    {{ project.results|raw }}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    <section class="project-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Un projet similaire ?</h2>
+                <p>Vous avez un projet de {{ project.technologies[0] is defined ? project.technologies[0]|lower : 'développement web ou mobile' }} ? Discutons-en ensemble pour voir comment je peux vous aider.</p>
+                <a href="{{ path('contact') }}" class="btn btn-primary">
+                    Parlons-en ensemble
+                </a>
+            </div>
+        </div>
+    </section>
+</article>
 {% endblock %}

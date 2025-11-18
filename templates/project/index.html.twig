@@ -1,22 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Portfolio - Projets Réalisés - Digitalfy{% endblock %}
+{% block title %}Projets – Portfolio développeur freelance | Digitalfy{% endblock %}
 
-{% block meta_description %}Découvrez mes réalisations : sites web Symfony, applications mobiles React Native pour restaurants, boutiques et professionnels à Nîmes.{% endblock %}
+{% block meta_description %}Découvrez mes réalisations : sites web Symfony, applications mobiles React Native pour restaurants, boutiques et professionnels à Nîmes et alentours.{% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <div class="container">
-        <h1>Portfolio</h1>
-        <p class="lead">Découvrez mes réalisations</p>
-    </div>
-</div>
-
-<section class="projects-list">
-    <div class="container">
-        <div class="projects-grid">
-            {# Projects will be populated from controller #}
+<div class="projects-page">
+    <section class="projects-hero">
+        <div class="container">
+            <h1>Projets</h1>
+            <p>Découvrez une sélection de mes réalisations en développement web et mobile</p>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="projects-content">
+        <div class="container">
+            {% if projects|length > 0 %}
+                <div class="projects-grid">
+                    {% for project in projects %}
+                        {% include 'components/_project-card.html.twig' with {project: project} %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="projects-empty">
+                    <p>Aucun projet publié pour le moment. Revenez bientôt !</p>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="projects-cta">
+        <div class="container">
+            <h2>Un projet en tête ?</h2>
+            <p>Que ce soit pour un site web, une application mobile ou une solution sur mesure, contactez-moi pour en discuter.</p>
+            <a href="{{ path('contact') }}" class="btn btn-primary">Parlons de votre projet</a>
+        </div>
+    </section>
+</div>
 {% endblock %}
