@@ -1,0 +1,317 @@
+// ============================================
+// Navigation Component - Design System Digitalfy
+// ============================================
+
+.nav {
+    display: flex;
+    align-items: center;
+    gap: $spacing-2;
+
+    &__list {
+        display: none;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        gap: $spacing-2;
+
+        @include md {
+            display: flex;
+        }
+
+        @include lg {
+            gap: $spacing-4;
+        }
+    }
+
+    &__item {
+        margin: 0;
+    }
+
+    &__link {
+        display: block;
+        padding: $spacing-2 $spacing-4;
+        color: $primary-gray;
+        font-weight: $font-medium;
+        font-size: $text-base;
+        transition: all $transition-base;
+        border-radius: $radius-md;
+        position: relative;
+
+        &:hover {
+            color: $primary-orange;
+            background-color: $secondary-cream;
+        }
+
+        &--active {
+            color: $primary-orange;
+            font-weight: $font-semibold;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: $spacing-4;
+                right: $spacing-4;
+                height: 2px;
+                background-color: $primary-orange;
+            }
+        }
+    }
+
+    // ============================================
+    // Mobile Menu Toggle
+    // ============================================
+
+    &__toggle {
+        @include button-reset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 44px;
+        height: 44px;
+        gap: 6px;
+        border-radius: $radius-md;
+        transition: background-color $transition-base;
+
+        @include md {
+            display: none;
+        }
+
+        &:hover {
+            background-color: $gray-100;
+        }
+
+        span {
+            width: 24px;
+            height: 2px;
+            background-color: $primary-black;
+            transition: all $transition-base;
+            border-radius: 2px;
+        }
+
+        &--open {
+            span:nth-child(1) {
+                transform: rotate(45deg) translate(7px, 7px);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+            }
+
+            span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+        }
+    }
+
+    // ============================================
+    // Mobile Menu
+    // ============================================
+
+    &__mobile {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $white;
+        padding: $spacing-6;
+        transform: translateX(-100%);
+        transition: transform $transition-slow;
+        z-index: 99;
+        box-shadow: $shadow-lg;
+
+        @include md {
+            display: none;
+        }
+
+        &--open {
+            transform: translateX(0);
+        }
+    }
+
+    &__mobile-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__mobile-item {
+        margin-bottom: $spacing-2;
+    }
+
+    &__mobile-link {
+        display: block;
+        padding: $spacing-4;
+        color: $primary-gray;
+        font-weight: $font-medium;
+        font-size: $text-lg;
+        border-radius: $radius-lg;
+        transition: all $transition-base;
+
+        &:hover {
+            color: $primary-orange;
+            background-color: $secondary-cream;
+        }
+
+        &--active {
+            color: $primary-orange;
+            background-color: $secondary-cream;
+            font-weight: $font-semibold;
+        }
+    }
+}
+
+// ============================================
+// Breadcrumb
+// ============================================
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-2;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 $spacing-6 0;
+    font-size: $text-sm;
+
+    &__item {
+        display: flex;
+        align-items: center;
+        gap: $spacing-2;
+        margin: 0;
+
+        &:not(:last-child)::after {
+            content: '/';
+            color: $gray-400;
+        }
+    }
+
+    &__link {
+        color: $gray-600;
+        transition: color $transition-base;
+
+        &:hover {
+            color: $primary-orange;
+        }
+    }
+
+    &__current {
+        color: $primary-black;
+        font-weight: $font-medium;
+    }
+}
+
+// ============================================
+// Pagination
+// ============================================
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-2;
+    margin: $spacing-8 0;
+
+    &__list {
+        display: flex;
+        gap: $spacing-2;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        margin: 0;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        height: 40px;
+        padding: 0 $spacing-3;
+        color: $gray-700;
+        font-weight: $font-medium;
+        border-radius: $radius-md;
+        border: 1px solid $gray-300;
+        transition: all $transition-base;
+
+        &:hover:not(.pagination__link--active):not(.pagination__link--disabled) {
+            color: $primary-orange;
+            border-color: $primary-orange;
+            background-color: $secondary-cream;
+        }
+
+        &--active {
+            color: $white;
+            background-color: $primary-orange;
+            border-color: $primary-orange;
+            pointer-events: none;
+        }
+
+        &--disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+    }
+
+    &__prev,
+    &__next {
+        display: flex;
+        align-items: center;
+        gap: $spacing-2;
+    }
+}
+
+// ============================================
+// Tabs
+// ============================================
+
+.tabs {
+    &__list {
+        display: flex;
+        gap: $spacing-2;
+        border-bottom: 2px solid $gray-200;
+        list-style: none;
+        padding: 0;
+        margin: 0 0 $spacing-6 0;
+        overflow-x: auto;
+    }
+
+    &__item {
+        margin: 0;
+    }
+
+    &__link {
+        display: block;
+        padding: $spacing-3 $spacing-4;
+        color: $gray-600;
+        font-weight: $font-medium;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -2px;
+        transition: all $transition-base;
+        white-space: nowrap;
+
+        &:hover {
+            color: $primary-orange;
+        }
+
+        &--active {
+            color: $primary-orange;
+            border-bottom-color: $primary-orange;
+        }
+    }
+
+    &__content {
+        display: none;
+
+        &--active {
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,138 @@
+// ============================================
+// Mixins SCSS - Design System Digitalfy
+// ============================================
+
+// ============================================
+// Responsive Breakpoints
+// ============================================
+
+@mixin sm {
+    @media (min-width: $breakpoint-sm) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+@mixin xxl {
+    @media (min-width: $breakpoint-2xl) {
+        @content;
+    }
+}
+
+// ============================================
+// Utilities
+// ============================================
+
+// Container
+@mixin container {
+    width: 100%;
+    max-width: $container-max-width;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: $spacing-6;
+    padding-right: $spacing-6;
+
+    @include md {
+        padding-left: $spacing-12;
+        padding-right: $spacing-12;
+    }
+}
+
+// Section padding
+@mixin section-padding {
+    padding: $spacing-16 0;
+
+    @include md {
+        padding: $spacing-20 0;
+    }
+
+    @include lg {
+        padding: $spacing-24 0;
+    }
+}
+
+// Card base
+@mixin card {
+    background: $white;
+    border-radius: $radius-xl;
+    padding: $spacing-8;
+    box-shadow: $shadow-md;
+    transition: all $transition-base;
+
+    &:hover {
+        box-shadow: $shadow-xl;
+        transform: translateY(-4px);
+    }
+}
+
+// Button reset
+@mixin button-reset {
+    appearance: none;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+// Visually hidden (for accessibility)
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+// Truncate text
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Line clamp
+@mixin line-clamp($lines: 3) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// Focus visible
+@mixin focus-visible {
+    outline: 2px solid $primary-orange;
+    outline-offset: 2px;
+}
+
+// Hover lift effect
+@mixin hover-lift {
+    transition: transform $transition-base, box-shadow $transition-base;
+
+    &:hover {
+        transform: translateY(-4px);
+    }
+}
