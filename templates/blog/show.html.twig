@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ slug|title }} - Blog Digitalfy{% endblock %}
+
+{% block body %}
+<article class="blog-post">
+    <div class="container">
+        <header class="post-header">
+            <h1>{{ slug|replace({'-': ' '})|title }}</h1>
+            <div class="post-meta">
+                {# Meta info will be populated dynamically #}
+            </div>
+        </header>
+
+        <div class="post-content">
+            {# Post content will be populated dynamically #}
+        </div>
+    </div>
+</article>
+{% endblock %}

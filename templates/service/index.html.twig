@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services - Développeur Freelance Nîmes{% endblock %}
+
+{% block meta_description %}Découvrez mes services de développement web et mobile : sites Symfony, applications React Native, solutions e-commerce et digitales pour TPE/PME à Nîmes.{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <div class="container">
+        <h1>Mes Services</h1>
+        <p class="lead">Solutions digitales adaptées à vos besoins</p>
+    </div>
+</div>
+
+<section class="services-list">
+    <div class="container">
+        <div class="services-grid">
+            {# Services will be populated here from controller #}
+            <div class="service-card">
+                <h3>Développement Web Symfony</h3>
+                <p>Sites web professionnels, applications métier et plateformes sur mesure</p>
+                <a href="{{ path('app_service_show', {slug: 'developpement-web-symfony'}) }}" class="btn">En savoir plus</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Application Mobile React Native</h3>
+                <p>Applications mobiles cross-platform iOS et Android</p>
+                <a href="{{ path('app_service_show', {slug: 'application-mobile'}) }}" class="btn">En savoir plus</a>
+            </div>
+
+            <div class="service-card">
+                <h3>Solutions pour Restaurants</h3>
+                <p>Réservation en ligne, click & collect, programme fidélité</p>
+                <a href="{{ path('app_service_show', {slug: 'solution-restaurants'}) }}" class="btn">En savoir plus</a>
+            </div>
+
+            <div class="service-card">
+                <h3>E-commerce & Boutiques</h3>
+                <p>Boutiques en ligne performantes et optimisées SEO</p>
+                <a href="{{ path('app_service_show', {slug: 'ecommerce'}) }}" class="btn">En savoir plus</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

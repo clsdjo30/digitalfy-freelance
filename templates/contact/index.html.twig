@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact - Développeur Freelance Nîmes{% endblock %}
+
+{% block meta_description %}Contactez Digitalfy, développeur freelance à Nîmes. Devis gratuit pour votre projet web ou mobile.{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <div class="container">
+        <h1>Contact</h1>
+        <p class="lead">Discutons de votre projet</p>
+    </div>
+</div>
+
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-grid">
+            <div class="contact-form">
+                <h2>Envoyez-moi un message</h2>
+                {# Contact form will be added in Phase 2 #}
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="project_type">Type de projet</label>
+                        <select id="project_type" name="project_type" required>
+                            <option value="">Sélectionnez...</option>
+                            <option value="Site Web">Site Web</option>
+                            <option value="Application Mobile">Application Mobile</option>
+                            <option value="Solution Restaurant">Solution Restaurant</option>
+                            <option value="E-commerce">E-commerce</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Budget estimé</label>
+                        <select id="budget" name="budget">
+                            <option value="">Sélectionnez...</option>
+                            <option value="< 5000€">< 5000€</option>
+                            <option value="5000€ - 10000€">5000€ - 10000€</option>
+                            <option value="10000€ - 20000€">10000€ - 20000€</option>
+                            <option value="> 20000€">> 20000€</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h2>Informations</h2>
+                <div class="info-item">
+                    <h3>Localisation</h3>
+                    <p>Nîmes, France</p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Email</h3>
+                    <p><a href="mailto:contact@digitalfy.fr">contact@digitalfy.fr</a></p>
+                </div>
+
+                <div class="info-item">
+                    <h3>Disponibilité</h3>
+                    <p>Lundi - Vendredi<br>9h00 - 18h00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

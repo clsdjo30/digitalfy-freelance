@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Digitalfy - Développeur Web & Mobile Freelance à Nîmes{% endblock %}
+
+{% block meta_description %}Développeur freelance à Nîmes spécialisé en Symfony et React Native. Création de sites web, applications mobiles et solutions digitales pour TPE/PME.{% endblock %}
+
+{% block body %}
+<div class="hero">
+    <div class="container">
+        <h1>Développeur Web & Mobile Freelance à Nîmes</h1>
+        <p class="lead">Spécialisé Symfony & React Native</p>
+        <p>Solutions digitales sur mesure pour TPE, PME et professionnels à Nîmes et alentours</p>
+        <div class="hero-actions">
+            <a href="{{ path('app_contact') }}" class="btn btn-primary">Discutons de votre projet</a>
+            <a href="{{ path('app_services') }}" class="btn btn-secondary">Découvrir mes services</a>
+        </div>
+    </div>
+</div>
+
+<section class="services-preview">
+    <div class="container">
+        <h2>Mes Services</h2>
+        <div class="services-grid">
+            {# Services cards will be populated here #}
+        </div>
+    </div>
+</section>
+
+<section class="projects-preview">
+    <div class="container">
+        <h2>Projets Réalisés</h2>
+        <div class="projects-grid">
+            {# Projects cards will be populated here #}
+        </div>
+        <a href="{{ path('app_projects') }}" class="btn">Voir tous les projets</a>
+    </div>
+</section>
+
+<section class="blog-preview">
+    <div class="container">
+        <h2>Derniers Articles</h2>
+        <div class="blog-grid">
+            {# Blog posts will be populated here #}
+        </div>
+        <a href="{{ path('app_blog') }}" class="btn">Lire tous les articles</a>
+    </div>
+</section>
+
+<section class="cta">
+    <div class="container">
+        <h2>Prêt à démarrer votre projet ?</h2>
+        <p>Contactez-moi pour un devis gratuit et sans engagement</p>
+        <a href="{{ path('app_contact') }}" class="btn btn-primary">Demander un devis</a>
+    </div>
+</section>
+{% endblock %}

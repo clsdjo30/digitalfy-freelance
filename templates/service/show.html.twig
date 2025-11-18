@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ slug|title }} - Services Digitalfy{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <div class="container">
+        <h1>{{ slug|replace({'-': ' '})|title }}</h1>
+    </div>
+</div>
+
+<section class="service-detail">
+    <div class="container">
+        <div class="content">
+            {# Service content will be populated dynamically #}
+            <p>Détails du service...</p>
+        </div>
+
+        <div class="sidebar">
+            <div class="cta-box">
+                <h3>Intéressé ?</h3>
+                <p>Contactez-moi pour discuter de votre projet</p>
+                <a href="{{ path('app_contact') }}" class="btn btn-primary">Me contacter</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
