@@ -1,6 +1,6 @@
 {# Blog card component - used in blog list and related posts #}
 <article class="blog-card">
-    <a href="{{ path('blog_post', {slug: post.slug}) }}" class="blog-card-link">
+    <a href="{{ path('app_blog_show', {slug: post.slug}) }}" class="blog-card-link">
         {% if post.featuredImage %}
             <div class="blog-card-image">
                 <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
@@ -25,7 +25,7 @@
                 <p class="blog-card-excerpt">{{ post.excerpt }}</p>
             {% endif %}
 
-            <span class="blog-card-read-more">Lire l'article ’</span>
+            <span class="blog-card-read-more">Lire l'article ï¿½</span>
         </div>
     </a>
 </article>

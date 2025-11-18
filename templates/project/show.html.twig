@@ -9,9 +9,9 @@
     <section class="project-hero">
         <div class="container">
             <nav class="breadcrumb" aria-label="Fil d'Ariane">
-                <a href="{{ path('home') }}">Accueil</a>
+                <a href="{{ path('app_home') }}">Accueil</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('projects') }}">Projets</a>
+                <a href="{{ path('app_projects') }}">Projets</a>
                 <span class="breadcrumb-separator">/</span>
                 <span aria-current="page">{{ project.title }}</span>
             </nav>
@@ -78,7 +78,7 @@
             <div class="cta-content">
                 <h2>Un projet similaire ?</h2>
                 <p>Vous avez un projet de {{ project.technologies[0] is defined ? project.technologies[0]|lower : 'développement web ou mobile' }} ? Discutons-en ensemble pour voir comment je peux vous aider.</p>
-                <a href="{{ path('contact') }}" class="btn btn-primary">
+                <a href="{{ path('app_contact') }}" class="btn btn-primary">
                     Parlons-en ensemble
                 </a>
             </div>

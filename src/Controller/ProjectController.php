@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class ProjectController extends AbstractController
 {
-    #[Route('/projets', name: 'projects')]
+    #[Route('/projets', name: 'app_projects')]
     public function index(ProjectRepository $repo): Response
     {
         $projects = $repo->findBy(['published' => true], ['id' => 'DESC']);
@@ -19,7 +19,7 @@ class ProjectController extends AbstractController
         ]);
     }
 
-    #[Route('/projets/{slug}', name: 'project_show')]
+    #[Route('/projets/{slug}', name: 'app_project_show')]
     public function show(string $slug, ProjectRepository $repo): Response
     {
         $project = $repo->findOneBy(['slug' => $slug, 'published' => true]);

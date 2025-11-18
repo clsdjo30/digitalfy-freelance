@@ -1,6 +1,6 @@
 {# Project card component - used in projects list #}
 <article class="project-card">
-    <a href="{{ path('project_show', {slug: project.slug}) }}" class="project-card-link">
+    <a href="{{ path('app_project_show', {slug: project.slug}) }}" class="project-card-link">
         {% if project.thumbnail %}
             <div class="project-card-image">
                 <img src="{{ asset('uploads/projects/' ~ project.thumbnail) }}"
@@ -9,7 +9,7 @@
             </div>
         {% else %}
             <div class="project-card-image project-card-image-placeholder">
-                <span class="placeholder-icon">=€</span>
+                <span class="placeholder-icon">=ï¿½</span>
             </div>
         {% endif %}
 
@@ -31,7 +31,7 @@
                 </div>
             {% endif %}
 
-            <span class="project-card-link-text">Voir l'étude de cas ’</span>
+            <span class="project-card-link-text">Voir l'ï¿½tude de cas ï¿½</span>
         </div>
     </a>
 </article>

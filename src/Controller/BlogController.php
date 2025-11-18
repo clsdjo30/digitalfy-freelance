@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'blog')]
+    #[Route('/blog', name: 'app_blog')]
     public function index(Request $request, BlogPostRepository $repo): Response
     {
         $page = $request->query->getInt('page', 1);
@@ -27,7 +27,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/categorie/{slug}', name: 'blog_category')]
+    #[Route('/blog/categorie/{slug}', name: 'app_blog_category')]
     public function category(
         string $slug,
         Request $request,
@@ -50,7 +50,7 @@ class BlogController extends AbstractController
         ]);
     }
 
-    #[Route('/blog/{slug}', name: 'blog_post')]
+    #[Route('/blog/{slug}', name: 'app_blog_show')]
     public function show(string $slug, BlogPostRepository $repo): Response
     {
         $post = $repo->findOneBy(['slug' => $slug, 'status' => 'published']);

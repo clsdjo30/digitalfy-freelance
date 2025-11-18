@@ -9,11 +9,11 @@
     <header class="post-header">
         <div class="container">
             <nav class="breadcrumb" aria-label="Fil d'Ariane">
-                <a href="{{ path('home') }}">Accueil</a>
+                <a href="{{ path('app_home') }}">Accueil</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('blog') }}">Blog</a>
+                <a href="{{ path('app_blog') }}">Blog</a>
                 <span class="breadcrumb-separator">/</span>
-                <a href="{{ path('blog_category', {slug: post.category.slug}) }}">
+                <a href="{{ path('app_blog_category', {slug: post.category.slug}) }}">
                     {{ post.category.name }}
                 </a>
                 <span class="breadcrumb-separator">/</span>
@@ -27,7 +27,7 @@
                     {{ post.publishedAt|date('d/m/Y') }}
                 </time>
                 <span class="post-category">
-                    <a href="{{ path('blog_category', {slug: post.category.slug}) }}">
+                    <a href="{{ path('app_blog_category', {slug: post.category.slug}) }}">
                         {{ post.category.name }}
                     </a>
                 </span>
@@ -53,21 +53,21 @@
         <div class="container">
             <div class="share-buttons">
                 <span class="share-label">Partager cet article :</span>
-                <a href="https://twitter.com/intent/tweet?url={{ url('blog_post', {slug: post.slug}) }}&text={{ post.title|url_encode }}"
+                <a href="https://twitter.com/intent/tweet?url={{ url('app_blog_show', {slug: post.slug}) }}&text={{ post.title|url_encode }}"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="share-button share-twitter"
                    aria-label="Partager sur Twitter">
                     <span>Twitter</span>
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('blog_post', {slug: post.slug}) }}"
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('app_blog_show', {slug: post.slug}) }}"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="share-button share-linkedin"
                    aria-label="Partager sur LinkedIn">
                     <span>LinkedIn</span>
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('blog_post', {slug: post.slug}) }}"
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('app_blog_show', {slug: post.slug}) }}"
                    target="_blank"
                    rel="noopener noreferrer"
                    class="share-button share-facebook"
@@ -107,7 +107,7 @@
     "author": {
         "@type": "Person",
         "name": "Marc Dubois",
-        "url": "{{ url('home') }}"
+        "url": "{{ url('app_home') }}"
     },
     "publisher": {
         "@type": "Organization",
@@ -120,7 +120,7 @@
     "description": "{{ (post.excerpt ?? post.metaDescription)|escape('js') }}",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ url('blog_post', {slug: post.slug}) }}"
+        "@id": "{{ url('app_blog_show', {slug: post.slug}) }}"
     }
 }
 </script>

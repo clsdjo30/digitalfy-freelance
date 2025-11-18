@@ -26,7 +26,7 @@
                 {% if totalPages > 1 %}
                     <nav class="pagination" aria-label="Pagination du blog">
                         {% if currentPage > 1 %}
-                            <a href="{{ path('blog', {page: currentPage - 1}) }}"
+                            <a href="{{ path('app_blog', {page: currentPage - 1}) }}"
                                class="pagination-prev"
                                aria-label="Page précédente">
                                 ← Précédent
@@ -38,7 +38,7 @@
                                 {% if page == currentPage %}
                                     <span class="pagination-page active" aria-current="page">{{ page }}</span>
                                 {% else %}
-                                    <a href="{{ path('blog', {page: page}) }}"
+                                    <a href="{{ path('app_blog', {page: page}) }}"
                                        class="pagination-page"
                                        aria-label="Page {{ page }}">
                                         {{ page }}
@@ -48,7 +48,7 @@
                         </div>
 
                         {% if currentPage < totalPages %}
-                            <a href="{{ path('blog', {page: currentPage + 1}) }}"
+                            <a href="{{ path('app_blog', {page: currentPage + 1}) }}"
                                class="pagination-next"
                                aria-label="Page suivante">
                                 Suivant →
