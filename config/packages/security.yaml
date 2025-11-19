@@ -29,9 +29,6 @@ security:
                 default_target_path: app_admin_dashboard
                 always_use_default_target_path: false
                 use_referer: false
-                # Limite les tentatives de connexion
-                max_attempts: 5
-                interval: '15 minutes'
 
             logout:
                 path: app_logout
