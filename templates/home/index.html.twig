@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Digitalfy - Développeur Freelance à Nîmes | Applications Mobile & Sites Web{% endblock %}
+
+{% block body %}
+    {# Hero Section - Can be added later #}
+    <section class="hero-section" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container" style="text-align: center;">
+            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 700;">Digitalfy</h1>
+            <p style="font-size: 1.5rem; margin-bottom: 2rem;">Développeur Freelance à Nîmes</p>
+            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto;">
+                Des solutions digitales sur mesure pour votre entreprise
+            </p>
+        </div>
+    </section>
+
+    {# Services Section - Using the new component #}
+    {% include 'components/_services.html.twig' %}
+
+    {# Additional sections can be added here #}
+    {# About Section, Portfolio, Testimonials, Contact, etc. #}
+{% endblock %}
