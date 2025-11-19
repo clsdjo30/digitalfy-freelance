@@ -1,3 +1,26 @@
+{% set services = [
+    {
+        'title': 'Développement d\'applications mobiles',
+        'slug': 'developpement-application-mobile-nimes',
+        'description': 'Applications iOS et Android'
+    },
+    {
+        'title': 'Création de site internet',
+        'slug': 'creation-site-internet-nimes',
+        'description': 'Sites vitrines et professionnels'
+    },
+    {
+        'title': 'Solutions digitales restauration',
+        'slug': 'solutions-digitales-restauration-nimes',
+        'description': 'Outils pour restaurants'
+    },
+    {
+        'title': 'Maintenance & Support',
+        'slug': 'maintenance-support',
+        'description': 'Accompagnement technique'
+    }
+] %}
+
 <header class="header">
     <div class="header__container">
         <a href="{{ path('app_home') }}" class="header__logo">
@@ -11,10 +34,39 @@
                         Accueil
                     </a>
                 </li>
-                <li class="nav__item">
+                <li class="nav__item nav__item--dropdown">
                     <a href="{{ path('app_services') }}" class="nav__link {% if app.request.attributes.get('_route') starts with 'app_service' %}nav__link--active{% endif %}">
                         Services
+                        <svg class="nav__dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                            <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
+                    <div class="nav__dropdown">
+                        <div class="nav__dropdown-header">
+                            <h3>Nos Services</h3>
+                            <p>Solutions digitales sur mesure</p>
+                        </div>
+                        <ul class="nav__dropdown-list">
+                            {% for service in services %}
+                            <li class="nav__dropdown-item">
+                                <a href="{{ path('app_service_show', {slug: service.slug}) }}" class="nav__dropdown-link">
+                                    <div class="nav__dropdown-link-content">
+                                        <strong>{{ service.title }}</strong>
+                                        <span>{{ service.description }}</span>
+                                    </div>
+                                    <svg class="nav__dropdown-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="nav__dropdown-footer">
+                            <a href="{{ path('app_services') }}" class="nav__dropdown-view-all">
+                                Voir tous les services →
+                            </a>
+                        </div>
+                    </div>
                 </li>
                 <li class="nav__item">
                     <a href="{{ path('app_projects') }}" class="nav__link {% if app.request.attributes.get('_route') starts with 'app_project' %}nav__link--active{% endif %}">
@@ -51,10 +103,27 @@
                     Accueil
                 </a>
             </li>
-            <li class="nav__mobile-item">
-                <a href="{{ path('app_services') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') starts with 'app_service' %}nav__mobile-link--active{% endif %}">
+            <li class="nav__mobile-item nav__mobile-item--dropdown">
+                <button class="nav__mobile-link nav__mobile-toggle" type="button">
                     Services
-                </a>
+                    <svg class="nav__mobile-dropdown-icon" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                <ul class="nav__mobile-submenu">
+                    <li class="nav__mobile-submenu-item">
+                        <a href="{{ path('app_services') }}" class="nav__mobile-submenu-link">
+                            Tous les services
+                        </a>
+                    </li>
+                    {% for service in services %}
+                    <li class="nav__mobile-submenu-item">
+                        <a href="{{ path('app_service_show', {slug: service.slug}) }}" class="nav__mobile-submenu-link">
+                            {{ service.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
             </li>
             <li class="nav__mobile-item">
                 <a href="{{ path('app_projects') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') starts with 'app_project' %}nav__mobile-link--active{% endif %}">
@@ -78,6 +147,205 @@
     </div>
 </header>
 
+<style>
+/* Dropdown Styles */
+.nav__item--dropdown {
+    position: relative;
+}
+
+.nav__item--dropdown .nav__link {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+}
+
+.nav__dropdown-icon {
+    transition: transform 0.2s ease;
+}
+
+.nav__item--dropdown:hover .nav__dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.nav__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 380px;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    margin-top: 0.5rem;
+    border: 1px solid #E5E7EB;
+}
+
+.nav__item--dropdown:hover .nav__dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.nav__dropdown-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.nav__dropdown-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin: 0 0 0.25rem 0;
+}
+
+.nav__dropdown-header p {
+    font-size: 0.875rem;
+    color: #6B7280;
+    margin: 0;
+}
+
+.nav__dropdown-list {
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+}
+
+.nav__dropdown-item {
+    margin: 0;
+}
+
+.nav__dropdown-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.875rem 1rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    gap: 1rem;
+}
+
+.nav__dropdown-link:hover {
+    background: #FFF5F0;
+}
+
+.nav__dropdown-link-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.nav__dropdown-link strong {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #1A1A1A;
+    display: block;
+}
+
+.nav__dropdown-link span {
+    font-size: 0.8125rem;
+    color: #6B7280;
+    display: block;
+}
+
+.nav__dropdown-arrow {
+    flex-shrink: 0;
+    color: #FF5722;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: all 0.2s ease;
+}
+
+.nav__dropdown-link:hover .nav__dropdown-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.nav__dropdown-footer {
+    padding: 1rem 1.5rem 1.5rem;
+    border-top: 1px solid #F3F4F6;
+}
+
+.nav__dropdown-view-all {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #FF5722;
+    text-decoration: none;
+    transition: gap 0.2s ease;
+}
+
+.nav__dropdown-view-all:hover {
+    gap: 0.25rem;
+}
+
+/* Mobile Dropdown Styles */
+.nav__mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav__mobile-dropdown-icon {
+    transition: transform 0.2s ease;
+}
+
+.nav__mobile-item--dropdown.nav__mobile-item--open .nav__mobile-dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.nav__mobile-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.nav__mobile-item--dropdown.nav__mobile-item--open .nav__mobile-submenu {
+    max-height: 500px;
+}
+
+.nav__mobile-submenu-item {
+    margin: 0;
+}
+
+.nav__mobile-submenu-link {
+    display: block;
+    padding: 0.875rem 1rem 0.875rem 2rem;
+    font-size: 0.9375rem;
+    color: #4B5563;
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.nav__mobile-submenu-link:hover,
+.nav__mobile-submenu-link:focus {
+    color: #FF5722;
+    background: #FFF5F0;
+    border-left-color: #FF5722;
+}
+
+@media (max-width: 1024px) {
+    .nav__dropdown {
+        display: none;
+    }
+}
+</style>
+
 <script>
 // Mobile menu toggle
 document.addEventListener('DOMContentLoaded', function() {
@@ -90,5 +358,14 @@ document.addEventListener('DOMContentLoaded', function() {
             navMobile.classList.toggle('nav__mobile--open');
         });
     }
+
+    // Mobile dropdown toggle
+    const mobileDropdownToggles = document.querySelectorAll('.nav__mobile-toggle');
+    mobileDropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function() {
+            const parent = toggle.closest('.nav__mobile-item--dropdown');
+            parent.classList.toggle('nav__mobile-item--open');
+        });
+    });
 });
 </script>
