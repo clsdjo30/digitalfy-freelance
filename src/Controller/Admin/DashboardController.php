@@ -40,7 +40,8 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Digitalfy - Administration')
-            ->setFaviconPath('favicon.ico');
+            ->setFaviconPath('favicon.ico')
+            ->setDashboardRouteName('app_admin_dashboard');
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
