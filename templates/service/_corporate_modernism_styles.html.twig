@@ -1,0 +1,601 @@
+{# Corporate Modernism Shared Styles for Service Pages #}
+<style>
+/* ============================================ */
+/* CORPORATE MODERNISM - SERVICE PAGE STYLES */
+/* ============================================ */
+
+/* Hero Section */
+.service-page .service-hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-page .service-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 87, 34, 0.03) 0%, rgba(255, 112, 67, 0.05) 100%);
+    z-index: 0;
+}
+
+.service-page .service-hero .container {
+    max-width: 1200px;
+    position: relative;
+    z-index: 1;
+}
+
+.service-page .service-hero h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1A1A1A;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.service-page .service-hero .lead {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #4B5563;
+    max-width: 800px;
+    margin: 0;
+}
+
+.text-highlight {
+    color: #FF5722;
+    position: relative;
+}
+
+/* Service Sections */
+.service-page .service-section {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.service-page .service-section.bg-light {
+    background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
+}
+
+.service-page .service-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-page .service-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: #1A1A1A;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.service-page .service-section h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.service-page .service-section p,
+.service-page .service-section li {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #4B5563;
+}
+
+.intro-text {
+    font-size: 1.25rem !important;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 3rem;
+}
+
+/* Benefits Grid - Text-Focused Without Icons */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.benefit-card {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.benefit-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #FF5722, #FF7043);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.benefit-card:hover {
+    border-color: #FF5722;
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(255, 87, 34, 0.15);
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-icon {
+    display: none; /* Hide icons for text-focused design */
+}
+
+.benefit-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    color: #6B7280;
+}
+
+/* Method Steps */
+.method-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FF5722, #FF7043);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin: 0 auto 1.5rem;
+}
+
+.step h3 {
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+
+.step p {
+    font-size: 1rem;
+    text-align: center;
+    color: #6B7280;
+}
+
+/* Lists */
+.features-list,
+.problems-list,
+.app-types-list {
+    list-style: none;
+    padding: 0;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.features-list li,
+.problems-list li,
+.app-types-list li {
+    padding: 1.5rem 2rem;
+    margin-bottom: 1rem;
+    background: white;
+    border-left: 4px solid #FF5722;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-size: 1.125rem;
+}
+
+/* Maintenance Types */
+.maintenance-types {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.maintenance-type {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.maintenance-type:hover {
+    border-color: #FF5722;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+}
+
+.maintenance-type h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.maintenance-type ul {
+    list-style: none;
+    padding: 0;
+}
+
+.maintenance-type li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    font-size: 1rem;
+}
+
+.maintenance-type li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #FF5722;
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+
+/* Solutions Grid */
+.solutions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.solution-card {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.solution-card:hover {
+    border-color: #FF5722;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+}
+
+.solution-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.solution-card > p {
+    color: #6B7280;
+    margin-bottom: 1.5rem;
+}
+
+.solution-card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.solution-card li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    font-size: 1rem;
+}
+
+.solution-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FF5722;
+    font-weight: 700;
+}
+
+/* Site Types & Tech */
+.site-types,
+.tech-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.site-type,
+.tech-item {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.site-type:hover,
+.tech-item:hover {
+    border-color: #FF5722;
+    transform: translateY(-5px);
+}
+
+.site-type h3,
+.tech-item strong {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1A1A1A;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Target Audiences */
+.target-audiences {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.audience {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.audience:hover {
+    border-color: #FF5722;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+}
+
+/* Pricing Options */
+.pricing-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.pricing-option {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 3rem 2.5rem;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.pricing-option:hover {
+    border-color: #FF5722;
+    transform: translateY(-5px);
+    box-shadow: 0 25px 50px rgba(255, 87, 34, 0.15);
+}
+
+.pricing-option h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.pricing-option > p {
+    color: #6B7280;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.pricing-option ul {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.pricing-option li {
+    padding: 0.75rem 0 0.75rem 2rem;
+    position: relative;
+    font-size: 1rem;
+}
+
+.pricing-option li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #FF5722;
+    font-weight: 700;
+}
+
+.price-info {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FF5722;
+    margin-top: 2rem;
+}
+
+.note {
+    background: #FFF5F0;
+    border-left: 4px solid #FF5722;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+    margin-top: 3rem;
+}
+
+/* FAQ */
+.faq {
+    max-width: 900px;
+    margin: 3rem auto 0;
+}
+
+.faq-item {
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #FF5722;
+    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.1);
+}
+
+.faq-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.faq-item p {
+    font-size: 1.125rem;
+    margin: 0;
+}
+
+/* CTA Section */
+.service-page .service-cta {
+    background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.service-page .service-cta .container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-page .service-cta h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+}
+
+.service-page .service-cta p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: #D1D5DB;
+    margin-bottom: 3rem;
+}
+
+.service-page .service-cta .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    background: #FF5722;
+    color: white;
+    padding: 1.25rem 3rem;
+    border-radius: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+    border: none;
+}
+
+.service-page .service-cta .btn:hover {
+    background: #E64A19;
+    transform: translateY(-2px);
+    box-shadow: 0 15px 40px rgba(255, 87, 34, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .service-page .service-hero h1 {
+        font-size: 3rem;
+    }
+
+    .service-page .service-section h2 {
+        font-size: 2.5rem;
+    }
+
+    .service-page .service-cta h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .service-page .service-hero {
+        padding: 4rem 1.5rem 3rem;
+        min-height: auto;
+    }
+
+    .service-page .service-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .service-page .service-hero .lead {
+        font-size: 1.125rem;
+    }
+
+    .service-page .service-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .service-page .service-section h2 {
+        font-size: 2rem;
+    }
+
+    .benefits-grid,
+    .method-steps,
+    .maintenance-types,
+    .solutions-grid,
+    .site-types,
+    .target-audiences,
+    .pricing-options {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .service-page .service-cta {
+        padding: 4rem 1.5rem;
+    }
+
+    .service-page .service-cta h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-page .service-hero h1 {
+        font-size: 2rem;
+    }
+
+    .service-page .service-section h2 {
+        font-size: 1.75rem;
+    }
+}
+</style>

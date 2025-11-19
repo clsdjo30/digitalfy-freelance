@@ -3,26 +3,58 @@
 {% block title %}{{ slug|title }} - Services Digitalfy{% endblock %}
 
 {% block body %}
-<div class="page-header">
-    <div class="container">
-        <h1>{{ slug|replace({'-': ' '})|title }}</h1>
-    </div>
-</div>
+{% include 'service/_corporate_modernism_styles.html.twig' %}
 
-<section class="service-detail">
-    <div class="container">
-        <div class="content">
-            {# Service content will be populated dynamically #}
-            <p>Détails du service...</p>
+<article class="service-page">
+    <section class="service-hero">
+        <div class="container">
+            <h1>{{ slug|replace({'-': ' '})|title }}</h1>
+            <p class="lead">
+                Découvrez comment je peux vous aider avec ce service sur mesure.
+            </p>
         </div>
+    </section>
 
-        <div class="sidebar">
-            <div class="cta-box">
-                <h3>Intéressé ?</h3>
-                <p>Contactez-moi pour discuter de votre projet</p>
-                <a href="{{ path('app_contact') }}" class="btn btn-primary">Me contacter</a>
+    <section class="service-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Solutions sur mesure</h3>
+                    <p>Des solutions adaptées spécifiquement à vos besoins et à votre secteur d'activité</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Expertise technique</h3>
+                    <p>Une maîtrise approfondie des technologies modernes pour des résultats performants</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Accompagnement</h3>
+                    <p>Un suivi personnalisé tout au long de votre projet et au-delà</p>
+                </div>
+
+                <div class="benefit-card">
+                    <h3>Qualité garantie</h3>
+                    <p>Des livrables de haute qualité respectant les meilleures pratiques du développement</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Vous êtes <span class="text-highlight">intéressé</span> ?</h2>
+
+            <p class="intro-text">
+                Contactez-moi pour discuter de votre projet et voir comment je peux vous aider.
+            </p>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg" style="display: inline-flex; align-items: center; gap: 1rem; background: #FF5722; color: white; padding: 1.25rem 3rem; border-radius: 0.75rem; font-family: 'Inter', sans-serif; font-size: 1.125rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3); border: none;">
+                    Me contacter
+                </a>
+            </div>
+        </div>
+    </section>
+</article>
 {% endblock %}
