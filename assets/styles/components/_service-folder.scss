@@ -1,0 +1,156 @@
+// ==========================================
+// SERVICE FOLDER CARDS - Custom Component
+// ==========================================
+
+// Services Grid Layout
+.services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+
+    @media (min-width: 640px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+// Service Folder Container
+.service-folder {
+    position: relative;
+    padding-top: 1.5rem;
+    transition: transform 200ms ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+// Folder Tab - Top Tab Element
+.service-folder__tab {
+    position: absolute;
+    top: 0;
+    left: 1.5rem;
+    width: 120px;
+    height: 1.5rem;
+    border-radius: 8px 8px 0 0;
+    box-shadow:
+        0 -2px 4px rgba(0, 0, 0, 0.05),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.3);
+
+    &--orange {
+        background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
+    }
+
+    &--blue {
+        background: linear-gradient(135deg, #4A90E2 0%, #6BA8F5 100%);
+    }
+
+    &--gold {
+        background: linear-gradient(135deg, #F39C12 0%, #F5B642 100%);
+    }
+}
+
+// Folder Content - Main Card Body
+.service-folder__content {
+    background: #fff;
+    border-radius: 12px;
+    padding: 2.5rem 2rem 2rem;
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 10px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+}
+
+// Icon
+.service-folder__icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    line-height: 1;
+}
+
+// Title
+.service-folder__title {
+    font-size: 1.5rem;
+    font-family: "Poppins", "Inter", sans-serif;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+// Description
+.service-folder__description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.625;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    flex-grow: 1;
+}
+
+// Button
+.service-folder__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    background-color: transparent;
+    border: 2px solid #d1d5db;
+    border-radius: 0.75rem;
+    text-decoration: none;
+    transition: all 200ms ease;
+    gap: 0.5rem;
+    text-align: center;
+
+    &:hover {
+        background-color: #1a1a1a;
+        color: #fff;
+        border-color: #1a1a1a;
+        transform: translateX(3px);
+    }
+}
+
+.service-folder__arrow {
+    display: inline-block;
+    transition: transform 200ms ease;
+
+    .service-folder__button:hover & {
+        transform: translateX(4px);
+    }
+}
+
+// Responsive Adjustments
+@media (max-width: 639px) {
+    .service-folder__content {
+        padding: 2rem 1.5rem 1.5rem;
+        min-height: auto;
+    }
+
+    .service-folder__icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-folder__title {
+        font-size: 1.25rem;
+    }
+
+    .service-folder__description {
+        font-size: 0.9375rem;
+    }
+}

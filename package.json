@@ -4,8 +4,9 @@
   "description": "Digitalfy - Portfolio & Blog",
   "private": true,
   "scripts": {
-    "build:css": "sass assets/styles/app.scss:assets/styles/app.css --style=compressed",
-    "watch:css": "sass assets/styles/app.scss:assets/styles/app.css --watch",
+    "build:css": "sass assets/styles/app.scss:assets/styles/app.css --style=expanded",
+    "build:css:prod": "sass assets/styles/app.scss:assets/styles/app.css --style=compressed",
+    "watch:css": "sass assets/styles/app.scss:assets/styles/app.css --watch --style=expanded",
     "dev": "npm run watch:css"
   },
   "devDependencies": {
