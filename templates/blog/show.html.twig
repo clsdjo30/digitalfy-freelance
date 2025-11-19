@@ -9,8 +9,8 @@
     {% include 'partials/schema/breadcrumb.html.twig' with {
         'items': [
             {'name': 'Accueil', 'url': path('app_home')},
-            {'name': 'Blog', 'url': path('blog')},
-            {'name': post.category.name, 'url': path('blog_category', {slug: post.category.slug})},
+            {'name': 'Blog', 'url': path('app_blog')},
+            {'name': post.category.name, 'url': path('app_blog_category', {slug: post.category.slug})},
             {'name': post.title, 'url': ''}
         ]
     } %}
@@ -25,10 +25,10 @@
                     <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
                 </li>
                 <li class="breadcrumb__item">
-                    <a href="{{ path('blog') }}" class="breadcrumb__link">Blog</a>
+                    <a href="{{ path('app_blog') }}" class="breadcrumb__link">Blog</a>
                 </li>
                 <li class="breadcrumb__item">
-                    <a href="{{ path('blog_category', {slug: post.category.slug}) }}" class="breadcrumb__link">{{ post.category.name }}</a>
+                    <a href="{{ path('app_blog_category', {slug: post.category.slug}) }}" class="breadcrumb__link">{{ post.category.name }}</a>
                 </li>
                 <li class="breadcrumb__item">
                     <span class="breadcrumb__current">{{ post.title }}</span>

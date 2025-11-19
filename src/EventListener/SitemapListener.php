@@ -37,11 +37,16 @@ class SitemapListener implements EventSubscriberInterface
         );
 
         // Pages de services
-        $services = ['mobile-app', 'website', 'restaurant', 'maintenance'];
-        foreach ($services as $service) {
+        $services = [
+            'developpement-application-mobile-nimes',
+            'creation-site-internet-nimes',
+            'solutions-digitales-restauration-nimes',
+            'maintenance-support'
+        ];
+        foreach ($services as $serviceSlug) {
             $event->getUrlContainer()->addUrl(
                 new UrlConcrete(
-                    $this->urlGenerator->generate('service_' . str_replace('-', '_', $service), [], UrlGeneratorInterface::ABSOLUTE_URL),
+                    $this->urlGenerator->generate('app_service_show', ['slug' => $serviceSlug], UrlGeneratorInterface::ABSOLUTE_URL),
                     priority: 0.9,
                     changefreq: UrlConcrete::CHANGEFREQ_MONTHLY
                 ),
@@ -52,7 +57,7 @@ class SitemapListener implements EventSubscriberInterface
         // Page À propos
         $event->getUrlContainer()->addUrl(
             new UrlConcrete(
-                $this->urlGenerator->generate('about', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                $this->urlGenerator->generate('app_about', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 priority: 0.7,
                 changefreq: UrlConcrete::CHANGEFREQ_MONTHLY
             ),
@@ -72,7 +77,7 @@ class SitemapListener implements EventSubscriberInterface
         // Liste des articles de blog
         $event->getUrlContainer()->addUrl(
             new UrlConcrete(
-                $this->urlGenerator->generate('blog', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                $this->urlGenerator->generate('app_blog', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 priority: 0.8,
                 changefreq: UrlConcrete::CHANGEFREQ_WEEKLY
             ),
@@ -84,7 +89,7 @@ class SitemapListener implements EventSubscriberInterface
         foreach ($posts as $post) {
             $event->getUrlContainer()->addUrl(
                 new UrlConcrete(
-                    $this->urlGenerator->generate('blog_post', ['slug' => $post->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
+                    $this->urlGenerator->generate('app_blog_show', ['slug' => $post->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
                     lastmod: $post->getUpdatedAt(),
                     priority: 0.7,
                     changefreq: UrlConcrete::CHANGEFREQ_WEEKLY
@@ -98,7 +103,7 @@ class SitemapListener implements EventSubscriberInterface
             if ($post->getCategory()) {
                 $event->getUrlContainer()->addUrl(
                     new UrlConcrete(
-                        $this->urlGenerator->generate('blog_category', ['slug' => $post->getCategory()->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
+                        $this->urlGenerator->generate('app_blog_category', ['slug' => $post->getCategory()->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
                         priority: 0.6,
                         changefreq: UrlConcrete::CHANGEFREQ_WEEKLY
                     ),
@@ -110,7 +115,7 @@ class SitemapListener implements EventSubscriberInterface
         // Page liste des projets
         $event->getUrlContainer()->addUrl(
             new UrlConcrete(
-                $this->urlGenerator->generate('projects', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                $this->urlGenerator->generate('app_projects', [], UrlGeneratorInterface::ABSOLUTE_URL),
                 priority: 0.8,
                 changefreq: UrlConcrete::CHANGEFREQ_MONTHLY
             ),
@@ -122,7 +127,7 @@ class SitemapListener implements EventSubscriberInterface
         foreach ($projects as $project) {
             $event->getUrlContainer()->addUrl(
                 new UrlConcrete(
-                    $this->urlGenerator->generate('project_show', ['slug' => $project->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
+                    $this->urlGenerator->generate('app_project_show', ['slug' => $project->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
                     priority: 0.8,
                     changefreq: UrlConcrete::CHANGEFREQ_MONTHLY
                 ),

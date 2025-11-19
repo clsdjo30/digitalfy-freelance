@@ -13,7 +13,7 @@
                     <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
                 </li>
                 <li class="breadcrumb__item">
-                    <a href="{{ path('blog') }}" class="breadcrumb__link">Blog</a>
+                    <a href="{{ path('app_blog') }}" class="breadcrumb__link">Blog</a>
                 </li>
                 <li class="breadcrumb__item">
                     <span class="breadcrumb__current">{{ category.name }}</span>
@@ -43,7 +43,7 @@
                     <ul class="pagination__list">
                         {% if currentPage > 1 %}
                             <li class="pagination__item">
-                                <a href="{{ path('blog_category', {slug: category.slug, page: currentPage - 1}) }}"
+                                <a href="{{ path('app_blog_category', {slug: category.slug, page: currentPage - 1}) }}"
                                    class="pagination__link pagination__prev">
                                     ← Précédent
                                 </a>
@@ -55,7 +55,7 @@
                                 {% if page == currentPage %}
                                     <span class="pagination__link pagination__link--active">{{ page }}</span>
                                 {% else %}
-                                    <a href="{{ path('blog_category', {slug: category.slug, page: page}) }}"
+                                    <a href="{{ path('app_blog_category', {slug: category.slug, page: page}) }}"
                                        class="pagination__link">
                                         {{ page }}
                                     </a>
@@ -65,7 +65,7 @@
 
                         {% if currentPage < totalPages %}
                             <li class="pagination__item">
-                                <a href="{{ path('blog_category', {slug: category.slug, page: currentPage + 1}) }}"
+                                <a href="{{ path('app_blog_category', {slug: category.slug, page: currentPage + 1}) }}"
                                    class="pagination__link pagination__next">
                                     Suivant →
                                 </a>
@@ -78,7 +78,7 @@
             <div class="card text-center">
                 <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
                 <h2 class="card__title">Aucun article dans cette catégorie</h2>
-                <a href="{{ path('blog') }}" class="btn btn--primary mt-4">Voir tous les articles</a>
+                <a href="{{ path('app_blog') }}" class="btn btn--primary mt-4">Voir tous les articles</a>
             </div>
         {% endif %}
     </div>

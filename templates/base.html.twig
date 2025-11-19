@@ -11,8 +11,8 @@
         <link rel="canonical" href="{{ app.request.uri }}">
 
         {# Open Graph Tags #}
-        <meta property="og:title" content="{% block og_title %}{% block title %}Digitalfy - Développeur Freelance Nîmes{% endblock %}{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}{% block meta_description %}Développeur web & mobile freelance à Nîmes. Spécialisé Symfony, React Native, solutions digitales pour TPE/PME.{% endblock %}{% endblock %}">
+        <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}{{ block('meta_description') }}{% endblock %}">
         <meta property="og:image" content="{% block og_image %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endblock %}">
         <meta property="og:url" content="{{ app.request.uri }}">
         <meta property="og:type" content="{% block og_type %}website{% endblock %}">
@@ -21,8 +21,8 @@
 
         {# Twitter Cards #}
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{% block twitter_title %}{% block title %}Digitalfy - Développeur Freelance Nîmes{% endblock %}{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}{% block meta_description %}Développeur web & mobile freelance à Nîmes. Spécialisé Symfony, React Native, solutions digitales pour TPE/PME.{% endblock %}{% endblock %}">
+        <meta name="twitter:title" content="{% block twitter_title %}{{ block('title') }}{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}{{ block('meta_description') }}{% endblock %}">
         <meta name="twitter:image" content="{% block twitter_image %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endblock %}">
     {% endblock %}
 
