@@ -4,35 +4,8 @@
 
 {% block meta_description %}Développeur web & mobile freelance à Nîmes. Création de sites internet, applications mobiles React Native, et solutions digitales pour TPE/PME et restaurateurs.{% endblock %}
 
-{% block head_scripts %}
-{# Schema.org LocalBusiness #}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Digitalfy",
-    "description": "Développeur web et mobile freelance à Nîmes",
-    "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Nîmes",
-        "addressRegion": "Occitanie",
-        "addressCountry": "FR"
-    },
-    "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 43.8367,
-        "longitude": 4.3601
-    },
-    "url": "{{ url('app_home') }}",
-    "priceRange": "€€",
-    "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
-    }
-}
-</script>
+{% block structured_data %}
+    {% include 'partials/schema/local-business.html.twig' %}
 {% endblock %}
 
 {% block body %}

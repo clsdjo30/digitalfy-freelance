@@ -4,23 +4,11 @@
 
 {% block meta_description %}Création de sites internet vitrine et professionnels à Nîmes. Sites optimisés SEO avec Symfony pour TPE/PME. Développeur freelance à votre écoute.{% endblock %}
 
-{% block head_scripts %}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Création de site internet à Nîmes",
-    "description": "Sites vitrines et professionnels optimisés SEO avec Symfony",
-    "provider": {
-        "@type": "LocalBusiness",
-        "name": "Digitalfy"
-    },
-    "areaServed": {
-        "@type": "City",
-        "name": "Nîmes"
-    }
-}
-</script>
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Création de site internet à Nîmes',
+        'service_description': 'Sites vitrines et professionnels optimisés SEO avec Symfony'
+    } %}
 {% endblock %}
 
 {% block body %}

@@ -4,23 +4,11 @@
 
 {% block meta_description %}Services de maintenance et support pour vos sites web et applications mobiles à Nîmes. Mises à jour, corrections, évolutions et accompagnement technique.{% endblock %}
 
-{% block head_scripts %}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Maintenance & Support",
-    "description": "Services de maintenance et support pour sites web et applications",
-    "provider": {
-        "@type": "LocalBusiness",
-        "name": "Digitalfy"
-    },
-    "areaServed": {
-        "@type": "City",
-        "name": "Nîmes"
-    }
-}
-</script>
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Maintenance & Support',
+        'service_description': 'Services de maintenance et support pour sites web et applications'
+    } %}
 {% endblock %}
 
 {% block body %}

@@ -4,23 +4,11 @@
 
 {% block meta_description %}Solutions digitales sur mesure pour restaurants à Nîmes : réservation en ligne, click & collect, site web. Double expertise : 30 ans en restauration + développeur.{% endblock %}
 
-{% block head_scripts %}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Solutions digitales pour restaurants",
-    "description": "Outils digitaux pour restaurants : réservation, click & collect, site web",
-    "provider": {
-        "@type": "LocalBusiness",
-        "name": "Digitalfy"
-    },
-    "areaServed": {
-        "@type": "City",
-        "name": "Nîmes"
-    }
-}
-</script>
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Solutions digitales pour restaurants',
+        'service_description': 'Outils digitaux pour restaurants : réservation, click & collect, site web'
+    } %}
 {% endblock %}
 
 {% block body %}

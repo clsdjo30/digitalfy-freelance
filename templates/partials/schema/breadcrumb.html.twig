@@ -1,0 +1,24 @@
+{#
+    Usage: {% include 'partials/schema/breadcrumb.html.twig' with {
+        'items': [
+            {'name': 'Accueil', 'url': path('home')},
+            {'name': 'Blog', 'url': path('blog_index')}
+        ]
+    } %}
+#}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {% for item in items %}
+        {
+            "@type": "ListItem",
+            "position": {{ loop.index }},
+            "name": "{{ item.name }}",
+            "item": "{{ absolute_url(item.url) }}"
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+    ]
+}
+</script>

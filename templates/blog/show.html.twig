@@ -4,22 +4,16 @@
 
 {% block meta_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
 
-{% block head_scripts %}
-{# Schema.org BlogPosting #}
-<script type="application/ld+json">
-{
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": "{{ post.title }}",
-    "description": "{{ post.excerpt }}",
-    "datePublished": "{{ post.publishedAt|date('Y-m-d') }}",
-    "dateModified": "{{ post.updatedAt|date('Y-m-d') }}",
-    "author": {
-        "@type": "Person",
-        "name": "Digitalfy"
-    }
-}
-</script>
+{% block structured_data %}
+    {% include 'partials/schema/article.html.twig' with {'article': post} %}
+    {% include 'partials/schema/breadcrumb.html.twig' with {
+        'items': [
+            {'name': 'Accueil', 'url': path('app_home')},
+            {'name': 'Blog', 'url': path('blog')},
+            {'name': post.category.name, 'url': path('blog_category', {slug: post.category.slug})},
+            {'name': post.title, 'url': ''}
+        ]
+    } %}
 {% endblock %}
 
 {% block body %}

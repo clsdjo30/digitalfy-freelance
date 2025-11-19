@@ -1,0 +1,38 @@
+{#
+    Usage: {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Développement d\'application mobile',
+        'service_description': 'Création d\'applications mobiles iOS et Android'
+    } %}
+#}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "{{ service_name }}",
+    "description": "{{ service_description }}",
+    "provider": {
+        "@type": "LocalBusiness",
+        "name": "Digitalfy",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Nîmes",
+            "addressRegion": "Occitanie",
+            "addressCountry": "FR"
+        }
+    },
+    "areaServed": [
+        {
+            "@type": "City",
+            "name": "Nîmes"
+        },
+        {
+            "@type": "AdministrativeArea",
+            "name": "Gard"
+        },
+        {
+            "@type": "AdministrativeArea",
+            "name": "Occitanie"
+        }
+    ]
+}
+</script>

@@ -1,0 +1,33 @@
+{#
+    Usage: {% include 'partials/schema/article.html.twig' with {
+        'article': post
+    } %}
+#}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ article.title }}",
+    "image": "{% if article.imageName %}{{ absolute_url(asset('uploads/blog/' ~ article.imageName)) }}{% else %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endif %}",
+    "datePublished": "{{ article.publishedAt|date('Y-m-d') }}",
+    "dateModified": "{{ article.updatedAt|date('Y-m-d') }}",
+    "author": {
+        "@type": "Person",
+        "name": "Marc Dubois",
+        "url": "{{ absolute_url(path('about')) }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Digitalfy",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ absolute_url(asset('images/logo.png')) }}"
+        }
+    },
+    "description": "{{ article.summary|striptags|truncate(160) }}",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ app.request.uri }}"
+    }
+}
+</script>
