@@ -12,36 +12,8 @@
 {# Hero Section #}
 {% include 'components/_hero.html.twig' %}
 
-{# Services Preview #}
-<section class="section">
-    <div class="container">
-        <h2 class="text-center mb-4">Ce que je peux faire pour vous</h2>
-        <p class="text-center text-gray mb-12">Des solutions digitales adaptées à vos besoins et à votre budget</p>
-
-        <div class="grid grid--3-cols">
-            <div class="card card--no-hover text-center">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
-                <h3 class="card__title">Application Mobile</h3>
-                <p class="card__body">Applications iOS et Android avec React Native pour moderniser votre activité.</p>
-                <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
-            </div>
-
-            <div class="card card--no-hover text-center">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🌐</div>
-                <h3 class="card__title">Site Internet</h3>
-                <p class="card__body">Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.</p>
-                <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
-            </div>
-
-            <div class="card card--no-hover text-center">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">🍽️</div>
-                <h3 class="card__title">Solutions Restauration</h3>
-                <p class="card__body">Outils digitaux pour restaurants : réservation, click & collect, site web.</p>
-                <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}" class="btn btn--outline btn--block">En savoir plus</a>
-            </div>
-        </div>
-    </div>
-</section>
+{# Services Preview - Folder Style Cards #}
+{% include 'components/_services.html.twig' %}
 
 {# Why Local Section #}
 <section class="section section--cream">
