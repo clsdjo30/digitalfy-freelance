@@ -7,7 +7,7 @@ use App\Entity\Category;
 use App\Entity\ContactRequest;
 use App\Entity\Project;
 use Doctrine\ORM\EntityManagerInterface;
-use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminRoute;
+use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
@@ -17,13 +17,13 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[IsGranted('ROLE_ADMIN')]
+#[AdminDashboard(routePath: '/admin', routeName: 'app_admin_dashboard')]
 class DashboardController extends AbstractDashboardController
 {
     public function __construct(
         private EntityManagerInterface $em,
     ) {}
 
-    #[AdminRoute('/admin', name: 'app_admin_dashboard')]
     public function index(): Response
     {
         // Mettre à jour la dernière connexion
