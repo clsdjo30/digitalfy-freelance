@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos – Marc Dubois, développeur freelance à Nîmes | Digitalfy{% endblock %}
+
+{% block meta_description %}Parcours de Marc Dubois, développeur web & mobile freelance à Nîmes. 30 ans d'expérience en restauration, reconversion dans le développement.{% endblock %}
+
+{% block body %}
+<article class="about-page">
+    <section class="about-hero">
+        <div class="container">
+            <h1>À propos de Digitalfy</h1>
+            <p class="lead">Développeur freelance qui comprend votre métier</p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>Qui suis-je ?</h2>
+
+            <p>
+                Je m'appelle Marc Dubois, je suis développeur web & mobile freelance basé à Nîmes.
+                Après plus de 30 ans d'expérience dans la restauration, dont 10 ans comme directeur
+                et chef de cuisine, j'ai choisi de me reconvertir dans le développement d'applications
+                et de sites internet.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-section bg-light">
+        <div class="container">
+            <h2>De la restauration au développement</h2>
+
+            <p>Mon expérience précédente m'a appris :</p>
+
+            <ul class="skills-list">
+                <li>La gestion de la pression et des imprévus</li>
+                <li>La rigueur dans l'organisation</li>
+                <li>L'importance du service client</li>
+                <li>La nécessité de solutions simples et efficaces</li>
+            </ul>
+
+            <p>
+                Ces qualités sont aujourd'hui au cœur de ma pratique de développeur :
+                je ne propose pas des "projets techniques", je construis des outils qui
+                répondent à des contraintes réelles.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <h2>Ce que je vous apporte concrètement</h2>
+
+            <div class="value-props">
+                <div class="value-prop">
+                    <h3>Approche orientée métier</h3>
+                    <p>Pas uniquement technique, mais adaptée à votre activité</p>
+                </div>
+
+                <div class="value-prop">
+                    <h3>Discours clair</h3>
+                    <p>Sans jargon technique, même sur des sujets complexes</p>
+                </div>
+
+                <div class="value-prop">
+                    <h3>Accompagnement complet</h3>
+                    <p>Du besoin à la mise en ligne et au-delà</p>
+                </div>
+
+                <div class="value-prop">
+                    <h3>Relation de confiance</h3>
+                    <p>Un partenaire sur la durée, pas juste un prestataire</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section bg-light">
+        <div class="container">
+            <h2>Zone d'intervention</h2>
+
+            <p>Je travaille principalement avec des clients :</p>
+
+            <ul>
+                <li>À Nîmes et dans le Gard</li>
+                <li>En Occitanie</li>
+                <li>En France, à distance, lorsque le projet s'y prête</li>
+            </ul>
+
+            <p>
+                Les échanges peuvent se faire en visioconférence ou en rendez-vous
+                physique selon votre localisation.
+            </p>
+        </div>
+    </section>
+
+    <section class="about-cta">
+        <div class="container text-center">
+            <h2>Travaillons ensemble</h2>
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg">
+                Contactez-moi
+            </a>
+        </div>
+    </section>
+</article>
+{% endblock %}

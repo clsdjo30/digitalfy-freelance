@@ -1,0 +1,29 @@
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Digitalfy",
+    "description": "Développeur web et mobile freelance à Nîmes - Sites internet et applications mobiles",
+    "image": "{{ absolute_url(asset('images/og-default.jpg')) }}",
+    "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Nîmes",
+        "addressRegion": "Occitanie",
+        "postalCode": "30000",
+        "addressCountry": "FR"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.8367,
+        "longitude": 4.3601
+    },
+    "url": "{{ absolute_url(path('app_home')) }}",
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+    }
+}
+</script>

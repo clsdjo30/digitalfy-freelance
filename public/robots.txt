@@ -1,0 +1,12 @@
+# robots.txt for Digitalfy
+# Développeur freelance à Nîmes - Sites web & applications mobiles
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin
+Disallow: /_profiler/
+Disallow: /_wdt/
+
+# Sitemap
+Sitemap: https://www.digitalfy.fr/sitemap.xml

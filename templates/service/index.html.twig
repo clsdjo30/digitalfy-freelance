@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services - Développeur Freelance Nîmes{% endblock %}
+
+{% block meta_description %}Découvrez mes services de développement web et mobile : sites Symfony, applications React Native, solutions e-commerce et digitales pour TPE/PME à Nîmes.{% endblock %}
+
+{% block body %}
+<div class="page-header">
+    <div class="container">
+        <h1>Mes Services</h1>
+        <p class="lead">Solutions digitales adaptées à vos besoins</p>
+    </div>
+</div>
+
+<section class="services-list">
+    <div class="container">
+        <div class="services-grid">
+            {% for service in services %}
+                <div class="service-card">
+                    <div class="service-icon">{{ service.icon }}</div>
+                    <h3>{{ service.title }}</h3>
+                    <p>{{ service.description }}</p>
+                    <a href="{{ path('app_service_show', {slug: service.slug}) }}" class="btn">En savoir plus</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

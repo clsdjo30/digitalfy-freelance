@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ post.title }} | Digitalfy{% endblock %}
+
+{% block meta_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
+
+{% block structured_data %}
+    {% include 'partials/schema/article.html.twig' with {'article': post} %}
+    {% include 'partials/schema/breadcrumb.html.twig' with {
+        'items': [
+            {'name': 'Accueil', 'url': path('app_home')},
+            {'name': 'Blog', 'url': path('app_blog')},
+            {'name': post.category.name, 'url': path('app_blog_category', {slug: post.category.slug})},
+            {'name': post.title, 'url': ''}
+        ]
+    } %}
+{% endblock %}
+
+{% block body %}
+<section class="section section--cream">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_blog') }}" class="breadcrumb__link">Blog</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_blog_category', {slug: post.category.slug}) }}" class="breadcrumb__link">{{ post.category.name }}</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <span class="breadcrumb__current">{{ post.title }}</span>
+                </li>
+            </ol>
+        </nav>
+
+        <article>
+            <header class="text-center mb-8">
+                <span class="blog-card__category">{{ post.category.name }}</span>
+                <h1 class="mt-4 mb-4">{{ post.title }}</h1>
+                <div class="text-gray flex flex--center flex--gap-4">
+                    <span>📅 {{ post.publishedAt|date('d/m/Y') }}</span>
+                    {% if post.readingTime %}
+                        <span>⏱️ {{ post.readingTime }} min de lecture</span>
+                    {% endif %}
+                </div>
+            </header>
+
+            {% if post.featuredImage %}
+                <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
+                     alt="{{ post.title }}"
+                     class="rounded-xl shadow-lg mb-8"
+                     style="width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; display: block;">
+            {% endif %}
+
+            <div class="card" style="max-width: 900px; margin: 0 auto; padding: 3rem;">
+                <div class="post-content">
+                    {{ post.content|raw }}
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+{# Related Posts #}
+{% if relatedPosts|length > 0 %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center mb-12">Articles similaires</h2>
+        <div class="grid grid--3-cols">
+            {% for relatedPost in relatedPosts %}
+                {% include 'components/_blog-card.html.twig' with {post: relatedPost} %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{# CTA Section #}
+<section class="section section--gradient">
+    <div class="container text-center">
+        <h2 class="mb-4">Besoin d'aide pour votre projet digital ?</h2>
+        <p class="text-xl mb-8">Contactez-moi pour discuter de vos besoins</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--light btn--lg">Prendre contact</a>
+    </div>
+</section>
+{% endblock %}

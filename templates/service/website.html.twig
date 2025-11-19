@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création de site internet à Nîmes – Développeur Symfony | Digitalfy{% endblock %}
+
+{% block meta_description %}Création de sites internet vitrine et professionnels à Nîmes. Sites optimisés SEO avec Symfony pour TPE/PME. Développeur freelance à votre écoute.{% endblock %}
+
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Création de site internet à Nîmes',
+        'service_description': 'Sites vitrines et professionnels optimisés SEO avec Symfony'
+    } %}
+{% endblock %}
+
+{% block body %}
+<article class="service-page">
+    <section class="service-hero">
+        <div class="container">
+            <h1>Création de site internet à Nîmes</h1>
+            <p class="lead">
+                Sites vitrines et professionnels pour augmenter votre visibilité locale et développer votre activité en ligne.
+            </p>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Pourquoi un site internet professionnel ?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3>Visibilité locale</h3>
+                    <p>Être trouvé sur Google par vos clients potentiels à Nîmes</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💼</div>
+                    <h3>Crédibilité</h3>
+                    <p>Inspirer confiance avec une présence en ligne professionnelle</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Développement</h3>
+                    <p>Générer des prospects et développer votre clientèle</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Disponible 24/7</h3>
+                    <p>Présenter vos services même en dehors des heures d'ouverture</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Types de sites que je crée</h2>
+
+            <div class="site-types">
+                <div class="site-type">
+                    <h3>Site vitrine</h3>
+                    <p>Présentation de votre activité, services et coordonnées. Idéal pour artisans, professions libérales, TPE.</p>
+                </div>
+
+                <div class="site-type">
+                    <h3>Site professionnel</h3>
+                    <p>Site plus complet avec blog, espace client, formulaires avancés. Pour PME et professionnels.</p>
+                </div>
+
+                <div class="site-type">
+                    <h3>Site sur mesure</h3>
+                    <p>Fonctionnalités spécifiques à votre métier : devis en ligne, prise de RDV, catalogue produits.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Optimisation SEO locale</h2>
+
+            <p>Chaque site que je crée est optimisé pour le référencement local :</p>
+
+            <ul class="features-list">
+                <li>Optimisation technique (vitesse, mobile-first)</li>
+                <li>Contenu SEO pour vos mots-clés locaux</li>
+                <li>Fiche Google My Business intégrée</li>
+                <li>Microdata Schema.org pour un meilleur référencement</li>
+                <li>Suivi des performances avec Google Analytics</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Processus de création</h2>
+
+            <div class="method-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Analyse</h3>
+                    <p>Compréhension de vos besoins et objectifs</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Maquettes</h3>
+                    <p>Validation du design et de la structure</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Développement</h3>
+                    <p>Création du site avec Symfony</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Tests & SEO</h3>
+                    <p>Optimisation et vérification</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Mise en ligne</h3>
+                    <p>Déploiement et formation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>Combien coûte un site internet ?</h3>
+                    <p>Un site vitrine démarre autour de 2000€, un site professionnel entre 3000€ et 8000€ selon les fonctionnalités. Je vous fournis un devis détaillé après notre premier échange.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Combien de temps pour créer le site ?</h3>
+                    <p>Un site vitrine : 2-3 semaines. Un site professionnel : 4-6 semaines. Les délais dépendent de la complexité et de la fourniture des contenus.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Puis-je modifier mon site moi-même ?</h3>
+                    <p>Oui ! Je vous forme à l'utilisation d'un backoffice simple pour modifier vos contenus (textes, images, articles de blog).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>L'hébergement est-il inclus ?</h3>
+                    <p>L'hébergement n'est pas inclus dans le prix de création, mais je peux vous conseiller et gérer sa mise en place (environ 5-15€/mois).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-cta">
+        <div class="container text-center">
+            <h2>Développons votre présence en ligne</h2>
+            <p>Parlons de votre projet de site internet</p>
+
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg">
+                Demander un devis
+            </a>
+        </div>
+    </section>
+</article>
+{% endblock %}

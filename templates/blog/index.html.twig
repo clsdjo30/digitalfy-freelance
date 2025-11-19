@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog – Actualités développement web & mobile | Digitalfy{% endblock %}
+
+{% block meta_description %}Conseils, actualités et astuces sur le développement web Symfony et mobile React Native. Articles SEO pour TPE/PME à Nîmes et alentours.{% endblock %}
+
+{% block body %}
+<section class="section section--hero section--cream">
+    <div class="container text-center">
+        <h1 class="mb-4">Blog</h1>
+        <p class="text-lg text-gray">Conseils, actualités et astuces sur le développement web et mobile</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if posts|length > 0 %}
+            <div class="grid grid--3-cols">
+                {% for post in posts %}
+                    {% include 'components/_blog-card.html.twig' with {post: post} %}
+                {% endfor %}
+            </div>
+
+            {# Pagination #}
+            {% if totalPages > 1 %}
+                <nav class="pagination" aria-label="Pagination du blog">
+                    <ul class="pagination__list">
+                        {% if currentPage > 1 %}
+                            <li class="pagination__item">
+                                <a href="{{ path('app_blog', {page: currentPage - 1}) }}"
+                                   class="pagination__link pagination__prev"
+                                   aria-label="Page précédente">
+                                    ← Précédent
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        {% for page in 1..totalPages %}
+                            <li class="pagination__item">
+                                {% if page == currentPage %}
+                                    <span class="pagination__link pagination__link--active" aria-current="page">{{ page }}</span>
+                                {% else %}
+                                    <a href="{{ path('app_blog', {page: page}) }}"
+                                       class="pagination__link"
+                                       aria-label="Page {{ page }}">
+                                        {{ page }}
+                                    </a>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+
+                        {% if currentPage < totalPages %}
+                            <li class="pagination__item">
+                                <a href="{{ path('app_blog', {page: currentPage + 1}) }}"
+                                   class="pagination__link pagination__next"
+                                   aria-label="Page suivante">
+                                    Suivant →
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        {% else %}
+            <div class="card text-center">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">📝</div>
+                <h2 class="card__title">Aucun article pour le moment</h2>
+                <p>Les articles arrivent bientôt !</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

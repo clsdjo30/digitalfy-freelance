@@ -1,0 +1,336 @@
+// ============================================
+// Layout - Design System Digitalfy
+// ============================================
+
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// ============================================
+// Container
+// ============================================
+
+.container {
+    @include container;
+}
+
+// ============================================
+// Grid System
+// ============================================
+
+.grid {
+    display: grid;
+    gap: $spacing-6;
+
+    @include md {
+        gap: $spacing-8;
+    }
+
+    &--2-cols {
+        grid-template-columns: 1fr;
+
+        @include md {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &--3-cols {
+        grid-template-columns: 1fr;
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include lg {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    &--4-cols {
+        grid-template-columns: 1fr;
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include md {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include xl {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &--auto-fit {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+// ============================================
+// Flexbox Utilities
+// ============================================
+
+.flex {
+    display: flex;
+
+    &--center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    &--between {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &--start {
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    &--end {
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+
+    &--wrap {
+        flex-wrap: wrap;
+    }
+
+    &--column {
+        flex-direction: column;
+    }
+
+    &--gap-2 {
+        gap: $spacing-2;
+    }
+
+    &--gap-4 {
+        gap: $spacing-4;
+    }
+
+    &--gap-6 {
+        gap: $spacing-6;
+    }
+
+    &--gap-8 {
+        gap: $spacing-8;
+    }
+}
+
+// ============================================
+// Sections
+// ============================================
+
+.section {
+    @include section-padding;
+
+    &--hero {
+        padding-top: $spacing-20;
+        padding-bottom: $spacing-20;
+
+        @include md {
+            padding-top: $spacing-24;
+            padding-bottom: $spacing-24;
+        }
+
+        @include lg {
+            padding-top: $spacing-32;
+            padding-bottom: $spacing-32;
+        }
+    }
+
+    &--gray {
+        background-color: $gray-50;
+    }
+
+    &--cream {
+        background-color: $secondary-cream;
+    }
+
+    &--dark {
+        background-color: $primary-black;
+        color: $white;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $white;
+        }
+    }
+
+    &--gradient {
+        background: $gradient-orange;
+        color: $white;
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $white;
+        }
+    }
+}
+
+// ============================================
+// Header
+// ============================================
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: $white;
+    box-shadow: $shadow-sm;
+    transition: all $transition-base;
+
+    &__container {
+        @include container;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: $spacing-4;
+        padding-bottom: $spacing-4;
+
+        @include md {
+            padding-top: $spacing-6;
+            padding-bottom: $spacing-6;
+        }
+    }
+
+    &__logo {
+        font-size: $text-xl;
+        font-weight: $font-bold;
+        color: $primary-black;
+        font-family: $font-display;
+
+        @include md {
+            font-size: $text-2xl;
+        }
+
+        &:hover {
+            color: $primary-orange;
+        }
+    }
+
+    &--scrolled {
+        box-shadow: $shadow-md;
+    }
+}
+
+// Spacer for fixed header
+.header-spacer {
+    height: 72px;
+
+    @include md {
+        height: 88px;
+    }
+}
+
+// ============================================
+// Footer
+// ============================================
+
+.footer {
+    background-color: $primary-black;
+    color: $white;
+    padding: $spacing-12 0 $spacing-6 0;
+
+    @include md {
+        padding: $spacing-16 0 $spacing-8 0;
+    }
+
+    &__container {
+        @include container;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-8;
+        margin-bottom: $spacing-8;
+
+        @include sm {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include md {
+            grid-template-columns: repeat(3, 1fr);
+            gap: $spacing-12;
+        }
+
+        @include lg {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+        }
+    }
+
+    &__title {
+        font-size: $text-lg;
+        font-weight: $font-semibold;
+        margin-bottom: $spacing-4;
+        color: $white;
+    }
+
+    &__text {
+        color: $gray-300;
+        line-height: $leading-relaxed;
+    }
+
+    &__link {
+        color: $gray-300;
+        display: block;
+        margin-bottom: $spacing-2;
+        transition: color $transition-base;
+
+        &:hover {
+            color: $primary-orange;
+        }
+    }
+
+    &__bottom {
+        border-top: 1px solid $gray-700;
+        padding-top: $spacing-6;
+        text-align: center;
+        color: $gray-400;
+        font-size: $text-sm;
+
+        @include md {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+    &__social {
+        display: flex;
+        gap: $spacing-4;
+        justify-content: center;
+        margin-top: $spacing-4;
+
+        @include md {
+            margin-top: 0;
+        }
+
+        a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $radius-full;
+            background-color: $gray-800;
+            color: $white;
+            transition: all $transition-base;
+
+            &:hover {
+                background-color: $primary-orange;
+                transform: translateY(-2px);
+            }
+        }
+    }
+}
+
+// ============================================
+// Main Content
+// ============================================
+
+.main {
+    min-height: calc(100vh - 200px);
+}

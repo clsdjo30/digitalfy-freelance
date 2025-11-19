@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ project.title }} – Étude de cas | Digitalfy{% endblock %}
+
+{% block meta_description %}{{ project.metaDescription ?? project.description }}{% endblock %}
+
+{% block body %}
+<section class="section section--cream">
+    <div class="container">
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_home') }}" class="breadcrumb__link">Accueil</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <a href="{{ path('app_projects') }}" class="breadcrumb__link">Portfolio</a>
+                </li>
+                <li class="breadcrumb__item">
+                    <span class="breadcrumb__current">{{ project.title }}</span>
+                </li>
+            </ol>
+        </nav>
+
+        <article>
+            <header class="text-center mb-8">
+                <h1 class="mb-6">{{ project.title }}</h1>
+                
+                {% if project.technologies|length > 0 %}
+                    <div class="flex flex--center flex--gap-2 flex--wrap mb-6">
+                        {% for tech in project.technologies %}
+                            <span class="project-card__tag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <p class="text-xl text-gray">{{ project.description }}</p>
+            </header>
+
+            {% if project.thumbnail %}
+                <img src="{{ asset('uploads/projects/' ~ project.thumbnail) }}"
+                     alt="{{ project.title }}"
+                     class="rounded-xl shadow-lg mb-12"
+                     style="width: 100%; max-width: 1100px; margin-left: auto; margin-right: auto; display: block;">
+            {% endif %}
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                {% if project.context %}
+                    <div class="card mb-8">
+                        <h2 class="card__title">Contexte</h2>
+                        <div>{{ project.context|raw }}</div>
+                    </div>
+                {% endif %}
+
+                {% if project.solution %}
+                    <div class="card mb-8">
+                        <h2 class="card__title">Solution</h2>
+                        <div>{{ project.solution|raw }}</div>
+                    </div>
+                {% endif %}
+
+                {% if project.results %}
+                    <div class="card card--gradient">
+                        <h2 class="card__title">Résultats</h2>
+                        <div>{{ project.results|raw }}</div>
+                    </div>
+                {% endif %}
+            </div>
+        </article>
+    </div>
+</section>
+
+{# CTA Section #}
+<section class="section section--gradient">
+    <div class="container text-center">
+        <h2 class="mb-4">Un projet similaire en tête ?</h2>
+        <p class="text-xl mb-8">Discutons-en ensemble</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--light btn--lg">Me contacter</a>
+    </div>
+</section>
+{% endblock %}

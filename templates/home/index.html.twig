@@ -1,22 +1,107 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Digitalfy - Développeur Freelance à Nîmes | Applications Mobile & Sites Web{% endblock %}
+{% block title %}Développeur Freelance à Nîmes – Sites web & applications mobiles | Digitalfy{% endblock %}
+
+{% block meta_description %}Développeur web & mobile freelance à Nîmes. Création de sites internet, applications mobiles React Native, et solutions digitales pour TPE/PME et restaurateurs.{% endblock %}
+
+{% block structured_data %}
+    {% include 'partials/schema/local-business.html.twig' %}
+{% endblock %}
 
 {% block body %}
-    {# Hero Section - Can be added later #}
-    <section class="hero-section" style="padding: 4rem 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-        <div class="container" style="text-align: center;">
-            <h1 style="font-size: 3rem; margin-bottom: 1rem; font-weight: 700;">Digitalfy</h1>
-            <p style="font-size: 1.5rem; margin-bottom: 2rem;">Développeur Freelance à Nîmes</p>
-            <p style="font-size: 1.125rem; max-width: 600px; margin: 0 auto;">
-                Des solutions digitales sur mesure pour votre entreprise
-            </p>
+{# Hero Section #}
+{% include 'components/_hero.html.twig' %}
+
+{# Services Preview - Folder Style Cards #}
+{% include 'components/_services.html.twig' %}
+
+{# Why Local Section #}
+<section class="section section--cream">
+    <div class="container">
+        <h2 class="text-center mb-12">Pourquoi un développeur local à Nîmes ?</h2>
+        <div class="grid grid--3-cols">
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">🤝</div>
+                <h3 class="card__title">Proximité</h3>
+                <p>Échanges en personne possibles, meilleure compréhension de vos besoins</p>
+            </div>
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">⚡</div>
+                <h3 class="card__title">Réactivité</h3>
+                <p>Disponible rapidement pour vous accompagner</p>
+            </div>
+            <div class="card card--flat text-center">
+                <div style="font-size: 2.5rem; margin-bottom: 1rem;">💼</div>
+                <h3 class="card__title">Connaissance locale</h3>
+                <p>Je comprends le marché nîmois et ses spécificités</p>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    {# Services Section - Using the new component #}
-    {% include 'components/_services.html.twig' %}
+{# Featured Projects #}
+{% if featuredProjects is not empty %}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center mb-12">Projets Réalisés</h2>
+        <div class="grid grid--3-cols">
+            {% for project in featuredProjects %}
+                {% include 'components/_project-card.html.twig' with {'project': project} %}
+            {% endfor %}
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ path('app_projects') }}" class="btn btn--primary btn--lg">Voir tous les projets</a>
+        </div>
+    </div>
+</section>
+{% endif %}
 
-    {# Additional sections can be added here #}
-    {# About Section, Portfolio, Testimonials, Contact, etc. #}
+{# Recent Blog Posts #}
+{% if recentPosts is not empty %}
+<section class="section section--gray">
+    <div class="container">
+        <h2 class="text-center mb-12">Derniers Articles du Blog</h2>
+        <div class="grid grid--3-cols">
+            {% for post in recentPosts %}
+                {% include 'components/_blog-card.html.twig' with {'post': post} %}
+            {% endfor %}
+        </div>
+        <div class="text-center mt-8">
+            <a href="{{ path('app_blog') }}" class="btn btn--primary btn--lg">Lire tous les articles</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+{# FAQ Section #}
+<section class="section">
+    <div class="container">
+        <h2 class="text-center mb-12">Questions fréquentes</h2>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="card mb-6">
+                <h3 class="card__title">Combien coûte un site internet ou une application ?</h3>
+                <p>Le tarif dépend de vos besoins spécifiques. Après un premier échange, je vous fournis un devis détaillé. Comptez généralement entre 2000€ et 10000€ selon la complexité.</p>
+            </div>
+
+            <div class="card mb-6">
+                <h3 class="card__title">Combien de temps faut-il pour réaliser un projet ?</h3>
+                <p>Un site vitrine simple : 2-3 semaines. Un site professionnel ou une application : 4-8 semaines. Je vous donne un planning précis dès le début du projet.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="card__title">Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
+                <p>Je travaille principalement à Nîmes et dans le Gard, mais aussi dans toute l'Occitanie et en France à distance selon le projet.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{# CTA Section #}
+<section class="section section--gradient">
+    <div class="container text-center">
+        <h2 class="mb-4">Prêt à démarrer votre projet ?</h2>
+        <p class="text-xl mb-8">Contactez-moi pour un devis gratuit et sans engagement</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--light btn--xl">Demander un devis</a>
+    </div>
+</section>
 {% endblock %}

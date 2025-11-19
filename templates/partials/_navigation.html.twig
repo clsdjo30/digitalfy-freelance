@@ -1,0 +1,94 @@
+<header class="header">
+    <div class="header__container">
+        <a href="{{ path('app_home') }}" class="header__logo">
+            Digitalfy
+        </a>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="{{ path('app_home') }}" class="nav__link {% if app.request.attributes.get('_route') == 'app_home' %}nav__link--active{% endif %}">
+                        Accueil
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ path('app_services') }}" class="nav__link {% if app.request.attributes.get('_route') starts with 'app_service' %}nav__link--active{% endif %}">
+                        Services
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ path('app_projects') }}" class="nav__link {% if app.request.attributes.get('_route') starts with 'app_project' %}nav__link--active{% endif %}">
+                        Portfolio
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ path('app_blog') }}" class="nav__link {% if app.request.attributes.get('_route') starts with 'app_blog' %}nav__link--active{% endif %}">
+                        Blog
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="{{ path('app_about') }}" class="nav__link {% if app.request.attributes.get('_route') == 'app_about' %}nav__link--active{% endif %}">
+                        À propos
+                    </a>
+                </li>
+            </ul>
+
+            <a href="{{ path('app_contact') }}" class="btn btn--primary">Contact</a>
+
+            <button class="nav__toggle" type="button" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </div>
+
+    {# Mobile Menu #}
+    <div class="nav__mobile" id="navMobile">
+        <ul class="nav__mobile-list">
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_home') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') == 'app_home' %}nav__mobile-link--active{% endif %}">
+                    Accueil
+                </a>
+            </li>
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_services') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') starts with 'app_service' %}nav__mobile-link--active{% endif %}">
+                    Services
+                </a>
+            </li>
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_projects') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') starts with 'app_project' %}nav__mobile-link--active{% endif %}">
+                    Portfolio
+                </a>
+            </li>
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_blog') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') starts with 'app_blog' %}nav__mobile-link--active{% endif %}">
+                    Blog
+                </a>
+            </li>
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_about') }}" class="nav__mobile-link {% if app.request.attributes.get('_route') == 'app_about' %}nav__mobile-link--active{% endif %}">
+                    À propos
+                </a>
+            </li>
+            <li class="nav__mobile-item">
+                <a href="{{ path('app_contact') }}" class="btn btn--primary btn--block">Contact</a>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<script>
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('navToggle');
+    const navMobile = document.getElementById('navMobile');
+
+    if (navToggle && navMobile) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('nav__toggle--open');
+            navMobile.classList.toggle('nav__mobile--open');
+        });
+    }
+});
+</script>

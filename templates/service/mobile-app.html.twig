@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Développement d'application mobile à Nîmes – React Native & Expo | Digitalfy{% endblock %}
+
+{% block meta_description %}Création d'applications mobiles iOS & Android à Nîmes avec React Native. Développeur freelance pour TPE/PME, restaurants et projets sur mesure.{% endblock %}
+
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Développement d\'application mobile à Nîmes',
+        'service_description': 'Création d\'applications mobiles iOS & Android avec React Native pour TPE/PME et restaurateurs'
+    } %}
+{% endblock %}
+
+{% block body %}
+<article class="service-page">
+    {# Hero Section #}
+    <section class="service-hero">
+        <div class="container">
+            <h1>Développement d'applications mobiles à Nîmes – React Native & Expo</h1>
+
+            <p class="lead">
+                À Nîmes et dans le Gard, de plus en plus d'entreprises se tournent vers le mobile
+                pour moderniser leur activité. Je vous accompagne dans la création d'applications
+                mobiles iOS et Android sur mesure.
+            </p>
+        </div>
+    </section>
+
+    {# Pourquoi une app mobile ? #}
+    <section class="service-section">
+        <div class="container">
+            <h2>Pourquoi une application mobile pour votre activité ?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📱</div>
+                    <h3>Simplifier les commandes</h3>
+                    <p>Facilitez la prise de commandes et les réservations</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📊</div>
+                    <h3>Centraliser les infos</h3>
+                    <p>Toutes vos informations importantes au même endroit</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💬</div>
+                    <h3>Communication directe</h3>
+                    <p>Restez en contact avec vos clients facilement</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Automatiser les tâches</h3>
+                    <p>Gagnez du temps sur les tâches répétitives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Types d'applications #}
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Les types d'applications que je développe</h2>
+
+            <ul class="app-types-list">
+                <li>Application de réservation (restaurants, praticiens, événements)</li>
+                <li>Click & collect pour restaurants ou commerces</li>
+                <li>Application interne de gestion</li>
+                <li>Application de suivi (budget, coaching, habitudes)</li>
+                <li>MVP pour tester une idée de startup</li>
+            </ul>
+        </div>
+    </section>
+
+    {# Ma méthode #}
+    <section class="service-section">
+        <div class="container">
+            <h2>Ma méthode de travail</h2>
+
+            <div class="method-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Échange initial</h3>
+                    <p>Discussion sur vos besoins et objectifs</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Spécifications</h3>
+                    <p>Formalisation des fonctionnalités</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Maquettes</h3>
+                    <p>Validation du parcours utilisateur</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Développement</h3>
+                    <p>Création et tests de l'application</p>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Publication</h3>
+                    <p>Accompagnement et prise en main</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# Technologies #}
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Technologies utilisées</h2>
+
+            <div class="tech-list">
+                <div class="tech-item">
+                    <strong>React Native & Expo</strong>
+                    <p>Applications multiplateformes iOS & Android</p>
+                </div>
+                <div class="tech-item">
+                    <strong>API Backend</strong>
+                    <p>Symfony ou autre pour gérer les données</p>
+                </div>
+                <div class="tech-item">
+                    <strong>Services tiers</strong>
+                    <p>Paiement, notifications, analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# FAQ #}
+    <section class="service-section">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>Combien coûte une application mobile ?</h3>
+                    <p>
+                        Le prix dépend des fonctionnalités et de la complexité.
+                        Après notre premier échange, je vous fournis un devis détaillé.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>En combien de temps l'application peut-elle être en ligne ?</h3>
+                    <p>
+                        Pour une application simple, comptez entre 4 et 8 semaines,
+                        du cadrage à la mise en production.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Puis-je faire évoluer l'application plus tard ?</h3>
+                    <p>
+                        Oui. L'architecture est pensée pour évoluer : nouvelles fonctionnalités,
+                        design amélioré, connexion à d'autres services.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# CTA #}
+    <section class="service-cta">
+        <div class="container text-center">
+            <h2>Travaillons ensemble sur votre application</h2>
+            <p>Vous avez une idée d'application ou un besoin concret ?</p>
+
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg">
+                Contactez-moi pour en parler
+            </a>
+        </div>
+    </section>
+</article>
+{% endblock %}

@@ -1,0 +1,38 @@
+{# Blog card component - used in blog list and related posts #}
+<article class="blog-card">
+    {% if post.featuredImage %}
+        <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
+             alt="{{ post.title }}"
+             class="blog-card__image"
+             loading="lazy">
+    {% else %}
+        <div class="blog-card__image" style="background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
+            📝
+        </div>
+    {% endif %}
+
+    <span class="blog-card__category">{{ post.category.name }}</span>
+
+    <h3 class="blog-card__title">
+        <a href="{{ path('app_blog_show', {slug: post.slug}) }}">{{ post.title }}</a>
+    </h3>
+
+    {% if post.excerpt %}
+        <p class="blog-card__excerpt">{{ post.excerpt }}</p>
+    {% endif %}
+
+    <div class="blog-card__footer">
+        <span class="blog-card__date">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            </svg>
+            {{ post.publishedAt|date('d/m/Y') }}
+        </span>
+        <a href="{{ path('app_blog_show', {slug: post.slug}) }}" class="blog-card__link">
+            Lire l'article
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+            </svg>
+        </a>
+    </div>
+</article>

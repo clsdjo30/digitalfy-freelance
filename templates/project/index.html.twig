@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Portfolio – Projets réalisés | Digitalfy{% endblock %}
+
+{% block meta_description %}Découvrez mes projets de développement web et mobile : sites internet, applications React Native, solutions pour restaurants et TPE/PME à Nîmes.{% endblock %}
+
+{% block body %}
+<section class="section section--hero section--gradient">
+    <div class="container text-center">
+        <h1 class="mb-4">Portfolio</h1>
+        <p class="text-xl">Projets web et mobile réalisés pour mes clients</p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        {% if projects|length > 0 %}
+            <div class="grid grid--3-cols">
+                {% for project in projects %}
+                    {% include 'components/_project-card.html.twig' with {project: project} %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="card text-center">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">💼</div>
+                <h2 class="card__title">Projets à venir</h2>
+                <p>Les études de cas arrivent bientôt !</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{# CTA Section #}
+<section class="section section--cream">
+    <div class="container text-center">
+        <h2 class="mb-4">Prêt à démarrer votre projet ?</h2>
+        <p class="text-lg text-gray mb-8">Je serais ravi de discuter de vos besoins</p>
+        <a href="{{ path('app_contact') }}" class="btn btn--primary btn--lg">Demander un devis</a>
+    </div>
+</section>
+{% endblock %}

@@ -2,28 +2,72 @@ security:
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+        App\Entity\User:
+            algorithm: auto
+
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
+            # Formulaire de login
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
+                default_target_path: admin
+                always_use_default_target_path: false
+                use_referer: false
 
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
+            logout:
+                path: app_logout
+                target: app_home
+                # Invalidate the session
+                invalidate_session: true
+                # Clear cookies
+                delete_cookies:
+                    PHPSESSID: { path: /, domain: null }
+
+            # Remember me functionality (optionnel mais recommandé)
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800 # 1 semaine en secondes
+                path: /
+                always_remember_me: false
+                secure: true
+                httponly: true
+                samesite: lax
+
+            # Rate limiting pour prévenir les attaques par force brute
+            login_throttling:
+                max_attempts: 5
+                interval: '15 minutes'
+
+    # Hiérarchie des rôles
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # Page de login accessible à tous
+        - { path: ^/login, roles: PUBLIC_ACCESS }
+        # Dashboard admin réservé aux admins uniquement
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # Le reste du site est public
+        - { path: ^/, roles: PUBLIC_ACCESS }
 
 when@test:
     security:

@@ -1,0 +1,14 @@
+{
+  "name": "digitalfy-freelance",
+  "version": "1.0.0",
+  "description": "Digitalfy - Portfolio & Blog",
+  "private": true,
+  "scripts": {
+    "build:css": "sass assets/styles/app.scss:assets/styles/app.css --style=compressed",
+    "watch:css": "sass assets/styles/app.scss:assets/styles/app.css --watch",
+    "dev": "npm run watch:css"
+  },
+  "devDependencies": {
+    "sass": "^1.83.0"
+  }
+}

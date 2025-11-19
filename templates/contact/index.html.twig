@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact – Développeur freelance à Nîmes | Digitalfy{% endblock %}
+
+{% block meta_description %}Contactez Digitalfy pour un projet de site internet, application mobile ou solution digitale à Nîmes et dans le Gard.{% endblock %}
+
+{% block body %}
+<div class="contact-page">
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contactez Digitalfy</h1>
+            <p class="lead">Discutons de votre projet</p>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-wrapper">
+                    <h2>Discutons de votre projet</h2>
+
+                    <p>
+                        Vous avez un projet de site internet, d'application mobile ou
+                        de solution digitale ? Expliquez-moi votre besoin en quelques lignes.
+                    </p>
+
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+
+                    {{ form_start(form, {'attr': {'class': 'contact-form'}}) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.phone) }}
+                        {{ form_row(form.projectType) }}
+                        {{ form_row(form.estimatedBudget) }}
+                        {{ form_row(form.message) }}
+
+                        <button type="submit" class="btn btn-primary">
+                            Envoyer le message
+                        </button>
+                    {{ form_end(form) }}
+                </div>
+
+                <div class="contact-info">
+                    <h2>Informations pratiques</h2>
+
+                    <div class="info-item">
+                        <h3>📍 Localisation</h3>
+                        <p>Nîmes (Gard)</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>🌍 Zone d'intervention</h3>
+                        <p>Gard, Occitanie, France (à distance)</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>💬 Langue</h3>
+                        <p>Français</p>
+                    </div>
+
+                    <div class="info-item">
+                        <h3>⏰ Disponibilité</h3>
+                        <p>Lundi - Vendredi<br>9h00 - 18h00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,205 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maintenance et Support - Sites web & Applications | Digitalfy Nîmes{% endblock %}
+
+{% block meta_description %}Services de maintenance et support pour vos sites web et applications mobiles à Nîmes. Mises à jour, corrections, évolutions et accompagnement technique.{% endblock %}
+
+{% block structured_data %}
+    {% include 'partials/schema/service.html.twig' with {
+        'service_name': 'Maintenance & Support',
+        'service_description': 'Services de maintenance et support pour sites web et applications'
+    } %}
+{% endblock %}
+
+{% block body %}
+<article class="service-page">
+    <section class="service-hero">
+        <div class="container">
+            <h1>Maintenance & Support</h1>
+            <p class="lead">
+                Votre site ou application a besoin d'évoluer ? Un problème technique ? Je vous accompagne sur la durée pour garantir la pérennité de vos outils digitaux.
+            </p>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Pourquoi la maintenance est essentielle ?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔒</div>
+                    <h3>Sécurité</h3>
+                    <p>Mises à jour régulières pour protéger vos données</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3>Performance</h3>
+                    <p>Optimisations continues pour un site rapide</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🛠️</div>
+                    <h3>Corrections</h3>
+                    <p>Résolution rapide des bugs et problèmes</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📈</div>
+                    <h3>Évolutions</h3>
+                    <p>Ajout de nouvelles fonctionnalités au fil du temps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Ce que je peux prendre en charge</h2>
+
+            <div class="maintenance-types">
+                <div class="maintenance-type">
+                    <h3>Maintenance technique</h3>
+                    <ul>
+                        <li>Mises à jour de sécurité</li>
+                        <li>Corrections de bugs</li>
+                        <li>Optimisation des performances</li>
+                        <li>Surveillance du bon fonctionnement</li>
+                        <li>Sauvegardes régulières</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-type">
+                    <h3>Maintenance de contenu</h3>
+                    <ul>
+                        <li>Ajout/modification de pages</li>
+                        <li>Mise à jour des textes et images</li>
+                        <li>Publication d'articles de blog</li>
+                        <li>Gestion des produits/services</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-type">
+                    <h3>Évolutions fonctionnelles</h3>
+                    <ul>
+                        <li>Ajout de nouvelles fonctionnalités</li>
+                        <li>Intégration de nouveaux services</li>
+                        <li>Amélioration de l'UX</li>
+                        <li>Adaptation aux nouveaux besoins</li>
+                    </ul>
+                </div>
+
+                <div class="maintenance-type">
+                    <h3>Support & assistance</h3>
+                    <ul>
+                        <li>Aide à l'utilisation du backoffice</li>
+                        <li>Conseil stratégique</li>
+                        <li>Résolution de problèmes</li>
+                        <li>Formation continue</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Pour qui ?</h2>
+
+            <p class="intro-text">
+                La maintenance s'adresse à deux types de clients :
+            </p>
+
+            <div class="target-audiences">
+                <div class="audience">
+                    <h3>Vous avez déjà un site/app que j'ai développé</h3>
+                    <p>Je connais déjà votre code et peux intervenir rapidement et efficacement sur votre projet.</p>
+                </div>
+
+                <div class="audience">
+                    <h3>Votre site/app a été développé par un autre prestataire</h3>
+                    <p>Je peux reprendre la maintenance si le projet est réalisé avec des technologies que je maîtrise (Symfony, React Native, etc.). Un audit préalable sera nécessaire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-section bg-light">
+        <div class="container">
+            <h2>Comment ça fonctionne ?</h2>
+
+            <div class="pricing-options">
+                <div class="pricing-option">
+                    <h3>Forfait mensuel</h3>
+                    <p>Maintenance préventive régulière</p>
+                    <ul>
+                        <li>Mises à jour de sécurité</li>
+                        <li>Sauvegardes automatiques</li>
+                        <li>Surveillance du site</li>
+                        <li>X heures de modifications incluses/mois</li>
+                        <li>Support prioritaire</li>
+                    </ul>
+                    <p class="price-info">À partir de 150€/mois</p>
+                </div>
+
+                <div class="pricing-option">
+                    <h3>Intervention ponctuelle</h3>
+                    <p>Pour des besoins ponctuels</p>
+                    <ul>
+                        <li>Correction d'un bug urgent</li>
+                        <li>Ajout d'une fonctionnalité</li>
+                        <li>Résolution de problème technique</li>
+                        <li>Optimisation de performance</li>
+                    </ul>
+                    <p class="price-info">Sur devis selon la complexité</p>
+                </div>
+            </div>
+
+            <p class="note">
+                <strong>Note :</strong> Pour les projets que je n'ai pas développés, un audit technique préalable
+                (facturé) sera nécessaire pour évaluer la faisabilité et le temps requis.
+            </p>
+        </div>
+    </section>
+
+    <section class="service-section">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+
+            <div class="faq">
+                <div class="faq-item">
+                    <h3>Que faire en cas de problème urgent ?</h3>
+                    <p>Pour les clients sous contrat de maintenance, je réponds dans les 24h ouvrées et interviens en priorité sur les problèmes bloquants.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Puis-je annuler le contrat de maintenance ?</h3>
+                    <p>Oui, les contrats sont sans engagement avec un préavis d'un mois.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Que se passe-t-il si je dépasse les heures incluses ?</h3>
+                    <p>Les heures supplémentaires sont facturées au tarif horaire convenu. Vous êtes toujours informé avant que je commence une tâche qui dépasserait le forfait.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Pouvez-vous reprendre un site fait avec WordPress ou autre CMS ?</h3>
+                    <p>Je me concentre sur les technologies que je maîtrise : Symfony, React Native, PHP. Pour d'autres technologies, je peux vous orienter vers un confrère spécialisé.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-cta">
+        <div class="container text-center">
+            <h2>Besoin de maintenance ou de support ?</h2>
+            <p>Discutons de vos besoins techniques</p>
+
+            <a href="{{ path('app_contact') }}" class="btn btn-primary btn-lg">
+                Me contacter
+            </a>
+        </div>
+    </section>
+</article>
+{% endblock %}
