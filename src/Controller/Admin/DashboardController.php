@@ -24,6 +24,7 @@ class DashboardController extends AbstractDashboardController
     ) {}
 
     #[Route('/admin', name: 'app_admin_dashboard')]
+    #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
         // Mettre à jour la dernière connexion
@@ -40,8 +41,7 @@ class DashboardController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Digitalfy - Administration')
-            ->setFaviconPath('favicon.ico')
-            ->setDashboardRouteName('app_admin_dashboard');
+            ->setFaviconPath('favicon.ico');
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
