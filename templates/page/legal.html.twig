@@ -3,48 +3,235 @@
 {% block title %}Mentions légales | Digitalfy{% endblock %}
 
 {% block body %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+    .legal-page {
+        font-family: 'Inter', sans-serif;
+        color: #1A1A1A;
+        background: #FFFFFF;
+    }
+
+    /* Hero Section */
+    .legal-hero {
+        min-height: 40vh;
+        display: flex;
+        align-items: center;
+        padding: 5rem 2rem 3rem;
+        background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+        border-bottom: 1px solid #E5E5E5;
+    }
+
+    .legal-hero .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .legal-hero__label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #FF5722;
+        margin-bottom: 1.5rem;
+    }
+
+    .legal-hero h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+
+    .text-highlight {
+        color: #FF5722;
+    }
+
+    /* Content Section */
+    .legal-content {
+        padding: 4rem 2rem;
+    }
+
+    .legal-content .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .legal-content h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        color: #1A1A1A;
+        padding-bottom: 0.75rem;
+        border-bottom: 3px solid #FF5722;
+    }
+
+    .legal-content h2:first-child {
+        margin-top: 0;
+    }
+
+    .legal-content p {
+        font-size: 1.125rem;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    .legal-content strong {
+        color: #1A1A1A;
+        font-weight: 600;
+    }
+
+    .legal-content a {
+        color: #FF5722;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .legal-content a:hover {
+        color: #E64A19;
+        text-decoration: underline;
+    }
+
+    /* Info Box */
+    .info-box {
+        background: #F8F9FA;
+        padding: 2rem;
+        border-radius: 1rem;
+        border-left: 4px solid #FF5722;
+        margin: 2rem 0;
+    }
+
+    .info-box strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: #1A1A1A;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .legal-hero {
+            padding: 4rem 1.5rem 2rem;
+            min-height: 35vh;
+        }
+
+        .legal-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .legal-content {
+            padding: 3rem 1.5rem;
+        }
+
+        .legal-content h2 {
+            font-size: 1.75rem;
+        }
+
+        .legal-content p {
+            font-size: 1rem;
+        }
+
+        .info-box {
+            padding: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .legal-hero h1 {
+            font-size: 2rem;
+        }
+
+        .legal-hero__label {
+            font-size: 0.75rem;
+        }
+
+        .legal-content h2 {
+            font-size: 1.5rem;
+        }
+    }
+</style>
+
 <div class="legal-page">
-    <div class="container">
-        <h1>Mentions légales</h1>
+    <section class="legal-hero">
+        <div class="container">
+            <p class="legal-hero__label">INFORMATIONS LÉGALES</p>
+            <h1>Mentions <span class="text-highlight">légales</span></h1>
+        </div>
+    </section>
 
-        <h2>Éditeur du site</h2>
-        <p>
-            <strong>Digitalfy</strong><br>
-            Marc Dubois<br>
-            Auto-entrepreneur<br>
-            SIRET : [À compléter]<br>
-            Adresse : Nîmes, France<br>
-            Email : contact@digitalfy.fr
-        </p>
+    <section class="legal-content">
+        <div class="container">
+            <h2>Éditeur du site</h2>
+            <div class="info-box">
+                <strong>Digitalfy</strong>
+                Marc Dubois<br>
+                Auto-entrepreneur<br>
+                SIRET : [À compléter]<br>
+                Adresse : Nîmes, France<br>
+                Email : contact@digitalfy.fr
+            </div>
 
-        <h2>Hébergement</h2>
-        <p>
-            [Nom de l'hébergeur]<br>
-            [Adresse]<br>
-            [Téléphone]
-        </p>
+            <h2>Hébergement</h2>
+            <p>
+                [Nom de l'hébergeur]<br>
+                [Adresse]<br>
+                [Téléphone]
+            </p>
 
-        <h2>Propriété intellectuelle</h2>
-        <p>
-            L'ensemble du contenu de ce site (textes, images, vidéos) est la propriété
-            exclusive de Digitalfy, sauf mention contraire.
-        </p>
+            <h2>Propriété intellectuelle</h2>
+            <p>
+                L'ensemble du contenu de ce site (textes, images, vidéos) est la propriété
+                exclusive de Digitalfy, sauf mention contraire.
+            </p>
+            <p>
+                Toute reproduction, distribution, modification, adaptation, retransmission ou
+                publication de ces différents éléments est strictement interdite sans l'accord
+                exprès par écrit de Digitalfy.
+            </p>
 
-        <h2>Données personnelles</h2>
-        <p>
-            Les données collectées via le formulaire de contact sont utilisées uniquement
-            dans le cadre de la relation commerciale. Conformément au RGPD, vous disposez
-            d'un droit d'accès, de rectification et de suppression de vos données.
-        </p>
-        <p>
-            Pour exercer vos droits : <a href="mailto:contact@digitalfy.fr">contact@digitalfy.fr</a>
-        </p>
+            <h2>Données personnelles</h2>
+            <p>
+                Les données collectées via le formulaire de contact sont utilisées uniquement
+                dans le cadre de la relation commerciale. Conformément au RGPD, vous disposez
+                d'un droit d'accès, de rectification et de suppression de vos données.
+            </p>
+            <p>
+                Pour exercer vos droits : <a href="mailto:contact@digitalfy.fr">contact@digitalfy.fr</a>
+            </p>
+            <p>
+                Les informations recueillies sont enregistrées dans un fichier informatisé par
+                Digitalfy pour la gestion de la relation client. Elles sont conservées pendant
+                la durée nécessaire à la finalité de leur traitement et sont destinées uniquement
+                à l'usage interne de Digitalfy.
+            </p>
 
-        <h2>Cookies</h2>
-        <p>
-            Ce site n'utilise pas de cookies de tracking ou publicitaires. Seuls les cookies techniques
-            nécessaires au bon fonctionnement du site sont utilisés.
-        </p>
-    </div>
+            <h2>Cookies</h2>
+            <p>
+                Ce site n'utilise pas de cookies de tracking ou publicitaires. Seuls les cookies techniques
+                nécessaires au bon fonctionnement du site sont utilisés.
+            </p>
+            <p>
+                Ces cookies techniques permettent notamment de maintenir votre session active lors
+                de votre navigation et d'améliorer les performances du site.
+            </p>
+
+            <h2>Responsabilité</h2>
+            <p>
+                Digitalfy s'efforce d'assurer l'exactitude et la mise à jour des informations diffusées
+                sur ce site. Toutefois, Digitalfy ne peut garantir l'exactitude, la précision ou
+                l'exhaustivité des informations mises à disposition sur ce site.
+            </p>
+            <p>
+                En conséquence, Digitalfy décline toute responsabilité pour toute imprécision,
+                inexactitude ou omission portant sur des informations disponibles sur le site.
+            </p>
+        </div>
+    </section>
 </div>
 {% endblock %}

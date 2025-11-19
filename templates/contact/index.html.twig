@@ -5,11 +5,280 @@
 {% block meta_description %}Contactez Digitalfy pour un projet de site internet, application mobile ou solution digitale à Nîmes et dans le Gard.{% endblock %}
 
 {% block body %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
+
+    .contact-page {
+        font-family: 'Inter', sans-serif;
+        color: #1A1A1A;
+        background: #FFFFFF;
+    }
+
+    /* Hero Section */
+    .contact-hero {
+        min-height: 50vh;
+        display: flex;
+        align-items: center;
+        padding: 5rem 2rem 3rem;
+        background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
+        border-bottom: 1px solid #E5E5E5;
+    }
+
+    .contact-hero .container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .contact-hero__label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #FF5722;
+        margin-bottom: 1.5rem;
+    }
+
+    .contact-hero h1 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.5rem;
+    }
+
+    .text-highlight {
+        color: #FF5722;
+    }
+
+    .contact-hero__subtitle {
+        font-size: 1.25rem;
+        color: #666;
+        max-width: 600px;
+        line-height: 1.6;
+    }
+
+    /* Contact Content */
+    .contact-content {
+        padding: 4rem 2rem;
+    }
+
+    .contact-content .container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* Form Section */
+    .contact-form-wrapper h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #1A1A1A;
+    }
+
+    .contact-form-wrapper > p {
+        font-size: 1.125rem;
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .alert {
+        padding: 1rem 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .alert-success {
+        background: #E8F5E9;
+        color: #2E7D32;
+        border-left: 4px solid #4CAF50;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .contact-form > div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-form label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #1A1A1A;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        padding: 0.875rem 1.25rem;
+        border: 2px solid #E5E5E5;
+        border-radius: 0.5rem;
+        background: #FFFFFF;
+        transition: all 0.3s ease;
+        color: #1A1A1A;
+    }
+
+    .contact-form input:focus,
+    .contact-form select:focus,
+    .contact-form textarea:focus {
+        outline: none;
+        border-color: #FF5722;
+        box-shadow: 0 0 0 3px rgba(255, 87, 34, 0.1);
+    }
+
+    .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .btn-primary {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 1rem 2.5rem;
+        background: #FF5722;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        align-self: flex-start;
+    }
+
+    .btn-primary:hover {
+        background: #E64A19;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+    }
+
+    /* Contact Info */
+    .contact-info {
+        background: #F8F9FA;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .contact-info h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: #1A1A1A;
+    }
+
+    .info-item {
+        margin-bottom: 2rem;
+    }
+
+    .info-item:last-child {
+        margin-bottom: 0;
+    }
+
+    .info-item h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #FF5722;
+        margin-bottom: 0.5rem;
+    }
+
+    .info-item p {
+        font-size: 1rem;
+        color: #1A1A1A;
+        line-height: 1.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .contact-hero h1 {
+            font-size: 3rem;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero {
+            padding: 4rem 1.5rem 2rem;
+            min-height: 40vh;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .contact-hero__subtitle {
+            font-size: 1.125rem;
+        }
+
+        .contact-content {
+            padding: 3rem 1.5rem;
+        }
+
+        .contact-info {
+            padding: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .contact-hero h1 {
+            font-size: 2rem;
+        }
+
+        .contact-hero__label {
+            font-size: 0.75rem;
+        }
+
+        .btn-primary {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
+
 <div class="contact-page">
     <section class="contact-hero">
         <div class="container">
-            <h1>Contactez Digitalfy</h1>
-            <p class="lead">Discutons de votre projet</p>
+            <p class="contact-hero__label">PARLONS DE VOTRE PROJET</p>
+            <h1>Transformons vos <span class="text-highlight">idées</span> en <span class="text-highlight">réalité</span></h1>
+            <p class="contact-hero__subtitle">
+                Que vous ayez un projet de site internet, d'application mobile ou de solution digitale,
+                je suis là pour vous accompagner de A à Z.
+            </p>
         </div>
     </section>
 
@@ -17,11 +286,11 @@
         <div class="container">
             <div class="contact-grid">
                 <div class="contact-form-wrapper">
-                    <h2>Discutons de votre projet</h2>
+                    <h2>Décrivez votre projet</h2>
 
                     <p>
-                        Vous avez un projet de site internet, d'application mobile ou
-                        de solution digitale ? Expliquez-moi votre besoin en quelques lignes.
+                        Remplissez ce formulaire pour me parler de votre besoin.
+                        Je vous réponds généralement sous 24 heures.
                     </p>
 
                     {% for message in app.flashes('success') %}
@@ -46,22 +315,22 @@
                     <h2>Informations pratiques</h2>
 
                     <div class="info-item">
-                        <h3>📍 Localisation</h3>
+                        <h3>LOCALISATION</h3>
                         <p>Nîmes (Gard)</p>
                     </div>
 
                     <div class="info-item">
-                        <h3>🌍 Zone d'intervention</h3>
-                        <p>Gard, Occitanie, France (à distance)</p>
+                        <h3>ZONE D'INTERVENTION</h3>
+                        <p>Gard, Occitanie, France<br>(à distance)</p>
                     </div>
 
                     <div class="info-item">
-                        <h3>💬 Langue</h3>
+                        <h3>LANGUE</h3>
                         <p>Français</p>
                     </div>
 
                     <div class="info-item">
-                        <h3>⏰ Disponibilité</h3>
+                        <h3>DISPONIBILITÉ</h3>
                         <p>Lundi - Vendredi<br>9h00 - 18h00</p>
                     </div>
                 </div>
