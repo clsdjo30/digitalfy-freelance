@@ -6,11 +6,11 @@
 
 /* Hero Section */
 .service-page .service-hero {
-    min-height: 70vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #FAFAFA 0%, #FFFFFF 100%);
-    padding: 8rem 2rem 6rem;
+    padding: 5rem 2rem 4rem;
     position: relative;
     overflow: hidden;
 }
@@ -27,18 +27,18 @@
 }
 
 .service-page .service-hero .container {
-    max-width: 1200px;
+    max-width: 1400px;
     position: relative;
     z-index: 1;
 }
 
 .service-page .service-hero h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem;
     font-weight: 800;
     line-height: 1.1;
     color: #1A1A1A;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
 }
 
@@ -58,7 +58,7 @@
 
 /* Service Sections */
 .service-page .service-section {
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     background: white;
 }
 
@@ -67,58 +67,58 @@
 }
 
 .service-page .service-section .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
 .service-page .service-section h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1.2;
     color: #1A1A1A;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     letter-spacing: -0.02em;
     text-align: center;
 }
 
 .service-page .service-section h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1A1A1A;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     line-height: 1.3;
 }
 
 .service-page .service-section p,
 .service-page .service-section li {
     font-family: 'Inter', sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.75;
+    font-size: 1rem;
+    line-height: 1.6;
     color: #4B5563;
 }
 
 .intro-text {
-    font-size: 1.25rem !important;
+    font-size: 1.125rem !important;
     text-align: center;
     max-width: 800px;
-    margin: 0 auto 3rem;
+    margin: 0 auto 2.5rem;
 }
 
-/* Benefits Grid - Text-Focused Without Icons */
+/* Benefits Grid - Text-Focused Without Icons - 4 Cards Layout */
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 3rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .benefit-card {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
     position: relative;
     transition: all 0.3s ease;
     overflow: hidden;
@@ -139,8 +139,8 @@
 
 .benefit-card:hover {
     border-color: #FF5722;
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(255, 87, 34, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.15);
 }
 
 .benefit-card:hover::before {
@@ -152,21 +152,22 @@
 }
 
 .benefit-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .benefit-card p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     color: #6B7280;
+    line-height: 1.5;
 }
 
 /* Method Steps */
 .method-steps {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 3rem;
-    margin-top: 4rem;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
 }
 
 .step {
@@ -175,8 +176,8 @@
 }
 
 .step-number {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background: linear-gradient(135deg, #FF5722, #FF7043);
     color: white;
     border-radius: 50%;
@@ -184,19 +185,19 @@
     align-items: center;
     justify-content: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 800;
-    margin: 0 auto 1.5rem;
+    margin: 0 auto 1rem;
 }
 
 .step h3 {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     text-align: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .step p {
-    font-size: 1rem;
+    font-size: 0.9375rem;
     text-align: center;
     color: #6B7280;
 }
@@ -207,47 +208,47 @@
 .app-types-list {
     list-style: none;
     padding: 0;
-    max-width: 800px;
+    max-width: 900px;
     margin: 2rem auto;
 }
 
 .features-list li,
 .problems-list li,
 .app-types-list li {
-    padding: 1.5rem 2rem;
-    margin-bottom: 1rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 0.75rem;
     background: white;
     border-left: 4px solid #FF5722;
     border-radius: 0.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    font-size: 1.125rem;
+    font-size: 1rem;
 }
 
 /* Maintenance Types */
 .maintenance-types {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .maintenance-type {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
     transition: all 0.3s ease;
 }
 
 .maintenance-type:hover {
     border-color: #FF5722;
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.1);
 }
 
 .maintenance-type h3 {
-    font-size: 1.75rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
 }
 
 .maintenance-type ul {
@@ -256,9 +257,9 @@
 }
 
 .maintenance-type li {
-    padding: 0.75rem 0 0.75rem 2rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
     position: relative;
-    font-size: 1rem;
+    font-size: 0.9375rem;
 }
 
 .maintenance-type li::before {
@@ -267,39 +268,40 @@
     left: 0;
     color: #FF5722;
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
 }
 
 /* Solutions Grid */
 .solutions-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .solution-card {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
     transition: all 0.3s ease;
 }
 
 .solution-card:hover {
     border-color: #FF5722;
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.1);
 }
 
 .solution-card h3 {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
 }
 
 .solution-card > p {
     color: #6B7280;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 0.9375rem;
 }
 
 .solution-card ul {
@@ -308,9 +310,9 @@
 }
 
 .solution-card li {
-    padding: 0.75rem 0 0.75rem 2rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
     position: relative;
-    font-size: 1rem;
+    font-size: 0.9375rem;
 }
 
 .solution-card li::before {
@@ -325,17 +327,17 @@
 .site-types,
 .tech-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .site-type,
 .tech-item {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
     transition: all 0.3s ease;
 }
 
@@ -348,48 +350,52 @@
 .site-type h3,
 .tech-item strong {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.375rem;
     font-weight: 700;
     color: #1A1A1A;
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.tech-item p {
+    font-size: 0.9375rem;
 }
 
 /* Target Audiences */
 .target-audiences {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
 }
 
 .audience {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
     transition: all 0.3s ease;
 }
 
 .audience:hover {
     border-color: #FF5722;
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.1);
+    box-shadow: 0 15px 30px rgba(255, 87, 34, 0.1);
 }
 
 /* Pricing Options */
 .pricing-options {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    margin-top: 2.5rem;
 }
 
 .pricing-option {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 3rem 2.5rem;
+    border-radius: 1rem;
+    padding: 2.5rem 2rem;
     transition: all 0.3s ease;
     text-align: center;
 }
@@ -397,32 +403,32 @@
 .pricing-option:hover {
     border-color: #FF5722;
     transform: translateY(-5px);
-    box-shadow: 0 25px 50px rgba(255, 87, 34, 0.15);
+    box-shadow: 0 20px 40px rgba(255, 87, 34, 0.15);
 }
 
 .pricing-option h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
     text-align: center;
 }
 
 .pricing-option > p {
     color: #6B7280;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .pricing-option ul {
     list-style: none;
     padding: 0;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     text-align: left;
 }
 
 .pricing-option li {
-    padding: 0.75rem 0 0.75rem 2rem;
+    padding: 0.5rem 0 0.5rem 1.5rem;
     position: relative;
-    font-size: 1rem;
+    font-size: 0.9375rem;
 }
 
 .pricing-option li::before {
@@ -438,51 +444,52 @@
     font-size: 1.5rem;
     font-weight: 700;
     color: #FF5722;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .note {
     background: #FFF5F0;
     border-left: 4px solid #FF5722;
-    padding: 1.5rem 2rem;
+    padding: 1.25rem 1.5rem;
     border-radius: 0.5rem;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    font-size: 0.9375rem;
 }
 
 /* FAQ */
 .faq {
     max-width: 900px;
-    margin: 3rem auto 0;
+    margin: 2.5rem auto 0;
 }
 
 .faq-item {
     background: white;
     border: 2px solid #E5E7EB;
-    border-radius: 1.5rem;
-    padding: 2.5rem;
-    margin-bottom: 2rem;
+    border-radius: 1rem;
+    padding: 2rem 1.75rem;
+    margin-bottom: 1.5rem;
     transition: all 0.3s ease;
 }
 
 .faq-item:hover {
     border-color: #FF5722;
-    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.1);
+    box-shadow: 0 8px 24px rgba(255, 87, 34, 0.1);
 }
 
 .faq-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
 }
 
 .faq-item p {
-    font-size: 1.125rem;
+    font-size: 1rem;
     margin: 0;
 }
 
 /* CTA Section */
 .service-page .service-cta {
     background: linear-gradient(135deg, #1A1A1A 0%, #2D2D2D 100%);
-    padding: 6rem 2rem;
+    padding: 4rem 2rem;
     text-align: center;
 }
 
@@ -493,20 +500,20 @@
 
 .service-page .service-cta h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     line-height: 1.2;
     color: white;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.02em;
 }
 
 .service-page .service-cta p {
     font-family: 'Inter', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     line-height: 1.7;
     color: #D1D5DB;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
 }
 
 .service-page .service-cta .btn {
@@ -515,7 +522,7 @@
     gap: 1rem;
     background: #FF5722;
     color: white;
-    padding: 1.25rem 3rem;
+    padding: 1rem 2.5rem;
     border-radius: 0.75rem;
     font-family: 'Inter', sans-serif;
     font-size: 1.125rem;
@@ -535,26 +542,41 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
     .service-page .service-hero h1 {
-        font-size: 3rem;
+        font-size: 2.75rem;
     }
 
     .service-page .service-section h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .service-page .service-cta h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .benefits-grid,
+    .maintenance-types,
+    .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .method-steps {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .site-types,
+    .tech-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 @media (max-width: 768px) {
     .service-page .service-hero {
-        padding: 4rem 1.5rem 3rem;
+        padding: 3rem 1.5rem 2.5rem;
         min-height: auto;
     }
 
     .service-page .service-hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.25rem;
     }
 
     .service-page .service-hero .lead {
@@ -562,11 +584,11 @@
     }
 
     .service-page .service-section {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
     }
 
     .service-page .service-section h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .benefits-grid,
@@ -575,27 +597,28 @@
     .solutions-grid,
     .site-types,
     .target-audiences,
-    .pricing-options {
+    .pricing-options,
+    .tech-list {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .service-page .service-cta {
-        padding: 4rem 1.5rem;
+        padding: 3rem 1.5rem;
     }
 
     .service-page .service-cta h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .service-page .service-hero h1 {
-        font-size: 2rem;
+        font-size: 1.875rem;
     }
 
     .service-page .service-section h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
     }
 }
 </style>
