@@ -1503,137 +1503,260 @@ button:disabled {
   background-color: #E64A19;
 }
 
+/* START GEMINI STYLE */
+/* --- Variables & Configuration --- */
+:root {
+    --color-primary: #FF5722; /* Orange de l'image */
+    --color-dark: #1a1a1a;
+    --color-gray: #666666;
+    --color-bg: #FFF9F5; /* Fond très léger de la page */
+    --card-bg: #FFFFFF;
+    --radius-card: 24px;
+    --radius-tab: 16px;
+    --tab-height: 40px;
+    --tab-width: 120px;
+}
+
+/* --- Layout Général --- */
+.section {
+    background-color: var(--color-bg);
+    padding: 4rem 1rem;
+    font-family: 'Inter', sans-serif; /* Assurez-vous d'avoir une police sans-serif */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.text-center { text-align: center; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-12 { margin-bottom: 3rem; }
+
+h2 {
+    font-size: 2.5rem;
+    color: var(--color-dark);
+    font-weight: 700;
+    margin: 0;
+}
+
+.text-gray {
+    color: var(--color-gray);
+    font-size: 1.1rem;
+}
+
+/* --- Grille des Services --- */
 .services-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-@media (min-width: 640px) {
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (min-width: 1024px) {
-  .services-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem 2rem; /* Espace vertical plus grand pour les onglets */
+    padding-top: 20px; /* Espace pour que les onglets ne soient pas coupés */
 }
 
+/* --- Composant "Service Folder" --- */
 .service-folder {
-  position: relative;
-  padding-top: 1.5rem;
-  transition: transform 200ms ease;
+    position: relative;
+    margin-top: var(--tab-height); /* Pousse la carte vers le bas pour laisser place à l'onglet */
+    transition: transform 0.3s ease;
 }
+
 .service-folder:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
+/* L'onglet du dossier (Tab) */
 .service-folder__tab {
-  position: absolute;
-  top: 0;
-  left: 1.5rem;
-  width: 120px;
-  height: 1.5rem;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
-}
-.service-folder__tab--orange {
-  background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%);
-}
-.service-folder__tab--blue {
-  background: linear-gradient(135deg, #4A90E2 0%, #6BA8F5 100%);
-}
-.service-folder__tab--gold {
-  background: linear-gradient(135deg, #F39C12 0%, #F5B642 100%);
+    position: absolute;
+    top: calc(var(--tab-height) * -1); /* Remonte l'onglet */
+    left: 0;
+    width: var(--tab-width);
+    height: var(--tab-height);
+    background-color: var(--card-bg);
+    border-radius: var(--radius-tab) var(--radius-tab) 0 0;
+    z-index: 1;
 }
 
+/* Le petit arrondi magique entre l'onglet et le corps du dossier */
+.service-folder__tab::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: -20px; /* Largeur de la courbe */
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-bottom-left-radius: 20px;
+    box-shadow: -6px 0 0 0 var(--card-bg); /* Simule la couleur de fond */
+    z-index: 2;
+}
+
+/* Le contenu principal du dossier */
 .service-folder__content {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2.5rem 2rem 2rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 10px 20px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
+    position: relative;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 0 var(--radius-card) var(--radius-card) var(--radius-card);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Une petite flèche décorative en haut à droite comme sur l'image */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FF5722' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: top 2rem right 2rem;
 }
 
+/* --- Contenu Interne --- */
 .service-folder__icon {
-  font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  line-height: 1;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .service-folder__title {
-  font-size: 1.5rem;
-  font-family: "Poppins", "Inter", sans-serif;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 1rem;
-  text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
 }
 
 .service-folder__description {
-  font-size: 1rem;
-  color: #4b5563;
-  line-height: 1.625;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  flex-grow: 1;
+    color: var(--color-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    flex-grow: 1; /* Pousse le bouton vers le bas */
 }
 
+/* Bouton "En savoir plus" */
 .service-folder__button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0.875rem 1.5rem;
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a1a1a;
-  background-color: transparent;
-  border: 2px solid #d1d5db;
-  border-radius: 0.75rem;
-  text-decoration: none;
-  transition: all 200ms ease;
-  gap: 0.5rem;
-  text-align: center;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-dark);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    background-color: #f5f5f5;
+    width: fit-content;
+    transition: all 0.3s ease;
 }
+
 .service-folder__button:hover {
-  background-color: #1a1a1a;
-  color: #fff;
-  border-color: #1a1a1a;
-  transform: translateX(3px);
+    background-color: var(--color-dark);
+    color: white;
 }
 
 .service-folder__arrow {
-  display: inline-block;
-  transition: transform 200ms ease;
-}
-.service-folder__button:hover .service-folder__arrow {
-  transform: translateX(4px);
+    margin-left: 8px;
+    transition: transform 0.3s ease;
 }
 
-@media (max-width: 639px) {
-  .service-folder__content {
-    padding: 2rem 1.5rem 1.5rem;
-    min-height: auto;
-  }
-  .service-folder__icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-  }
-  .service-folder__title {
-    font-size: 1.25rem;
-  }
-  .service-folder__description {
-    font-size: 0.9375rem;
-  }
+.service-folder__button:hover .service-folder__arrow {
+    transform: translateX(4px);
 }
+
+/* --- Variantes de couleurs pour l'onglet --- */
+/* Ces classes changent la couleur du petit trait décoratif ou pourraient changer tout le fond si désiré */
+
+.service-folder__tab--orange { border-top: 3px solid #FF5722; }
+.service-folder__tab--blue { border-top: 3px solid #2196F3; }
+.service-folder__tab--gold { border-top: 3px solid #FFC107; }
+
+
+/* --- OPTIONNEL : Style "Plein" (Orange) comme sur l'image --- */
+/* Ajoutez la classe .service-folder-filled sur la div parente dans le Twig si vous voulez le style orange complet */
+
+.service-folder-filled .service-folder__tab,
+.service-folder-filled .service-folder__content {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.service-folder-filled .service-folder__tab::after {
+    box-shadow: -6px 0 0 0 var(--color-primary);
+}
+
+.service-folder-filled .service-folder__title,
+.service-folder-filled .service-folder__description {
+    color: white;
+}
+
+.service-folder-filled .service-folder__content {
+    /* Change la flèche en blanc pour le fond orange */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='7' y1='17' x2='17' y2='7'%3E%3C/line%3E%3Cpolyline points='7 7 17 7 17 17'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+/* --- Layout de la section --- */
+.strategy-section {
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile d'abord : empilé */
+    gap: 3rem;
+    align-items: center; /* Centre verticalement */
+    padding: 4rem 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Version Desktop : 2 colonnes (40% texte, 60% titre) */
+@media (min-width: 992px) {
+    .strategy-section {
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 4rem;
+    }
+}
+
+/* --- Colonne Gauche : Textes --- */
+.strategy-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.strategy-subtitle {
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-dark, #1a1a1a); /* Utilise la variable définie précédemment ou noir */
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.strategy-description {
+    font-size: 1.1rem;
+    color: var(--color-gray, #666666);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 400px; /* Limite la largeur pour la lisibilité */
+}
+
+/* --- Colonne Droite : Gros Titre --- */
+.strategy-heading-wrapper {
+    text-align: left;
+}
+
+.strategy-title {
+    font-size: 3rem; /* Grand par défaut */
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--color-primary, #FF5722); /* Orange pour la première partie */
+    margin: 0;
+}
+
+/* La deuxième partie du titre en noir/bleu foncé */
+.strategy-title--highlight {
+    display: block; /* Force le retour à la ligne si besoin, ou supprimez pour garder en ligne */
+    color: var(--color-dark, #0a0a0a);
+}
+
+/* Responsive pour le gros titre */
+@media (min-width: 768px) {
+    .strategy-title {
+        font-size: 4.5rem; /* Très grand sur desktop comme sur l'image */
+    }
+}
+/* END EMINI STYLE */
+
 .m-0 {
   margin: 0 !important;
 }
