@@ -10,17 +10,7 @@
 
 {% block body %}
 {# Hero Section #}
-<section class="section section--hero section--gradient">
-    <div class="container">
-        <h1 class="text-center mb-6">Développeur Web & Mobile Freelance à Nîmes</h1>
-        <p class="text-center text-xl mb-4">Spécialisé Symfony & React Native</p>
-        <p class="text-center mb-8">Solutions digitales sur mesure pour TPE, PME et professionnels à Nîmes et alentours</p>
-        <div class="flex flex--center flex--gap-4 flex--wrap">
-            <a href="{{ path('app_contact') }}" class="btn btn--light btn--lg">Discutons de votre projet</a>
-            <a href="{{ path('app_services') }}" class="btn btn--outline btn--lg" style="border-color: white; color: white;">Découvrir mes services</a>
-        </div>
-    </div>
-</section>
+{% include 'components/_hero.html.twig' %}
 
 {# Services Preview #}
 <section class="section">
