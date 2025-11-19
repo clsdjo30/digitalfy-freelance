@@ -19,14 +19,18 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[IsGranted('ROLE_ADMIN')]
 class DashboardController extends AbstractDashboardController
 {
+    public function __construct(
+        private EntityManagerInterface $em,
+    ) {}
+
     #[Route('/admin', name: 'app_admin_dashboard')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(): Response
     {
         // Mettre à jour la dernière connexion
         $user = $this->getUser();
         if ($user instanceof \App\Entity\User) {
             $user->setLastLoginAt(new \DateTimeImmutable());
-            $em->flush();
+            $this->em->flush();
         }
 
         return $this->render('admin/dashboard.html.twig');
