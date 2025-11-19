@@ -2,6 +2,9 @@
 // Form Component - Design System Digitalfy
 // ============================================
 
+@use '../variables' as *;
+@use '../mixins' as *;
+
 .form {
     &__group {
         margin-bottom: $spacing-6;

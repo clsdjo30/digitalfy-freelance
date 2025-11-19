@@ -2,6 +2,9 @@
 // Card Component - Design System Digitalfy
 // ============================================
 
+@use '../variables' as *;
+@use '../mixins' as *;
+
 .card {
     @include card;
 

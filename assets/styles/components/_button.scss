@@ -2,6 +2,9 @@
 // Button Component - Design System Digitalfy
 // ============================================
 
+@use '../variables' as *;
+@use '../mixins' as *;
+
 .btn {
     @include button-reset;
     display: inline-flex;

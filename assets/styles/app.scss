@@ -5,28 +5,28 @@
 // ============================================
 // 1. Configuration
 // ============================================
-@import 'variables';
-@import 'mixins';
+@use 'variables';
+@use 'mixins';
 
 // ============================================
 // 2. Base & Reset
 // ============================================
-@import 'base/base';
+@use 'base/base';
 
 // ============================================
 // 3. Layout
 // ============================================
-@import 'layout/layout';
+@use 'layout/layout';
 
 // ============================================
 // 4. Components
 // ============================================
-@import 'components/button';
-@import 'components/card';
-@import 'components/navigation';
-@import 'components/form';
+@use 'components/button';
+@use 'components/card';
+@use 'components/navigation';
+@use 'components/form';
 
 // ============================================
 // 5. Utilities
 // ============================================
-@import 'utilities/utilities';
+@use 'utilities/utilities';

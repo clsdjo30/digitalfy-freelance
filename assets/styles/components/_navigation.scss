@@ -2,6 +2,9 @@
 // Navigation Component - Design System Digitalfy
 // ============================================
 
+@use '../variables' as *;
+@use '../mixins' as *;
+
 .nav {
     display: flex;
     align-items: center;
