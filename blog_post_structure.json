@@ -1,0 +1,36 @@
+{
+  "article": {
+    "titre": {
+      "label": "Titre",
+      "description": "Le titre principal de l'article"
+    },
+    "categorie": {
+      "label": "Catégorie",
+      "default": "SEO Local",
+      "description": "Catégorie de l'article"
+    },
+    "image_a_la_une": {
+      "label": "Image à la une",
+      "description": "Description de l'image principale de l'article"
+    },
+    "meta_title": {
+      "label": "Meta Title (SEO)",
+      "maxLength": 60,
+      "description": "Titre SEO pour les moteurs de recherche"
+    },
+    "meta_description": {
+      "label": "Meta Description (SEO)",
+      "maxLength": 160,
+      "description": "Description SEO pour les moteurs de recherche"
+    },
+    "extrait": {
+      "label": "Extrait",
+      "maxLength": 160,
+      "description": "Résumé court de l'article pour le SEO"
+    },
+    "contenu": {
+      "label": "Contenu",
+      "description": "Contenu complet de l'article"
+    }
+  }
+}

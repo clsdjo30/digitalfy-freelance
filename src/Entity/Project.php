@@ -5,9 +5,12 @@ namespace App\Entity;
 use App\Repository\ProjectRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
+#[Vich\Uploadable]
 class Project
 {
     #[ORM\Id]
@@ -25,6 +28,9 @@ class Project
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank]
     private ?string $description = null;
+
+    #[Vich\UploadableField(mapping: 'project_images', fileNameProperty: 'thumbnail')]
+    private ?File $thumbnailFile = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $thumbnail = null;
@@ -103,6 +109,21 @@ class Project
         $this->thumbnail = $thumbnail;
 
         return $this;
+    }
+
+    public function setThumbnailFile(?File $thumbnailFile = null): void
+    {
+        $this->thumbnailFile = $thumbnailFile;
+
+        if (null !== $thumbnailFile) {
+            // Update the createdAt to trigger doctrine update
+            $this->createdAt = new \DateTime();
+        }
+    }
+
+    public function getThumbnailFile(): ?File
+    {
+        return $this->thumbnailFile;
     }
 
     public function getTechnologies(): ?array

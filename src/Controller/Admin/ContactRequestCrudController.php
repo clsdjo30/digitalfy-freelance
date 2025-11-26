@@ -32,10 +32,10 @@ class ContactRequestCrudController extends AbstractCrudController
         return [
             TextField::new('name', 'Nom'),
             EmailField::new('email', 'Email'),
-            TextField::new('phone', 'Téléphone')
+            TextField::new('phone', 'TÃ©lÃ©phone')
                 ->hideOnIndex(),
             TextField::new('projectType', 'Type de projet'),
-            TextField::new('estimatedBudget', 'Budget estimé')
+            TextField::new('estimatedBudget', 'Budget estimÃ©')
                 ->hideOnIndex(),
             TextareaField::new('message', 'Message')
                 ->hideOnIndex(),
@@ -45,7 +45,7 @@ class ContactRequestCrudController extends AbstractCrudController
                 ->setChoices([
                     'Nouveau' => 'new',
                     'En cours' => 'in_progress',
-                    'Clôturé' => 'closed',
+                    'ClÃ´turÃ©' => 'closed',
                 ])
                 ->renderAsBadges([
                     'new' => 'info',

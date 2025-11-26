@@ -10,6 +10,10 @@
 node_modules/
 ###< symfony/framework-bundle ###
 
+### CLAUDE ###
+/.claude/
+###< CLAUDE ###
+
 ###> phpunit/phpunit ###
 /phpunit.xml
 /.phpunit.cache/
@@ -36,4 +40,7 @@ SETUP_DATABASE.md
 SETUP_PHASE1.md
 TESTS_README.md
 TESTS_WINDOWS.md
+CLAUDE.md
+SEO_RECOMMENDATIONS.md
+SEO_IMPLEMENTATION_CHECKLIST.md
 

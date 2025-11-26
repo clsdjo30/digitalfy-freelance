@@ -7,14 +7,15 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "headline": "{{ article.title }}",
-    "image": "{% if article.imageName %}{{ absolute_url(asset('uploads/blog/' ~ article.imageName)) }}{% else %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endif %}",
-    "datePublished": "{{ article.publishedAt|date('Y-m-d') }}",
-    "dateModified": "{{ article.updatedAt|date('Y-m-d') }}",
+    "headline": "{{ article.metaTitle ?? article.title }}",
+    "alternativeHeadline": "{{ article.title }}",
+    "image": {% if article.featuredImage %}"{{ absolute_url(asset('uploads/blog/' ~ article.featuredImage)) }}"{% else %}"{{ absolute_url(asset('images/og-default.jpg')) }}"{% endif %},
+    "datePublished": "{{ article.publishedAt|date('c') }}",
+    "dateModified": "{{ article.updatedAt|date('c') }}",
     "author": {
         "@type": "Person",
-        "name": "Marc Dubois",
-        "url": "{{ absolute_url(path('app_about')) }}"
+        "name": "Digitalfy",
+        "url": "{{ absolute_url(path('app_home')) }}"
     },
     "publisher": {
         "@type": "Organization",
@@ -24,10 +25,16 @@
             "url": "{{ absolute_url(asset('images/logo.png')) }}"
         }
     },
-    "description": "{{ article.summary|striptags|truncate(160) }}",
+    "description": "{{ article.metaDescription ?? (article.excerpt|striptags|slice(0, 160)) }}",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ app.request.uri }}"
-    }
+        "@id": "{{ absolute_url(path('app_blog_show', {slug: article.slug})) }}"
+    }{% if article.focusKeyword %},
+    "keywords": "{{ article.focusKeyword }}"{% endif %}{% if article.category %},
+    "articleSection": "{{ article.category.name }}"{% endif %}{% if article.readingTime %},
+    "timeRequired": "PT{{ article.readingTime }}M"{% endif %},
+    "wordCount": {{ article.content|striptags|split(' ')|length }},
+    "inLanguage": "fr-FR",
+    "isAccessibleForFree": true
 }
 </script>

@@ -4,6 +4,44 @@
 
 {% block meta_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
 
+{# Surcharge des blocs Open Graph pour les articles #}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ post.metaTitle ?? post.title }}{% endblock %}
+{% block og_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
+{% block og_image %}{% if post.featuredImage %}{{ absolute_url(asset('uploads/blog/' ~ post.featuredImage)) }}{% else %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endif %}{% endblock %}
+
+{# Surcharge des blocs Twitter Cards #}
+{% block twitter_title %}{{ post.metaTitle ?? post.title }}{% endblock %}
+{% block twitter_description %}{{ post.metaDescription ?? post.excerpt }}{% endblock %}
+{% block twitter_image %}{% if post.featuredImage %}{{ absolute_url(asset('uploads/blog/' ~ post.featuredImage)) }}{% else %}{{ absolute_url(asset('images/og-default.jpg')) }}{% endif %}{% endblock %}
+
+{# Meta tags spécifiques aux articles (pas de doublons) #}
+{% block meta %}
+    {{ parent() }}
+
+    {# Canonical URL spécifique (surcharge celui de base.html.twig) #}
+    <link rel="canonical" href="{{ absolute_url(path('app_blog_show', {slug: post.slug})) }}">
+
+    {# Meta tags supplémentaires pour Open Graph articles #}
+    {% if post.featuredImage %}
+    <meta property="og:image:alt" content="{{ post.imageAlt ?? post.title }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    {% endif %}
+    <meta property="article:published_time" content="{{ post.publishedAt|date('c') }}">
+    <meta property="article:modified_time" content="{{ post.updatedAt|date('c') }}">
+    <meta property="article:author" content="Digitalfy">
+    <meta property="article:section" content="{{ post.category.name }}">
+    {% if post.focusKeyword %}
+    <meta property="article:tag" content="{{ post.focusKeyword }}">
+    {% endif %}
+
+    {# Twitter image alt (spécifique) #}
+    {% if post.featuredImage %}
+    <meta name="twitter:image:alt" content="{{ post.imageAlt ?? post.title }}">
+    {% endif %}
+{% endblock %}
+
 {% block structured_data %}
     {% include 'partials/schema/article.html.twig' with {'article': post} %}
     {% include 'partials/schema/breadcrumb.html.twig' with {
@@ -11,14 +49,14 @@
             {'name': 'Accueil', 'url': path('app_home')},
             {'name': 'Blog', 'url': path('app_blog')},
             {'name': post.category.name, 'url': path('app_blog_category', {slug: post.category.slug})},
-            {'name': post.title, 'url': ''}
+            {'name': post.title, 'url': path('app_blog_show', {slug: post.slug})}
         ]
     } %}
 {% endblock %}
 
 {% block body %}
 <section class="section section--cream">
-    <div class="container">
+    <div class="container" style="max-width: 1400px;">
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb__item">
@@ -36,33 +74,90 @@
             </ol>
         </nav>
 
-        <article>
-            <header class="text-center mb-8">
-                <span class="blog-card__category">{{ post.category.name }}</span>
-                <h1 class="mt-4 mb-4">{{ post.title }}</h1>
-                <div class="text-gray flex flex--center flex--gap-4">
-                    <span>📅 {{ post.publishedAt|date('d/m/Y') }}</span>
-                    {% if post.readingTime %}
-                        <span>⏱️ {{ post.readingTime }} min de lecture</span>
-                    {% endif %}
-                </div>
-            </header>
+        {# Layout 2 colonnes : Article large + Sidebar #}
+        <div class="blog-show-layout">
+            {# Article principal - Accent mis sur le contenu #}
+            <article class="blog-show-article">
+                <header class="text-center mb-8">
+                    <span class="blog-card__category">{{ post.category.name }}</span>
+                    <h1 class="mt-4 mb-4">{{ post.title }}</h1>
+                    <div class="text-gray flex flex--center flex--gap-4">
+                        <span>📅 {{ post.publishedAt|date('d/m/Y') }}</span>
+                        {% if post.readingTime %}
+                            <span>⏱️ {{ post.readingTime }} min de lecture</span>
+                        {% endif %}
+                    </div>
+                </header>
 
-            {% if post.featuredImage %}
-                <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
-                     alt="{{ post.title }}"
-                     class="rounded-xl shadow-lg mb-8"
-                     style="width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; display: block;">
-            {% endif %}
+                {% if post.featuredImage %}
+                    <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
+                         alt="{{ post.imageAlt ?? post.title }}"
+                         class="rounded-xl shadow-lg mb-8"
+                         loading="lazy"
+                         width="900"
+                         height="506"
+                         style="width: 100%; max-width: 100%; margin-left: auto; margin-right: auto; display: block;">
+                {% endif %}
 
-            <div class="card" style="max-width: 900px; margin: 0 auto; padding: 3rem;">
-                <div class="post-content">
-                    {{ post.content|raw }}
+                <div class="card" style="padding: 3rem;">
+                    <div class="post-content">
+                        {{ post.content|markdown }}
+                    </div>
                 </div>
-            </div>
-        </article>
+            </article>
+
+            {# Sidebar - Plus discrète #}
+            <aside class="blog-show-sidebar">
+                <div style="position: sticky; top: 100px; display: flex; flex-direction: column; gap: 1.5rem;">
+                    {% include 'components/_blog-sidebar-categories.html.twig' with {categories: categories} %}
+                    {% include 'components/_blog-sidebar-latest.html.twig' with {latestPosts: latestPosts} %}
+                </div>
+            </aside>
+        </div>
     </div>
 </section>
+
+<style>
+/* Layout pour page d'article - Accent sur le contenu */
+.blog-show-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* Mobile : Sidebar en haut */
+.blog-show-article {
+    order: 2;
+}
+
+.blog-show-sidebar {
+    order: 1;
+}
+
+/* Desktop : Article large à gauche (75%), Sidebar petite à droite (25%) */
+@media (min-width: 1024px) {
+    .blog-show-layout {
+        grid-template-columns: 1fr 280px;
+        gap: 3rem;
+    }
+
+    .blog-show-article {
+        order: 1;
+    }
+
+    .blog-show-sidebar {
+        order: 2;
+    }
+}
+
+/* Large écrans : encore plus d'espace pour l'article */
+@media (min-width: 1280px) {
+    .blog-show-layout {
+        grid-template-columns: 1fr 300px;
+    }
+}
+</style>
 
 {# Related Posts #}
 {% if relatedPosts|length > 0 %}

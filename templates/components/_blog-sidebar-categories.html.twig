@@ -1,0 +1,35 @@
+{# Composant : Liste des catégories pour la sidebar du blog #}
+<div class="card">
+    <h3 class="card__title" style="margin-bottom: 1rem;">📁 Catégories</h3>
+
+    {% if categories|length > 0 %}
+        <ul style="list-style: none; padding: 0; margin: 0;">
+            {% for category in categories %}
+                <li style="margin-bottom: 0.75rem;">
+                    <a href="{{ path('app_blog_category', {slug: category.slug}) }}"
+                       class="blog-sidebar-link"
+                       style="display: flex; align-items: center; justify-content: space-between; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: all 0.2s ease; text-decoration: none; color: #333;">
+                        <span style="font-weight: 500;">{{ category.name }}</span>
+                        <span style="background-color: #FF5722; color: white; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.5rem; border-radius: 0.375rem; min-width: 24px; text-align: center;">
+                            {{ category.blogPosts|length }}
+                        </span>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="color: #666; font-size: 0.875rem;">Aucune catégorie disponible</p>
+    {% endif %}
+</div>
+
+<style>
+.blog-sidebar-link:hover {
+    background-color: #FFF5F0;
+    color: #FF5722 !important;
+    transform: translateX(4px);
+}
+
+.blog-sidebar-link:hover span:last-child {
+    background-color: #E64A19;
+}
+</style>

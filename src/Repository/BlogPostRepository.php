@@ -84,4 +84,35 @@ class BlogPostRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    /**
+     * Count published posts by category
+     */
+    public function categoryCount($category): int
+    {
+        return $this->createQueryBuilder('p')
+            ->select('COUNT(p.id)')
+            ->where('p.category = :category')
+            ->andWhere('p.status = :status')
+            ->setParameter('category', $category)
+            ->setParameter('status', 'published')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+
+    /**
+     * Find latest published blog posts
+     *
+     * @return BlogPost[]
+     */
+    public function findLatest(int $limit = 3): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.status = :status')
+            ->setParameter('status', 'published')
+            ->orderBy('p.publishedAt', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
 }
