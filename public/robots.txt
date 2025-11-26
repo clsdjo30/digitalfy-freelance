@@ -1,12 +1,35 @@
 # robots.txt for Digitalfy
 # Développeur freelance à Nîmes - Sites web & applications mobiles
 
+# Traditional Search Engines
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /admin
 Disallow: /_profiler/
 Disallow: /_wdt/
+Crawl-delay: 1
+
+# AI Search Engines
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+
+User-agent: Claude-Web
+Allow: /
+Disallow: /admin/
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin/
 
 # Sitemap
 Sitemap: https://www.digitalfy.fr/sitemap.xml
