@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Test des pages d'erreur | Digitalfy{% endblock %}
+
+{% block body %}
+<section class="section section--cream">
+    <div class="container" style="max-width: 900px;">
+        <div style="background-color: #FFF3E0; padding: 1rem; border-radius: 0.5rem; margin-bottom: 2rem; border-left: 4px solid #FF5722;">
+            <p style="color: #D84315; font-weight: 600; margin-bottom: 0.5rem;">⚠️ Environnement de développement uniquement</p>
+            <p style="color: #666; font-size: 0.875rem; margin: 0;">
+                Cette page n'est accessible qu'en mode développement (APP_ENV=dev) et permet de tester l'affichage des pages d'erreur personnalisées.
+            </p>
+        </div>
+
+        <h1 class="mb-4">🧪 Test des pages d'erreur</h1>
+
+        <p class="text-lg text-gray mb-8">
+            Cliquez sur un lien ci-dessous pour prévisualiser la page d'erreur correspondante.
+        </p>
+
+        {# Pages d'erreur principales #}
+        <div class="card mb-6">
+            <h2 class="card__title" style="margin-bottom: 1.5rem;">Pages d'erreur principales</h2>
+
+            <div style="display: grid; gap: 1rem;">
+                {# Erreur 404 #}
+                <div style="padding: 1.5rem; border: 2px solid #E5E7EB; border-radius: 0.5rem; transition: all 0.2s;"
+                     onmouseover="this.style.borderColor='#FF5722'; this.style.backgroundColor='#FFF3E0'"
+                     onmouseout="this.style.borderColor='#E5E7EB'; this.style.backgroundColor='transparent'">
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="font-size: 2.5rem;">🔍</div>
+                        <div style="flex: 1;">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">
+                                <a href="{{ path('app_test_error_404') }}"
+                                   style="color: #1A1A1A; text-decoration: none;"
+                                   onmouseover="this.style.color='#FF5722'"
+                                   onmouseout="this.style.color='#1A1A1A'">
+                                    Erreur 404 - Page introuvable
+                                </a>
+                            </h3>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">
+                                Affichée lorsqu'une page demandée n'existe pas ou a été déplacée
+                            </p>
+                            <a href="{{ path('app_test_error_404') }}"
+                               class="btn btn--primary"
+                               style="margin-top: 1rem; display: inline-block;">
+                                Tester la page 404
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {# Erreur 403 #}
+                <div style="padding: 1.5rem; border: 2px solid #E5E7EB; border-radius: 0.5rem; transition: all 0.2s;"
+                     onmouseover="this.style.borderColor='#FF5722'; this.style.backgroundColor='#FFF3E0'"
+                     onmouseout="this.style.borderColor='#E5E7EB'; this.style.backgroundColor='transparent'">
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="font-size: 2.5rem;">🔒</div>
+                        <div style="flex: 1;">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">
+                                <a href="{{ path('app_test_error_403') }}"
+                                   style="color: #1A1A1A; text-decoration: none;"
+                                   onmouseover="this.style.color='#FF5722'"
+                                   onmouseout="this.style.color='#1A1A1A'">
+                                    Erreur 403 - Accès refusé
+                                </a>
+                            </h3>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">
+                                Affichée lorsqu'un utilisateur tente d'accéder à une ressource sans les permissions nécessaires
+                            </p>
+                            <a href="{{ path('app_test_error_403') }}"
+                               class="btn btn--primary"
+                               style="margin-top: 1rem; display: inline-block;">
+                                Tester la page 403
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                {# Erreur 500 #}
+                <div style="padding: 1.5rem; border: 2px solid #E5E7EB; border-radius: 0.5rem; transition: all 0.2s;"
+                     onmouseover="this.style.borderColor='#FF5722'; this.style.backgroundColor='#FFF3E0'"
+                     onmouseout="this.style.borderColor='#E5E7EB'; this.style.backgroundColor='transparent'">
+                    <div style="display: flex; align-items: start; gap: 1rem;">
+                        <div style="font-size: 2.5rem;">⚙️</div>
+                        <div style="flex: 1;">
+                            <h3 style="margin: 0 0 0.5rem 0; font-size: 1.25rem;">
+                                <a href="{{ path('app_test_error_500') }}"
+                                   style="color: #1A1A1A; text-decoration: none;"
+                                   onmouseover="this.style.color='#FF5722'"
+                                   onmouseout="this.style.color='#1A1A1A'">
+                                    Erreur 500 - Erreur serveur
+                                </a>
+                            </h3>
+                            <p style="margin: 0; color: #666; font-size: 0.9rem;">
+                                Affichée lorsqu'une erreur inattendue se produit côté serveur
+                            </p>
+                            <a href="{{ path('app_test_error_500') }}"
+                               class="btn btn--primary"
+                               style="margin-top: 1rem; display: inline-block;">
+                                Tester la page 500
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {# Page d'erreur générique #}
+        <div class="card">
+            <h2 class="card__title" style="margin-bottom: 1rem;">Page d'erreur générique</h2>
+            <p class="text-gray" style="margin-bottom: 1.5rem;">
+                Cette page s'affiche pour tous les codes d'erreur qui n'ont pas de template personnalisé.
+            </p>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a href="{{ path('app_test_error_generic', {code: 400}) }}" class="btn btn--secondary">Tester 400</a>
+                <a href="{{ path('app_test_error_generic', {code: 401}) }}" class="btn btn--secondary">Tester 401</a>
+                <a href="{{ path('app_test_error_generic', {code: 405}) }}" class="btn btn--secondary">Tester 405</a>
+                <a href="{{ path('app_test_error_generic', {code: 503}) }}" class="btn btn--secondary">Tester 503</a>
+            </div>
+        </div>
+
+        {# Informations techniques #}
+        <div class="card" style="margin-top: 2rem; background-color: #F9FAFB;">
+            <h3 style="margin: 0 0 1rem 0; font-size: 1rem; font-weight: 600;">📖 Informations techniques</h3>
+            <ul style="list-style: none; padding: 0; margin: 0; color: #666; font-size: 0.875rem;">
+                <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0;">→</span>
+                    Les templates d'erreur se trouvent dans <code style="background: #fff; padding: 0.2rem 0.4rem; border-radius: 0.25rem;">templates/bundles/TwigBundle/Exception/</code>
+                </li>
+                <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0;">→</span>
+                    En production (APP_ENV=prod), ces pages seront affichées automatiquement
+                </li>
+                <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0;">→</span>
+                    Cette route de test n'est accessible qu'en mode développement
+                </li>
+                <li style="padding-left: 1.5rem; position: relative;">
+                    <span style="position: absolute; left: 0;">→</span>
+                    Pour tester en production, changez APP_ENV=prod dans .env.local
+                </li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{{ path('app_home') }}" class="btn btn--secondary">← Retour à l'accueil</a>
+        </div>
+    </div>
+</section>
+
+<style>
+.btn--secondary {
+    background-color: #fff;
+    color: #1A1A1A;
+    border: 2px solid #E5E7EB;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    display: inline-block;
+    transition: all 0.2s;
+}
+
+.btn--secondary:hover {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+}
+</style>
+{% endblock %}

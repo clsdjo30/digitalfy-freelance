@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès refusé (403) | Digitalfy{% endblock %}
+
+{% block meta_description %}Vous n'avez pas les permissions nécessaires pour accéder à cette page.{% endblock %}
+
+{% block body %}
+<section class="section section--cream" style="min-height: 70vh; display: flex; align-items: center;">
+    <div class="container text-center">
+        <div style="max-width: 600px; margin: 0 auto;">
+            {# Icône d'erreur animée #}
+            <div style="font-size: 8rem; margin-bottom: 2rem; animation: shake 0.5s ease-in-out;">
+                🔒
+            </div>
+
+            <h1 class="mb-4" style="font-size: 3rem; color: #1A1A1A;">
+                403
+            </h1>
+
+            <h2 class="mb-4" style="font-size: 1.5rem; font-weight: 500; color: #666;">
+                Accès refusé
+            </h2>
+
+            <p class="text-lg text-gray mb-8">
+                Désolé, vous n'avez pas les permissions nécessaires pour accéder à cette page.
+            </p>
+
+            {# Informations complémentaires #}
+            <div class="card" style="max-width: 500px; margin: 0 auto 2rem; text-align: left;">
+                <p style="margin-bottom: 1rem; color: #666;">
+                    Cette erreur peut survenir si :
+                </p>
+                <ul style="list-style: none; padding: 0; color: #666;">
+                    <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0;">→</span>
+                        Vous tentez d'accéder à une zone réservée aux administrateurs
+                    </li>
+                    <li style="margin-bottom: 0.5rem; padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0;">→</span>
+                        Votre session a expiré
+                    </li>
+                    <li style="padding-left: 1.5rem; position: relative;">
+                        <span style="position: absolute; left: 0;">→</span>
+                        Vous n'êtes pas connecté avec les bons identifiants
+                    </li>
+                </ul>
+            </div>
+
+            {# Actions rapides #}
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="{{ path('app_home') }}" class="btn btn--primary btn--lg">
+                    🏠 Retour à l'accueil
+                </a>
+                {% if app.user %}
+                    <a href="{{ path('app_logout') }}" class="btn btn--secondary btn--lg">
+                        🚪 Se déconnecter
+                    </a>
+                {% else %}
+                    <a href="{{ path('app_login') }}" class="btn btn--secondary btn--lg">
+                        🔑 Se connecter
+                    </a>
+                {% endif %}
+                <a href="{{ path('app_contact') }}" class="btn btn--secondary btn--lg">
+                    💬 Nous contacter
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.btn--secondary {
+    background-color: #fff;
+    color: #1A1A1A;
+    border: 2px solid #E5E7EB;
+}
+
+.btn--secondary:hover {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+}
+</style>
+{% endblock %}
