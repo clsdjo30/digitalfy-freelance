@@ -24,7 +24,12 @@
 <header class="header">
     <div class="header__container">
         <a href="{{ path('app_home') }}" class="header__logo">
-            Digitalfy
+            <picture>
+                <source media="(min-width: 768px)" srcset="/images/logos/logo-digitalfy-desktopV2.webp">
+                <img src="/images/logos/logo-digitalfy-mobil.webp"
+                     alt="Digitalfy - Développeur Freelance Nîmes"
+                     class="header__logo-img">
+            </picture>
         </a>
 
         <nav class="nav">

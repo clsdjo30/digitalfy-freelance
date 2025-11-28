@@ -8,6 +8,11 @@
     {% include 'partials/schema/local-business.html.twig' %}
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/home-modern.css') }}">
+{% endblock %}
+
 {% block body %}
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
@@ -109,6 +114,7 @@
         border-color: #E64A19;
         transform: translateY(-2px);
         box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
+        color: #FFFFFF;
     }
 
     .btn-home--outline {
@@ -237,11 +243,16 @@
 
     .service-card-home {
         background: #F8F9FA;
-        padding: 2rem;
+        padding: 0;
         border-radius: 1rem;
         transition: all 0.3s ease;
         position: relative;
         border: 2px solid transparent;
+        overflow: hidden;
+    }
+
+    .service-card-home__content {
+        padding: 2rem;
     }
 
     .service-card-home:hover {
@@ -251,8 +262,18 @@
     }
 
     .service-card-home__icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
+        width: 100%;
+        height: auto;
+        margin-bottom: 1.5rem;
+        display: block;
+        border-radius: 0.75rem 0.75rem 0 0;
+        transition: transform 0.3s ease;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+    }
+
+    .service-card-home:hover .service-card-home__icon {
+        transform: scale(1.02);
     }
 
     .service-card-home__title {
@@ -631,39 +652,72 @@
 
             <div class="services-home__grid">
                 <div class="service-card-home">
-                    <div class="service-card-home__icon">📱</div>
-                    <h3 class="service-card-home__title">Application Mobile</h3>
-                    <p class="service-card-home__description">
-                        Applications iOS et Android avec React Native pour moderniser votre activité.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
+                    <img src="/images/services/mobile-480.webp"
+                         srcset="/images/services/mobile-480.webp 480w,
+                                 /images/services/mobile-768.webp 768w,
+                                 /images/services/mobile-1024.webp 1024w"
+                         sizes="(max-width: 768px) 100vw,
+                                (max-width: 1024px) 50vw,
+                                33vw"
+                         alt="Application mobile iOS et Android"
+                         class="service-card-home__icon"
+                         loading="lazy">
+                    <div class="service-card-home__content">
+                        <h3 class="service-card-home__title">Application Mobile</h3>
+                        <p class="service-card-home__description">
+                            Applications iOS et Android avec React Native pour moderniser votre activité.
+                        </p>
+                        <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}"
+                           class="service-card-home__link">
+                            En savoir plus →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="service-card-home">
-                    <div class="service-card-home__icon">🌐</div>
-                    <h3 class="service-card-home__title">Site Internet</h3>
-                    <p class="service-card-home__description">
-                        Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
+                    <img src="/images/services/website-480.webp"
+                         srcset="/images/services/website-480.webp 480w,
+                                 /images/services/website-768.webp 768w,
+                                 /images/services/website-1024.webp 1024w"
+                         sizes="(max-width: 768px) 100vw,
+                                (max-width: 1024px) 50vw,
+                                33vw"
+                         alt="Site internet professionnel et optimisé SEO"
+                         class="service-card-home__icon"
+                         loading="lazy">
+                    <div class="service-card-home__content">
+                        <h3 class="service-card-home__title">Site Internet</h3>
+                        <p class="service-card-home__description">
+                            Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.
+                        </p>
+                        <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}"
+                           class="service-card-home__link">
+                            En savoir plus →
+                        </a>
+                    </div>
                 </div>
 
                 <div class="service-card-home">
-                    <div class="service-card-home__icon">🍽️</div>
-                    <h3 class="service-card-home__title">Solutions Restauration</h3>
-                    <p class="service-card-home__description">
-                        Outils digitaux pour restaurants : réservation, click & collect, site web.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
+                    <img src="/images/services/restaurant-480.webp"
+                         srcset="/images/services/restaurant-480.webp 480w,
+                                 /images/services/restaurant-768.webp 768w,
+                                 /images/services/restaurant-1024.webp 1024w"
+                         sizes="(max-width: 768px) 100vw,
+                                (max-width: 1024px) 50vw,
+                                33vw"
+                         alt="Solutions digitales pour restaurants"
+                         class="service-card-home__icon"
+                         loading="lazy">
+                    <div class="service-card-home__content">
+                        <h3 class="service-card-home__title">Solutions Restauration</h3>
+                        <p class="service-card-home__description">
+                            Outils digitaux pour restaurants : réservation, click & collect, site web.
+                        </p>
+                        <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}"
+                           class="service-card-home__link">
+                            En savoir plus →
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -1,0 +1,672 @@
+/**
+ * AMÉLIORATION MODERNE DE LA PAGE D'ACCUEIL
+ * Design inspiré des tendances 2025 : gradients vifs, profondeur, animations
+ */
+
+/* ============================================
+   VARIABLES CSS - Couleurs modernes
+   ============================================ */
+:root {
+    --primary: #FF5722;
+    --primary-dark: #E64A19;
+    --primary-light: #FF8A65;
+    --accent: #FF6B35;
+    --gradient-primary: linear-gradient(135deg, #FF5722 0%, #FF6B35 50%, #FF8A65 100%);
+    --gradient-hero: linear-gradient(135deg, #FFF5F0 0%, #FFEBE4 50%, #FFE4DC 100%);
+    --gradient-dark: linear-gradient(135deg, #1A1A1A 0%, #FF5722 100%);
+    --shadow-sm: 0 4px 6px rgba(255, 87, 34, 0.1);
+    --shadow-md: 0 10px 30px rgba(255, 87, 34, 0.15);
+    --shadow-lg: 0 20px 60px rgba(255, 87, 34, 0.25);
+    --shadow-xl: 0 30px 80px rgba(255, 87, 34, 0.3);
+}
+
+/* ============================================
+   HERO SECTION - Plus dynamique et coloré
+   ============================================ */
+.hero-home {
+    background: var(--gradient-hero);
+    position: relative;
+}
+
+/* Overlay gradient pour plus de profondeur */
+.hero-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at top right, rgba(255, 87, 34, 0.15) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Titre avec plus de contraste - pas de gradient pour plus de punch */
+.hero-home__title {
+    color: #1A1A1A;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Highlight en orange vif */
+.text-highlight {
+    color: #FF5722 !important;
+    font-weight: 900 !important;
+}
+
+/* Stats avec BEAUCOUP plus de peps - chiffres géants */
+.hero-stat {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F0 100%);
+    padding: 2rem 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: var(--shadow-md);
+    border: 2px solid rgba(255, 87, 34, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: var(--gradient-primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+.hero-stat:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+}
+
+.hero-stat:hover::before {
+    transform: scaleY(1);
+}
+
+/* Chiffres GÉANTS et très visibles */
+.hero-stat__value {
+    font-size: 4rem !important;
+    font-weight: 900 !important;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1 !important;
+    letter-spacing: -0.02em;
+    filter: drop-shadow(0 2px 8px rgba(255, 87, 34, 0.3));
+}
+
+.hero-stat__label {
+    font-weight: 600 !important;
+    color: #1A1A1A !important;
+    margin-top: 0.75rem !important;
+}
+
+/* Boutons avec BEAUCOUP plus de punch */
+.btn-home--primary {
+    background: var(--gradient-primary);
+    border: none;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+    font-size: 1.125rem !important;
+    padding: 1.25rem 2.5rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.02em !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-home--primary::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-home--primary:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-home--primary:hover {
+    box-shadow: 0 20px 60px rgba(255, 87, 34, 0.5);
+    transform: translateY(-6px) scale(1.05);
+}
+
+.btn-home--outline {
+    font-size: 1.125rem !important;
+    padding: 1.25rem 2.5rem !important;
+    font-weight: 700 !important;
+    border-width: 3px !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-home--outline:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Image hero avec effet glow */
+.hero-home__image {
+    filter: drop-shadow(0 30px 60px rgba(255, 87, 34, 0.4));
+    animation: float-glow 6s ease-in-out infinite;
+}
+
+@keyframes float-glow {
+    0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+        filter: drop-shadow(0 30px 60px rgba(255, 87, 34, 0.4));
+    }
+    50% {
+        transform: translateY(-25px) rotate(5deg);
+        filter: drop-shadow(0 40px 80px rgba(255, 87, 34, 0.6));
+    }
+}
+
+/* ============================================
+   SERVICES SECTION - Cartes avec PUNCH
+   ============================================ */
+.service-card-home {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F7 100%);
+    border: 2px solid transparent;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Effet de brillance au survol */
+.service-card-home::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 87, 34, 0.1),
+        transparent
+    );
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.service-card-home:hover::before {
+    opacity: 1;
+    left: 100%;
+}
+
+.service-card-home:hover {
+    transform: translateY(-10px) scale(1.05);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-xl);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F0 100%);
+}
+
+/* Première carte avec fond orange vif pour plus de punch */
+.service-card-home:first-child {
+    background: var(--gradient-primary);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.service-card-home:first-child .service-card-home__title,
+.service-card-home:first-child .service-card-home__description {
+    color: #FFFFFF;
+}
+
+.service-card-home:first-child .service-card-home__link {
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+/* Désactivé - non compatible avec les images
+.service-card-home:first-child .service-card-home__icon {
+    filter: brightness(0) invert(1);
+}
+*/
+
+.service-card-home:first-child:hover {
+    transform: translateY(-15px) scale(1.08);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Icônes avec effet 3D - Désactivé car maintenant utilise des images
+.service-card-home__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-primary);
+    border-radius: 1.5rem;
+    font-size: 2rem;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    transform: translateZ(0);
+}
+
+.service-card-home:hover .service-card-home__icon {
+    transform: translateY(-5px) rotateZ(5deg);
+    box-shadow: var(--shadow-lg);
+}
+*/
+
+/* ============================================
+   WHY LOCAL - Cartes avec plus de PUNCH
+   ============================================ */
+.why-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFF9F7 100%);
+    box-shadow: var(--shadow-md);
+    border: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 2.5rem 2rem !important;
+}
+
+.why-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.why-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary);
+}
+
+.why-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* Carte du milieu avec fond orange vif */
+.why-card:nth-child(2) {
+    background: var(--gradient-primary);
+    border-color: var(--primary);
+    box-shadow: var(--shadow-lg);
+}
+
+.why-card:nth-child(2) .why-card__label,
+.why-card:nth-child(2) .why-card__title,
+.why-card:nth-child(2) .why-card__description {
+    color: #FFFFFF;
+}
+
+.why-card:nth-child(2):hover {
+    transform: translateY(-20px) scale(1.05);
+    box-shadow: 0 30px 80px rgba(255, 87, 34, 0.4);
+}
+
+/* ============================================
+   SECTION AVEC FOND COLORÉ ALTERNÉ
+   ============================================ */
+
+/* Section services avec fond gradient subtil */
+.services-home {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FFF9F7 50%, #FFFFFF 100%);
+}
+
+/* Section Why Local avec pattern */
+.why-local {
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255, 87, 34, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(255, 87, 34, 0.03) 0%, transparent 50%),
+        #F8F9FA;
+}
+
+/* ============================================
+   FAQ - Cartes interactives avec PUNCH
+   ============================================ */
+.faq-item {
+    background: linear-gradient(135deg, #FFF9F7 0%, #FFFFFF 100%);
+    border-left: 6px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+    position: relative;
+    border-radius: 1rem;
+}
+
+.faq-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateX(10px);
+    box-shadow: var(--shadow-md);
+}
+
+.faq-item:hover::before {
+    opacity: 1;
+}
+
+/* Certaines FAQ avec fond orange vif (1ère et 3ème) */
+.faq-item:nth-child(odd) {
+    background: var(--gradient-primary);
+    border-left-color: #E64A19;
+}
+
+.faq-item:nth-child(odd) .faq-item__question,
+.faq-item:nth-child(odd) .faq-item__answer {
+    color: #FFFFFF;
+}
+
+.faq-item:nth-child(odd):hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateX(15px) scale(1.02);
+}
+
+/* ============================================
+   CTA SECTION - Plus impactante
+   ============================================ */
+.cta-home {
+    background: var(--gradient-dark);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Particles effect */
+.cta-home::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        radial-gradient(circle at 20% 30%, rgba(255, 87, 34, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 87, 34, 0.2) 0%, transparent 50%);
+    animation: particles 20s ease-in-out infinite;
+}
+
+@keyframes particles {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-20px) scale(1.1);
+    }
+}
+
+.cta-home__title {
+    text-shadow: 0 4px 20px rgba(255, 87, 34, 0.3);
+}
+
+/* ============================================
+   FORMES 3D - Plus visibles et animées
+   ============================================ */
+.hero-3d-bg,
+.services-3d,
+.cta-3d {
+    opacity: 0.25 !important;
+    animation: rotate-3d 30s linear infinite;
+}
+
+@keyframes rotate-3d {
+    0% {
+        transform: rotate(0deg) scale(1);
+    }
+    50% {
+        transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+.hero-3d-bg--top-right {
+    filter: blur(40px) brightness(1.2);
+    mix-blend-mode: multiply;
+}
+
+/* ============================================
+   ANIMATIONS AU SCROLL
+   ============================================ */
+
+/* Fade in from bottom */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Appliquer les animations (nécessite JavaScript pour trigger au scroll) */
+.hero-home__content {
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.hero-home__visual {
+    animation: fadeInRight 0.8s ease-out 0.2s backwards;
+}
+
+.service-card-home {
+    animation: fadeInUp 0.6s ease-out backwards;
+}
+
+.service-card-home:nth-child(1) { animation-delay: 0.1s; }
+.service-card-home:nth-child(2) { animation-delay: 0.2s; }
+.service-card-home:nth-child(3) { animation-delay: 0.3s; }
+
+.why-card {
+    animation: scaleIn 0.6s ease-out backwards;
+}
+
+.why-card:nth-child(1) { animation-delay: 0.1s; }
+.why-card:nth-child(2) { animation-delay: 0.2s; }
+.why-card:nth-child(3) { animation-delay: 0.3s; }
+
+/* ============================================
+   GLASSMORPHISM - Effet verre moderne
+   ============================================ */
+.hero-home__stats {
+    position: relative;
+}
+
+.hero-home__stats::before {
+    content: '';
+    position: absolute;
+    inset: -10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.hero-home__stats:hover::before {
+    opacity: 1;
+}
+
+/* ============================================
+   TITRES AVEC BEAUCOUP PLUS D'IMPACT
+   ============================================ */
+.services-home__title,
+.why-local__title,
+.faq-home__title {
+    position: relative;
+    display: inline-block;
+    font-size: 3rem !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+    margin-bottom: 3rem !important;
+}
+
+.cta-home__title {
+    font-size: 3.5rem !important;
+    font-weight: 900 !important;
+    line-height: 1.1 !important;
+}
+
+/* Underline animée plus épaisse */
+.services-home__title::after,
+.why-local__title::after,
+.faq-home__title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 120px;
+    height: 6px;
+    background: var(--gradient-primary);
+    border-radius: 3px;
+    box-shadow: 0 2px 10px rgba(255, 87, 34, 0.3);
+}
+
+/* ============================================
+   MICRO-INTERACTIONS
+   ============================================ */
+
+/* Liens avec effet underline */
+.service-card-home__link {
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.service-card-home__link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.service-card-home__link:hover::after {
+    width: 100%;
+}
+
+/* Labels avec glow effect amélioré */
+.hero-home__label,
+.services-home__subtitle,
+.why-card__label {
+    position: relative;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, rgba(255, 87, 34, 0.15), rgba(255, 87, 34, 0.08));
+    border-radius: 2rem;
+    display: inline-block;
+    box-shadow: 0 4px 20px rgba(255, 87, 34, 0.2);
+    font-weight: 700 !important;
+    font-size: 0.875rem !important;
+    letter-spacing: 0.1em !important;
+    border: 2px solid rgba(255, 87, 34, 0.2);
+}
+
+/* Sections avec plus d'espacement */
+.services-home,
+.why-local,
+.faq-home {
+    padding: 5rem 1.5rem !important;
+}
+
+.hero-home {
+    padding: 4rem 1.5rem !important;
+}
+
+/* ============================================
+   RESPONSIVE - Garder le peps sur mobile
+   ============================================ */
+@media (max-width: 768px) {
+    :root {
+        --shadow-sm: 0 2px 4px rgba(255, 87, 34, 0.1);
+        --shadow-md: 0 8px 20px rgba(255, 87, 34, 0.15);
+        --shadow-lg: 0 15px 40px rgba(255, 87, 34, 0.2);
+    }
+
+    .hero-3d-bg,
+    .services-3d,
+    .cta-3d {
+        display: block !important;
+        opacity: 0.15 !important;
+        filter: blur(30px);
+    }
+}
+
+/* ============================================
+   DARK MODE SUPPORT (bonus)
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+    .service-card-home,
+    .why-card,
+    .faq-item {
+        background: linear-gradient(135deg, #2A2A2A 0%, #1A1A1A 100%);
+        color: #E0E0E0;
+    }
+
+    .service-card-home__title,
+    .why-card__title,
+    .faq-item__question {
+        color: #FFFFFF;
+    }
+}
