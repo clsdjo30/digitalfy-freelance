@@ -1,0 +1,24 @@
+{# Template pour afficher le badge de messages dans la liste #}
+{# DEBUG: Template appelé #}
+<span class="badge bg-info">TEST</span>
+
+{% try %}
+    {% set repository = ea.crud.controllerInstance.getConversationMessageRepository() %}
+    {% set unreadCount = repository.countUnreadByContactRequest(entity.instance) %}
+    {% set messages = repository.findByContactRequest(entity.instance) %}
+    {% set totalCount = messages|length %}
+
+    {# DEBUG: Afficher les valeurs #}
+    <br><small>Unread: {{ unreadCount }} / Total: {{ totalCount }}</small>
+
+    {% if unreadCount > 0 %}
+        <span class="badge bg-danger">{{ unreadCount }} nouveau(x)</span>
+        <small class="text-muted">({{ totalCount }} total)</small>
+    {% elseif totalCount > 0 %}
+        <small class="text-muted">{{ totalCount }} message(s)</small>
+    {% else %}
+        <small class="text-muted">Aucun</small>
+    {% endif %}
+{% catch(exception) %}
+    <span class="badge bg-warning">ERREUR: {{ exception.message }}</span>
+{% endtry %}

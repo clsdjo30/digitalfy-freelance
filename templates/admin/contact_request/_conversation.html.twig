@@ -1,0 +1,209 @@
+{#
+    Template pour afficher le fil de conversation d'une demande de contact
+
+    Variables attendues :
+    - contactRequest : l'entité ContactRequest
+    - messages : array de ConversationMessage
+#}
+
+<div class="conversation-container card">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">
+            <i class="fa fa-comments"></i>
+            Historique de conversation
+        </h5>
+        <span class="badge bg-light text-dark">
+            {{ messages|length }} message(s)
+        </span>
+    </div>
+
+    <div class="card-body">
+        {% if messages is empty %}
+            <div class="alert alert-info text-center">
+                <i class="fa fa-info-circle fa-2x mb-2"></i>
+                <p class="mb-0">Aucun message dans cette conversation pour le moment.</p>
+                <small class="text-muted">
+                    Cliquez sur "Répondre" pour envoyer le premier message au client.
+                </small>
+            </div>
+        {% else %}
+            <div class="conversation-messages">
+                {% for message in messages %}
+                    <div class="message-item {{ message.direction }} {% if not message.isRead and message.direction == 'received' %}unread{% endif %}">
+                        <div class="message-header">
+                            <div class="message-meta">
+                                {% if message.direction == 'sent' %}
+                                    <i class="fa fa-paper-plane text-primary"></i>
+                                    <strong>Vous</strong>
+                                    <span class="text-muted">→</span>
+                                    <span>{{ message.recipient }}</span>
+                                {% else %}
+                                    <i class="fa fa-inbox text-success"></i>
+                                    <strong>{{ message.sender }}</strong>
+                                    {% if not message.isRead %}
+                                        <span class="badge bg-warning">Nouveau</span>
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                            <div class="message-date">
+                                <i class="fa fa-clock"></i>
+                                {{ message.sentAt|date('d/m/Y à H:i') }}
+                            </div>
+                        </div>
+
+                        <div class="message-subject">
+                            <strong>{{ message.subject }}</strong>
+                        </div>
+
+                        <div class="message-content">
+                            {% if message.htmlContent %}
+                                {# Afficher le contenu HTML de manière sécurisée #}
+                                <div class="html-content">
+                                    {{ message.htmlContent|raw }}
+                                </div>
+                            {% else %}
+                                {# Afficher le contenu texte #}
+                                {{ message.content|nl2br }}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {# Actions rapides #}
+            <div class="conversation-actions mt-3 text-end">
+                <a href="{{ path('admin_contact_reply', {'id': contactRequest.id}) }}"
+                   class="btn btn-primary">
+                    <i class="fa fa-reply"></i>
+                    Répondre au client
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{# Styles CSS pour la conversation #}
+<style>
+.conversation-container {
+    margin: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.conversation-messages {
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.message-item {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #dee2e6;
+    background-color: #f8f9fa;
+}
+
+.message-item.sent {
+    border-left-color: #0d6efd;
+    background-color: #e7f1ff;
+}
+
+.message-item.received {
+    border-left-color: #198754;
+    background-color: #d1e7dd;
+}
+
+.message-item.unread {
+    border-left-width: 6px;
+    background-color: #fff3cd;
+    border-left-color: #ffc107;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.message-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.message-date {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.message-subject {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: #495057;
+}
+
+.message-content {
+    color: #212529;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.message-content .html-content {
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+.message-content .html-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.conversation-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.conversation-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.conversation-messages::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.conversation-messages::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.conversation-actions {
+    padding-top: 15px;
+    border-top: 2px solid #dee2e6;
+}
+
+@media (max-width: 768px) {
+    .message-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .conversation-messages {
+        max-height: 400px;
+    }
+}
+</style>
+
+{# JavaScript pour auto-scroll vers le bas et marquer comme lu #}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Auto-scroll vers le dernier message
+    const messagesContainer = document.querySelector('.conversation-messages');
+    if (messagesContainer) {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+});
+</script>

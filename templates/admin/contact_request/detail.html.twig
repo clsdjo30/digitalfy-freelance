@@ -1,0 +1,17 @@
+{# Template personnalisé pour la page de détail d'une demande de contact #}
+{% extends '@EasyAdmin/crud/detail.html.twig' %}
+
+{% block detail_fields %}
+    {# Affichage des champs standard de la demande #}
+    {{ parent() }}
+
+    {# Inclusion de la conversation en dessous des informations de la demande #}
+    {% if messages is defined %}
+        <div class="mt-4">
+            {% include 'admin/contact_request/_conversation.html.twig' with {
+                'contactRequest': contactRequest,
+                'messages': messages
+            } %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,18 +1,28 @@
-{# Template pour la page de réponse à une demande de contact #}
-{% extends '@EasyAdmin/page/content.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Répondre à {{ contactRequest.name }}</title>
 
-{% block page_title %}
-    Répondre à la demande de {{ contactRequest.name }}
-{% endblock %}
+    {# Bootstrap CSS #}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {# Font Awesome #}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/admin">
+                <i class="fa fa-arrow-left"></i> Retour au dashboard
+            </a>
+            <span class="navbar-text text-white">
+                Administration Digitalfy
+            </span>
+        </div>
+    </nav>
 
-{% block content_title %}
-    <h1 class="title">
-        <i class="fa fa-reply"></i>
-        Répondre à la demande de contact
-    </h1>
-{% endblock %}
-
-{% block main %}
+    <div class="container-fluid mt-4">
     <div class="row">
         {# Colonne gauche : Informations de la demande #}
         <div class="col-md-6">
@@ -178,11 +188,7 @@
             </div>
         </div>
     </div>
-{% endblock %}
 
-{# Styles personnalisés pour améliorer le rendu #}
-{% block configured_stylesheets %}
-    {{ parent() }}
     <style>
         .card {
             box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
@@ -202,4 +208,8 @@
             color: #212529;
         }
     </style>
-{% endblock %}
+
+    {# Bootstrap JS #}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

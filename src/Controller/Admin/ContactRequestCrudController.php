@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ContactRequest;
+use App\Repository\ConversationMessageRepository;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -10,11 +11,25 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ContactRequestCrudController extends AbstractCrudController
 {
+    public function __construct(
+        private readonly ConversationMessageRepository $conversationMessageRepository
+    ) {
+    }
+
+    /**
+     * Getter public pour accéder au repository depuis les templates
+     */
+    public function getConversationMessageRepository(): ConversationMessageRepository
+    {
+        return $this->conversationMessageRepository;
+    }
+
     public static function getEntityFqcn(): string
     {
         return ContactRequest::class;
@@ -26,7 +41,9 @@ class ContactRequestCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('Demande de contact')
             ->setEntityLabelInPlural('Demandes de contact')
             ->setDefaultSort(['submittedAt' => 'DESC'])
-            ->setSearchFields(['name', 'email', 'phone', 'message']);
+            ->setSearchFields(['name', 'email', 'phone', 'message'])
+            // Template personnalisé pour afficher la conversation
+            ->overrideTemplate('crud/detail', 'admin/contact_request/detail.html.twig');
     }
 
     /**
@@ -69,7 +86,7 @@ class ContactRequestCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
+        $fields = [
             TextField::new('name', 'Nom'),
             EmailField::new('email', 'Email'),
             TextField::new('phone', 'Téléphone')
@@ -96,5 +113,38 @@ class ContactRequestCrudController extends AbstractCrudController
                 ->setHelp('Notes visibles uniquement dans l\'admin')
                 ->hideOnIndex(),
         ];
+
+        // Ajouter le champ "Messages" à la fin uniquement dans l'index
+        if ($pageName === Crud::PAGE_INDEX) {
+            $messageRepository = $this->conversationMessageRepository;
+
+            // Créer un champ virtuel en réutilisant 'id' mais en changeant le label
+            $messagesField = NumberField::new('id')
+                ->setLabel('Messages')
+                ->formatValue(function ($value, ContactRequest $entity) use ($messageRepository) {
+                    $unreadCount = $messageRepository->countUnreadByContactRequest($entity);
+                    $messages = $messageRepository->findByContactRequest($entity);
+                    $totalCount = count($messages);
+
+                    if ($unreadCount > 0) {
+                        return sprintf(
+                            '<span class="badge bg-danger">%d nouveau(x)</span> <small class="text-muted">(%d total)</small>',
+                            $unreadCount,
+                            $totalCount
+                        );
+                    } elseif ($totalCount > 0) {
+                        return sprintf('<small class="text-muted">%d message(s)</small>', $totalCount);
+                    }
+
+                    return '<small class="text-muted">Aucun</small>';
+                })
+                ->setSortable(false);
+
+            // Insérer le champ Messages après le statut
+            array_splice($fields, 8, 0, [$messagesField]);
+        }
+
+        return $fields;
     }
+
 }
