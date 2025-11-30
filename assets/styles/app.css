@@ -404,18 +404,33 @@ button:disabled {
   }
 }
 .header__logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1A1A1A;
-  font-family: "Poppins", "Inter", sans-serif;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
+
+.header__logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
 @media (min-width: 768px) {
-  .header__logo {
-    font-size: 1.5rem;
+  .header__logo-img {
+    height: 50px;
   }
 }
+
+@media (min-width: 1024px) {
+  .header__logo-img {
+    height: 60px;
+  }
+}
+
 .header__logo:hover {
-  color: #FF5722;
+  opacity: 0.8;
+  transform: translateY(-2px);
 }
 .header--scrolled {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);

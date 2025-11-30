@@ -5,6 +5,16 @@ framework:
     # Note that the session will be started ONLY if you read or write from it.
     session: true
 
+    # HTTP Client configuration
+    http_client:
+        default_options:
+            timeout: 10
+            max_duration: 15
+            retry_failed:
+                max_retries: 1
+                delay: 1000
+                multiplier: 2
+
     #esi: true
     #fragments: true
 

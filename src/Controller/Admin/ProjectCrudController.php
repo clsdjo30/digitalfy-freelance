@@ -7,10 +7,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProjectCrudController extends AbstractCrudController
 {
@@ -32,26 +34,43 @@ class ProjectCrudController extends AbstractCrudController
     {
         return [
             TextField::new('title', 'Titre')
-                ->setHelp('Titre du projet'),
+                ->setHelp('Titre du projet')
+                ->setColumns(6),
             SlugField::new('slug', 'URL')
                 ->setTargetFieldName('title')
-                ->setHelp('Généré automatiquement depuis le titre'),
+                ->setHelp('GÃ©nÃ©rÃ© automatiquement depuis le titre')
+                ->setColumns(6),
             TextareaField::new('description', 'Description courte')
-                ->setHelp('Résumé du projet affiché dans la liste'),
+                ->setHelp('RÃ©sumÃ© du projet affichÃ© dans la liste')
+                ->setColumns(6),
             ArrayField::new('technologies', 'Technologies')
-                ->setHelp('Liste des technologies utilisées (une par ligne)'),
+                ->setHelp('Liste des technologies utilisÃ©es (une par ligne)')
+                ->setColumns(6),
+            ImageField::new('thumbnail', 'Image actuelle')
+                ->setBasePath('/uploads/projects')
+                ->setUploadDir('public/uploads/projects')
+                ->onlyOnIndex(),
+            TextField::new('thumbnailFile', 'Image du projet')
+                ->setFormType(VichImageType::class)
+                ->setHelp('Image principale du projet (JPG, PNG, WebP)')
+                ->onlyOnForms()
+                ->setColumns(6),
+            BooleanField::new('published', 'PubliÃ©')
+                ->renderAsSwitch(true)
+                ->setColumns(6),
             TextareaField::new('context', 'Contexte & objectifs')
-                ->setHelp('Contexte et objectifs du projet (HTML autorisé)')
-                ->hideOnIndex(),
+                ->setHelp('Contexte et objectifs du projet (HTML autorisÃ©)')
+                ->hideOnIndex()
+                ->setColumns(6),
             TextareaField::new('solution', 'Solution mise en place')
-                ->setHelp('Description de la solution développée (HTML autorisé)')
-                ->hideOnIndex(),
-            TextareaField::new('results', 'Résultats & perspectives')
-                ->setHelp('Résultats obtenus et perspectives (HTML autorisé)')
-                ->hideOnIndex(),
-            BooleanField::new('published', 'Publié')
-                ->renderAsSwitch(true),
-            DateTimeField::new('createdAt', 'Créé le')
+                ->setHelp('Description de la solution dÃ©veloppÃ©e (HTML autorisÃ©)')
+                ->hideOnIndex()
+                ->setColumns(6),
+            TextareaField::new('results', 'RÃ©sultats & perspectives')
+                ->setHelp('RÃ©sultats obtenus et perspectives (HTML autorisÃ©)')
+                ->hideOnIndex()
+                ->setColumns(6),
+            DateTimeField::new('createdAt', 'CrÃ©Ã© le')
                 ->hideOnForm(),
         ];
     }

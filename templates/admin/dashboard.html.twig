@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="alert alert-info">
                     <h4><i class="fa fa-info-circle"></i> Bienvenue sur votre backoffice</h4>
-                    <p>Gérez votre contenu, vos projets et vos demandes de contact depuis cette interface.</p>
+                    <p>GÃ©rez votre contenu, vos projets et vos demandes de contact depuis cette interface.</p>
                 </div>
             </div>
         </div>
@@ -25,12 +25,11 @@
                             <i class="fa fa-file-text"></i> Articles de blog
                         </h5>
                         <p class="card-text display-4">
-                            {# TODO: Afficher le nombre d'articles #}
-                            <i class="fa fa-spinner fa-spin"></i>
+                           {{ blogPostCount }}
                         </p>
                         <a href="{{ ea_url().setController('App\\Controller\\Admin\\BlogPostCrudController') }}"
                            class="btn btn-light btn-sm">
-                            Gérer les articles
+                            GÃ©rer les articles
                         </a>
                     </div>
                 </div>
@@ -43,12 +42,11 @@
                             <i class="fa fa-briefcase"></i> Projets
                         </h5>
                         <p class="card-text display-4">
-                            {# TODO: Afficher le nombre de projets #}
-                            <i class="fa fa-spinner fa-spin"></i>
+                            {{ projectCount }}
                         </p>
                         <a href="{{ ea_url().setController('App\\Controller\\Admin\\ProjectCrudController') }}"
                            class="btn btn-light btn-sm">
-                            Gérer les projets
+                            GÃ©rer les projets
                         </a>
                     </div>
                 </div>
@@ -61,8 +59,7 @@
                             <i class="fa fa-envelope"></i> Demandes de contact
                         </h5>
                         <p class="card-text display-4">
-                            {# TODO: Afficher le nombre de demandes #}
-                            <i class="fa fa-spinner fa-spin"></i>
+                            {{ contactRequestCount }}
                         </p>
                         <a href="{{ ea_url().setController('App\\Controller\\Admin\\ContactRequestCrudController') }}"
                            class="btn btn-light btn-sm">
@@ -76,15 +73,14 @@
                 <div class="card bg-info text-white">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <i class="fa fa-tags"></i> Catégories
+                            <i class="fa fa-tags"></i> CatÃ©gories
                         </h5>
                         <p class="card-text display-4">
-                            {# TODO: Afficher le nombre de catégories #}
-                            <i class="fa fa-spinner fa-spin"></i>
+                        {{ categoryCount }}
                         </p>
                         <a href="{{ ea_url().setController('App\\Controller\\Admin\\CategoryCrudController') }}"
                            class="btn btn-light btn-sm">
-                            Gérer les catégories
+                            GÃ©rer les catÃ©gories
                         </a>
                     </div>
                 </div>
@@ -95,13 +91,13 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5><i class="fa fa-book"></i> Accès rapides</h5>
+                        <h5><i class="fa fa-book"></i> AccÃ©s rapides</h5>
                     </div>
                     <div class="card-body">
                         <div class="list-group">
                             <a href="{{ ea_url().setController('App\\Controller\\Admin\\BlogPostCrudController').setAction('new') }}"
                                class="list-group-item list-group-item-action">
-                                <i class="fa fa-plus-circle text-success"></i> Créer un nouvel article de blog
+                                <i class="fa fa-plus-circle text-success"></i> CrÃ©er un nouvel article de blog
                             </a>
                             <a href="{{ ea_url().setController('App\\Controller\\Admin\\ProjectCrudController').setAction('new') }}"
                                class="list-group-item list-group-item-action">
@@ -109,7 +105,7 @@
                             </a>
                             <a href="{{ ea_url().setController('App\\Controller\\Admin\\CategoryCrudController').setAction('new') }}"
                                class="list-group-item list-group-item-action">
-                                <i class="fa fa-plus-circle text-success"></i> Créer une nouvelle catégorie
+                                <i class="fa fa-plus-circle text-success"></i> CrÃ©er une nouvelle catÃ©gorie
                             </a>
                             <a href="{{ path('app_home') }}"
                                class="list-group-item list-group-item-action"

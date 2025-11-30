@@ -16,28 +16,23 @@ class CategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, Category::class);
     }
 
-    //    /**
-    //     * @return Category[] Returns an array of Category objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('c.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
-
-    //    public function findOneBySomeField($value): ?Category
-    //    {
-    //        return $this->createQueryBuilder('c')
-    //            ->andWhere('c.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    /**
+     * Trouve toutes les catégories qui ont au moins un article publié
+     *
+     * Utilise un JOIN pour éviter le N+1 problem et ne retourne que les catégories
+     * contenant effectivement des articles publiés.
+     *
+     * @return Category[] Returns an array of Category objects
+     */
+    public function findCategoriesWithPublishedPosts(): array
+    {
+        return $this->createQueryBuilder('c')
+            ->innerJoin('c.blogPosts', 'p')
+            ->where('p.status = :status')
+            ->setParameter('status', 'published')
+            ->groupBy('c.id')
+            ->orderBy('c.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }

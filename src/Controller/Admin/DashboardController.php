@@ -5,7 +5,12 @@ namespace App\Controller\Admin;
 use App\Entity\BlogPost;
 use App\Entity\Category;
 use App\Entity\ContactRequest;
+use App\Entity\Image;
 use App\Entity\Project;
+use App\Repository\BlogPostRepository;
+use App\Repository\CategoryRepository;
+use App\Repository\ProjectRepository;
+use App\Repository\ContactRequestRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -20,9 +25,25 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
+    protected EntityManagerInterface $em;
+    protected BlogPostRepository $blogPostRepository;
+    protected ProjectRepository $projectRepository;
+    protected CategoryRepository $categoryRepository;
+    protected ContactRequestRepository $contactRequestRepository;
+
     public function __construct(
-        private EntityManagerInterface $em,
-    ) {}
+        EntityManagerInterface $em,
+        BlogPostRepository $blogPostRepository,
+        ProjectRepository $projectRepository,
+        CategoryRepository $categoryRepository,
+        ContactRequestRepository $contactRequestRepository
+    ) {
+        $this->em = $em;
+        $this->blogPostRepository = $blogPostRepository;
+        $this->projectRepository = $projectRepository;
+        $this->categoryRepository = $categoryRepository;
+        $this->contactRequestRepository = $contactRequestRepository;
+    }
 
     public function index(): Response
     {
@@ -33,14 +54,19 @@ class DashboardController extends AbstractDashboardController
             $this->em->flush();
         }
 
-        return $this->render('admin/dashboard.html.twig');
+        return $this->render('admin/dashboard.html.twig', [
+            'blogPostCount' => $this->blogPostRepository->count([]),
+            'projectCount' => $this->projectRepository->count([]),
+            'categoryCount' => $this->categoryRepository->count([]),
+            'contactRequestCount' => $this->contactRequestRepository->count([]),
+        ]);
     }
 
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
             ->setTitle('Digitalfy - Administration')
-            ->setFaviconPath('favicon.ico');
+            ->setFaviconPath('/favicon.ico');
     }
 
     public function configureUserMenu(UserInterface $user): UserMenu
@@ -63,6 +89,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Blog');
         yield MenuItem::linkToCrud('Articles', 'fa fa-file-text', BlogPost::class);
         yield MenuItem::linkToCrud('Catégories', 'fa fa-tags', Category::class);
+        yield MenuItem::linkToCrud('Galerie d\'images', 'fa fa-images', Image::class);
 
         yield MenuItem::section('Projets');
         yield MenuItem::linkToCrud('Projets', 'fa fa-briefcase', Project::class);

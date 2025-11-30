@@ -2,9 +2,11 @@
 <article class="blog-card">
     {% if post.featuredImage %}
         <img src="{{ asset('uploads/blog/' ~ post.featuredImage) }}"
-             alt="{{ post.title }}"
+             alt="{{ post.imageAlt ?? post.title }}"
              class="blog-card__image"
-             loading="lazy">
+             loading="lazy"
+             width="400"
+             height="225">
     {% else %}
         <div class="blog-card__image" style="background: linear-gradient(135deg, #FF5722 0%, #FF7043 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem;">
             📝

@@ -18,3 +18,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Configuration du service de récupération IMAP
+    App\Service\EmailImapFetcher:
+        arguments:
+            $imapHost: '%env(IMAP_HOST)%'
+            $imapUsername: '%env(IMAP_USERNAME)%'
+            $imapPassword: '%env(IMAP_PASSWORD)%'
+            $imapPort: '%env(int:IMAP_PORT)%'
+            $imapSsl: '%env(bool:IMAP_SSL)%'

@@ -1,778 +1,280 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Développeur Freelance Nîmes | Sites Web Symfony & Apps React Native | Digitalfy{% endblock %}
+{% block title %}Développeur Freelance Nîmes | Sites Web Symfony & Apps React Native | Digitalfy
+{% endblock %}
 
-{% block meta_description %}🚀 Développeur freelance Nîmes spécialisé Symfony & React Native. Sites internet + applications mobiles pour TPE/PME/Restaurants. Devis gratuit sous 24h. 30 ans exp. restauration.{% endblock %}
+{% block meta_description %}🚀 Développeur freelance Nîmes spécialisé Symfony & React Native. Sites internet + applications mobiles pour TPE/PME/Restaurants. Devis gratuit sous 24h. 30 ans exp. restauration.
+{% endblock %}
 
 {% block structured_data %}
-    {% include 'partials/schema/local-business.html.twig' %}
+	{% include 'partials/schema/local-business.html.twig' %}
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('styles/home-modern.css') }}">
 {% endblock %}
 
 {% block body %}
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&family=Inter:wght@400;500;600&display=swap');
 
-    .home-page {
-        font-family: 'Inter', sans-serif;
-        color: #1A1A1A;
-        background: #FFFFFF;
-        overflow-x: hidden;
-    }
-
-    /* Hero Section */
-    .hero-home {
-        position: relative;
-        min-height: 85vh;
-        display: flex;
-        align-items: center;
-        padding: 3rem 1.5rem 3rem;
-        background: linear-gradient(135deg, #F8F9FA 0%, #FFFFFF 100%);
-        overflow: hidden;
-    }
-
-    .hero-home__container {
-        max-width: 1280px;
-        margin: 0 auto;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-        position: relative;
-        z-index: 2;
-    }
-
-    .hero-home__label {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #FF5722;
-        margin-bottom: 1rem;
-    }
-
-    .hero-home__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 3.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin-bottom: 1rem;
-    }
-
-    .text-highlight {
-        color: #FF5722;
-    }
-
-    .hero-home__subtitle {
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #FF5722;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-home__description {
-        font-size: 1.125rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 2rem;
-    }
-
-    .hero-home__cta {
-        display: flex;
-        gap: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    .btn-home {
-        font-family: 'Inter', sans-serif;
-        font-size: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        padding: 1rem 2rem;
-        border-radius: 0.5rem;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        display: inline-block;
-    }
-
-    .btn-home--primary {
-        background: #FF5722;
-        color: #FFFFFF;
-        border: 2px solid #FF5722;
-    }
-
-    .btn-home--primary:hover {
-        background: #E64A19;
-        border-color: #E64A19;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(255, 87, 34, 0.3);
-    }
-
-    .btn-home--outline {
-        background: transparent;
-        color: #FF5722;
-        border: 2px solid #FF5722;
-    }
-
-    .btn-home--outline:hover {
-        background: #FF5722;
-        color: #FFFFFF;
-        transform: translateY(-2px);
-    }
-
-    .hero-home__stats {
-        display: flex;
-        gap: 3rem;
-    }
-
-    .hero-stat {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .hero-stat__value {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: #FF5722;
-        line-height: 1;
-    }
-
-    .hero-stat__label {
-        font-size: 0.875rem;
-        color: #666;
-        margin-top: 0.5rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-    }
-
-    .hero-home__visual {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .hero-home__image {
-        width: 100%;
-        max-width: 500px;
-        height: auto;
-        animation: float 6s ease-in-out infinite;
-        filter: drop-shadow(0 20px 40px rgba(255, 87, 34, 0.2));
-    }
-
-    @keyframes float {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-20px) rotate(3deg); }
-    }
-
-    /* 3D Element - Background decoration */
-    .hero-3d-bg {
-        position: absolute;
-        z-index: 1;
-        opacity: 0.15;
-        pointer-events: none;
-    }
-
-    .hero-3d-bg--top-right {
-        top: -10%;
-        right: -5%;
-        width: 400px;
-        transform: rotate(45deg);
-    }
-
-    /* Services Section */
-    .services-home {
-        padding: 3rem 1.5rem;
-        background: #FFFFFF;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .services-home__container {
-        max-width: 1280px;
-        margin: 0 auto;
-    }
-
-    .services-home__header {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        margin-bottom: 3rem;
-        align-items: end;
-    }
-
-    .services-home__subtitle {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #FF5722;
-        margin-bottom: 1rem;
-    }
-
-    .services-home__description {
-        font-size: 1.125rem;
-        color: #666;
-        line-height: 1.6;
-    }
-
-    .services-home__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-    }
-
-    .services-home__grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .service-card-home {
-        background: #F8F9FA;
-        padding: 2rem;
-        border-radius: 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-        border: 2px solid transparent;
-    }
-
-    .service-card-home:hover {
-        transform: translateY(-5px);
-        border-color: #FF5722;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .service-card-home__icon {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .service-card-home__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #1A1A1A;
-    }
-
-    .service-card-home__description {
-        font-size: 1rem;
-        color: #666;
-        line-height: 1.6;
-        margin-bottom: 1.5rem;
-    }
-
-    .service-card-home__link {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.875rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #FF5722;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        transition: all 0.3s ease;
-    }
-
-    .service-card-home__link:hover {
-        gap: 1rem;
-    }
-
-    /* 3D Element in services */
-    .services-3d {
-        position: absolute;
-        z-index: 0;
-        opacity: 0.1;
-        pointer-events: none;
-    }
-
-    .services-3d--bottom-left {
-        bottom: -10%;
-        left: -5%;
-        width: 350px;
-        transform: rotate(-30deg);
-    }
-
-    /* Why Local Section */
-    .why-local {
-        padding: 3rem 1.5rem;
-        background: #F8F9FA;
-        position: relative;
-    }
-
-    .why-local__container {
-        max-width: 1280px;
-        margin: 0 auto;
-    }
-
-    .why-local__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 2.5rem;
-    }
-
-    .why-local__grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .why-card {
-        background: #FFFFFF;
-        padding: 2rem;
-        border-radius: 1rem;
-        text-align: center;
-        transition: all 0.3s ease;
-    }
-
-    .why-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .why-card__label {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #FF5722;
-        margin-bottom: 1rem;
-    }
-
-    .why-card__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #1A1A1A;
-    }
-
-    .why-card__description {
-        font-size: 1rem;
-        color: #666;
-        line-height: 1.6;
-    }
-
-    /* FAQ Section */
-    .faq-home {
-        padding: 3rem 1.5rem;
-        background: #FFFFFF;
-    }
-
-    .faq-home__container {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    .faq-home__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 800;
-        text-align: center;
-        margin-bottom: 2.5rem;
-    }
-
-    .faq-item {
-        background: #F8F9FA;
-        padding: 2rem;
-        border-radius: 1rem;
-        margin-bottom: 1.5rem;
-        border-left: 4px solid #FF5722;
-    }
-
-    .faq-item__question {
-        font-family: 'Poppins', sans-serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: #1A1A1A;
-    }
-
-    .faq-item__answer {
-        font-size: 1rem;
-        color: #666;
-        line-height: 1.6;
-        margin: 0;
-    }
-
-    /* CTA Section */
-    .cta-home {
-        padding: 4rem 1.5rem;
-        background: linear-gradient(135deg, #1A1A1A 0%, #2A2A2A 100%);
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .cta-home__container {
-        max-width: 800px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-    }
-
-    .cta-home__title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 3rem;
-        font-weight: 800;
-        color: #FFFFFF;
-        margin-bottom: 1rem;
-    }
-
-    .cta-home__description {
-        font-size: 1.25rem;
-        color: #E0E0E0;
-        margin-bottom: 2rem;
-    }
-
-    /* 3D Element in CTA */
-    .cta-3d {
-        position: absolute;
-        z-index: 1;
-        opacity: 0.08;
-        pointer-events: none;
-    }
-
-    .cta-3d--center {
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-    }
-
-    /* Responsive - Mobile First */
-    @media (max-width: 1024px) {
-        .hero-home__container,
-        .services-home__header {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .hero-home__visual {
-            order: -1;
-        }
-
-        .hero-home__image {
-            max-width: 350px;
-        }
-
-        .services-home__grid,
-        .why-local__grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-home {
-            min-height: auto;
-            padding: 2rem 1.5rem;
-        }
-
-        .hero-home__title {
-            font-size: 2.5rem;
-        }
-
-        .hero-home__subtitle {
-            font-size: 1.25rem;
-        }
-
-        .hero-home__cta {
-            flex-direction: column;
-        }
-
-        .btn-home {
-            width: 100%;
-            text-align: center;
-        }
-
-        .hero-home__stats {
-            gap: 2rem;
-        }
-
-        .hero-stat__value {
-            font-size: 2rem;
-        }
-
-        .services-home__grid,
-        .why-local__grid {
-            grid-template-columns: 1fr;
-        }
-
-        .services-home__title,
-        .why-local__title,
-        .faq-home__title {
-            font-size: 2rem;
-        }
-
-        .cta-home__title {
-            font-size: 2rem;
-        }
-
-        .hero-3d-bg--top-right,
-        .services-3d--bottom-left,
-        .cta-3d--center {
-            display: none;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .hero-home__title {
-            font-size: 2rem;
-        }
-
-        .hero-home__label {
-            font-size: 0.75rem;
-        }
-
-        .hero-home__stats {
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .services-home,
-        .why-local,
-        .faq-home {
-            padding: 2rem 1.5rem;
-        }
-
-        .cta-home {
-            padding: 3rem 1.5rem;
-        }
-    }
-</style>
-
-<div class="home-page">
-    {# Hero Section #}
-    <section class="hero-home">
-        {# 3D Background Element #}
-        <img src="{{ asset('images/orange_swirl_horizontal.webp') }}"
-             alt=""
-             class="hero-3d-bg hero-3d-bg--top-right">
-
-        <div class="hero-home__container">
-            <div class="hero-home__content">
-                <p class="hero-home__label">DÉVELOPPEUR WEB & MOBILE • NÎMES • GARD</p>
-                <h1 class="hero-home__title">
-                    Développeur Freelance Symfony & React Native à Nîmes <span class="text-highlight">pour TPE, PME et Restaurants</span>
-                </h1>
-                <p class="hero-home__subtitle">Sites internet, applications mobiles et solutions digitales sur mesure</p>
-                <p class="hero-home__description">
-                    Basé à Nîmes, je crée des solutions digitales performantes et adaptées à votre activité.
-                    30 ans d'expérience en restauration + expertise développement web & mobile.
-                </p>
-
-                <div class="hero-home__cta">
-                    <a href="{{ path('app_contact') }}" class="btn-home btn-home--primary">
-                        Discutons de votre projet
-                    </a>
-                    <a href="{{ path('app_services') }}" class="btn-home btn-home--outline">
-                        Découvrir mes services
-                    </a>
-                </div>
-
-                <div class="hero-home__stats">
-                    <div class="hero-stat">
-                        <div class="hero-stat__value">30 ans</div>
-                        <div class="hero-stat__label">Exp. Restauration</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat__value">50+</div>
-                        <div class="hero-stat__label">Clients accompagnés</div>
-                    </div>
-                    <div class="hero-stat">
-                        <div class="hero-stat__value">&lt; 24h</div>
-                        <div class="hero-stat__label">Réponse garantie</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="hero-home__visual">
-                <img src="{{ asset('images/swirl_orange.webp') }}"
-                     alt="Solutions digitales créatives"
-                     class="hero-home__image">
-            </div>
-        </div>
-    </section>
-
-    {# Services Section #}
-    <section class="services-home">
-        {# 3D Background Element #}
-        <img src="{{ asset('images/orange_swirl_horizontal_variation_1.webp') }}"
-             alt=""
-             class="services-3d services-3d--bottom-left">
-
-        <div class="services-home__container">
-            <div class="services-home__header">
-                <div class="services-home__header-left">
-                    <p class="services-home__subtitle">CONSTRUISONS LE FUTUR</p>
-                    <p class="services-home__description">
-                        Des solutions digitales adaptées à vos besoins et à votre budget pour propulser votre activité.
-                    </p>
-                </div>
-                <div class="services-home__header-right">
-                    <h2 class="services-home__title">
-                        Ce que je peux <span class="text-highlight">faire pour vous</span>
-                    </h2>
-                </div>
-            </div>
-
-            <div class="services-home__grid">
-                <div class="service-card-home">
-                    <div class="service-card-home__icon">📱</div>
-                    <h3 class="service-card-home__title">Application Mobile</h3>
-                    <p class="service-card-home__description">
-                        Applications iOS et Android avec React Native pour moderniser votre activité.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
-                </div>
-
-                <div class="service-card-home">
-                    <div class="service-card-home__icon">🌐</div>
-                    <h3 class="service-card-home__title">Site Internet</h3>
-                    <p class="service-card-home__description">
-                        Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
-                </div>
-
-                <div class="service-card-home">
-                    <div class="service-card-home__icon">🍽️</div>
-                    <h3 class="service-card-home__title">Solutions Restauration</h3>
-                    <p class="service-card-home__description">
-                        Outils digitaux pour restaurants : réservation, click & collect, site web.
-                    </p>
-                    <a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}"
-                       class="service-card-home__link">
-                        En savoir plus →
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# Why Local Section #}
-    <section class="why-local">
-        <div class="why-local__container">
-            <h2 class="why-local__title">
-                Pourquoi un développeur <span class="text-highlight">local</span> à Nîmes ?
-            </h2>
-
-            <div class="why-local__grid">
-                <div class="why-card">
-                    <p class="why-card__label">AVANTAGE</p>
-                    <h3 class="why-card__title">Proximité</h3>
-                    <p class="why-card__description">
-                        Échanges en personne possibles, meilleure compréhension de vos besoins
-                    </p>
-                </div>
-
-                <div class="why-card">
-                    <p class="why-card__label">AVANTAGE</p>
-                    <h3 class="why-card__title">Réactivité</h3>
-                    <p class="why-card__description">
-                        Disponible rapidement pour vous accompagner dans votre projet
-                    </p>
-                </div>
-
-                <div class="why-card">
-                    <p class="why-card__label">AVANTAGE</p>
-                    <h3 class="why-card__title">Connaissance locale</h3>
-                    <p class="why-card__description">
-                        Je comprends le marché nîmois et ses spécificités
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {# FAQ Section #}
-    <section class="faq-home">
-        <div class="faq-home__container">
-            <h2 class="faq-home__title">
-                Questions <span class="text-highlight">fréquentes</span>
-            </h2>
-
-            <div class="faq-item">
-                <h3 class="faq-item__question">Combien coûte un site internet ou une application ?</h3>
-                <p class="faq-item__answer">
-                    Le tarif dépend de vos besoins spécifiques. Après un premier échange, je vous fournis un devis détaillé.
-                    Comptez généralement entre 2000€ et 10000€ selon la complexité.
-                </p>
-            </div>
-
-            <div class="faq-item">
-                <h3 class="faq-item__question">Combien de temps faut-il pour réaliser un projet ?</h3>
-                <p class="faq-item__answer">
-                    Un site vitrine simple : 2-3 semaines. Un site professionnel ou une application : 4-8 semaines.
-                    Je vous donne un planning précis dès le début du projet.
-                </p>
-            </div>
-
-            <div class="faq-item">
-                <h3 class="faq-item__question">Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
-                <p class="faq-item__answer">
-                    Je travaille principalement à Nîmes et dans le Gard, mais aussi dans toute l'Occitanie
-                    et en France à distance selon le projet.
-                </p>
-            </div>
-
-            <div class="faq-item">
-                <h3 class="faq-item__question">Pourquoi choisir un développeur freelance à Nîmes plutôt qu'une agence web ?</h3>
-                <p class="faq-item__answer">
-                    Un freelance local comme moi offre un contact direct, plus de flexibilité, des tarifs
-                    transparents et une connaissance du marché nîmois. Vous ne payez pas les coûts de structure
-                    d'une agence, tout en bénéficiant d'une expertise professionnelle et d'un accompagnement personnalisé.
-                </p>
-            </div>
-
-            <div class="faq-item">
-                <h3 class="faq-item__question">Quelles technologies utilisez-vous pour créer des sites internet à Nîmes ?</h3>
-                <p class="faq-item__answer">
-                    Je développe principalement avec Symfony (framework PHP moderne) pour les sites web robustes et sécurisés,
-                    et React Native pour les applications mobiles iOS/Android. Ces technologies professionnelles garantissent
-                    performance, sécurité et évolutivité à long terme.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    {# CTA Section #}
-    <section class="cta-home">
-        {# 3D Background Element #}
-        <img src="{{ asset('images/swirl_orange.webp') }}"
-             alt=""
-             class="cta-3d cta-3d--center">
-
-        <div class="cta-home__container">
-            <h2 class="cta-home__title">
-                Prêt à démarrer votre <span class="text-highlight">projet</span> ?
-            </h2>
-            <p class="cta-home__description">
-                Contactez-moi pour un devis gratuit et sans engagement
-            </p>
-            <a href="{{ path('app_contact') }}" class="btn-home btn-home--primary">
-                Demander un devis
-            </a>
-        </div>
-    </section>
-</div>
+	<div
+		class="home-page">
+		{# 1. Hero Section : CLAIR ET DIRECT #}
+		<section class="hero-home">
+			<div class="hero-home__container">
+				<div
+					class="hero-home__content">
+					{# Le badge remplace le label trop long #}
+					<span class="tech-badge">SYMFONY • REACT NATIVE • NÎMES</span>
+
+					<h1 class="hero-home__title">
+						Développeur Web & Mobile
+						<br>
+						<span class="text-highlight">Expert Local.</span>
+					</h1>
+
+					{# Description focalisée sur le bénéfice client, pas sur ton CV #}
+					<p class="hero-home__description">
+						J'accompagne les
+						<strong>TPE, PME et Restaurants</strong>
+						du Gard dans leur transformation digitale. Des sites web performants et des applications mobiles sur-mesure.
+					</p>
+
+					<div class="hero-home__cta">
+						<a href="{{ path('app_contact') }}" class="btn-home btn-home--primary">
+							Discutons de votre projet
+						</a>
+					</div>
+				</div>
+
+				{# Visuel simplifié ou ta photo si tu es freelance #}
+				<div class="hero-home__visual">
+					<img src="{{ asset('images/swirl_orange.webp') }}" alt="Développement web Nîmes" class="hero-home__image">
+				</div>
+			</div>
+		</section>
+		{# Why Local Section #}
+		<section class="why-local">
+			<div class="why-local__container">
+				<h2 class="why-local__title">
+					Pourquoi un développeur
+					<span class="text-highlight">local</span>
+					à Nîmes ?
+				</h2>
+
+				<div class="why-local__grid">
+					<div class="why-card">
+						<p class="why-card__label">AVANTAGE</p>
+						<h3 class="why-card__title">Proximité</h3>
+						<p class="why-card__description">
+							Échanges en personne possibles, meilleure compréhension de vos besoins
+						</p>
+					</div>
+
+					<div class="why-card">
+						<p class="why-card__label">AVANTAGE</p>
+						<h3 class="why-card__title">Réactivité</h3>
+						<p class="why-card__description">
+							Disponible rapidement pour vous accompagner dans votre projet
+						</p>
+					</div>
+
+					<div class="why-card">
+						<p class="why-card__label">AVANTAGE</p>
+						<h3 class="why-card__title">Connaissance locale</h3>
+						<p class="why-card__description">
+							Je comprends le marché nîmois et ses spécificités
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		{# 2. Trust Bar : LES CHIFFRES CLÉS (Sortis du Hero pour respirer) #}
+		<div class="trust-bar">
+			<div class="trust-bar__container">
+				<div class="trust-item">
+					<span class="trust-item__number">30</span>
+					<span class="trust-item__text">Ans d'expérience<br>Terrain</span>
+				</div>
+				<div class="trust-item">
+					<span class="trust-item__number">50+</span>
+					<span class="trust-item__text">Projets<br>Réalisés</span>
+				</div>
+				<div class="trust-item">
+					<span class="trust-item__number">24h</span>
+					<span class="trust-item__text">Réponse<br>Garantie</span>
+				</div>
+			</div>
+		</div>
+		{# Services Section #}
+		<section
+			class="services-home">
+			{# 3D Background Element #}
+			<img src="{{ asset('images/orange_swirl_horizontal_variation_1.webp') }}" alt="" class="services-3d services-3d--bottom-left">
+
+			<div class="services-home__container">
+				<div class="services-home__header">
+					<div class="services-home__header-left">
+						<p class="services-home__subtitle">CONSTRUISONS LE FUTUR</p>
+						<p class="services-home__description">
+							Des solutions digitales adaptées à vos besoins et à votre budget pour propulser votre activité.
+						</p>
+					</div>
+					<div class="services-home__header-right">
+						<h2 class="services-home__title">
+							Ce que je peux
+							<span class="text-highlight">faire pour vous</span>
+						</h2>
+					</div>
+				</div>
+
+				<div class="services-home__grid">
+					<div class="service-card-home">
+						<img src="/images/services/mobile-480.webp" srcset="/images/services/mobile-480.webp 480w,
+																																																																													                                 /images/services/mobile-768.webp 768w,
+																																																																													                                 /images/services/mobile-1024.webp 1024w" sizes="(max-width: 768px) 100vw,
+																																																																													                                (max-width: 1024px) 50vw,
+																																																																													                                33vw" alt="Application mobile iOS et Android" class="service-card-home__icon" loading="lazy">
+						<div class="service-card-home__content">
+							<h3 class="service-card-home__title">Application Mobile</h3>
+							<p class="service-card-home__description">
+								Applications iOS et Android avec React Native pour moderniser votre activité.
+							</p>
+							<a href="{{ path('app_service_show', {slug: 'developpement-application-mobile-nimes'}) }}" class="service-card-home__link">
+								En savoir plus →
+							</a>
+						</div>
+					</div>
+
+					<div class="service-card-home">
+						<img src="/images/services/website-480.webp" srcset="/images/services/website-480.webp 480w,
+																																																																													                                 /images/services/website-768.webp 768w,
+																																																																													                                 /images/services/website-1024.webp 1024w" sizes="(max-width: 768px) 100vw,
+																																																																													                                (max-width: 1024px) 50vw,
+																																																																													                                33vw" alt="Site internet professionnel et optimisé SEO" class="service-card-home__icon" loading="lazy">
+						<div class="service-card-home__content">
+							<h3 class="service-card-home__title">Site Internet</h3>
+							<p class="service-card-home__description">
+								Sites vitrines et professionnels optimisés SEO pour booster votre visibilité locale.
+							</p>
+							<a href="{{ path('app_service_show', {slug: 'creation-site-internet-nimes'}) }}" class="service-card-home__link">
+								En savoir plus →
+							</a>
+						</div>
+					</div>
+
+					<div class="service-card-home">
+						<img src="/images/services/restaurant-480.webp" srcset="/images/services/restaurant-480.webp 480w,
+																																																																													                                 /images/services/restaurant-768.webp 768w,
+																																																																													                                 /images/services/restaurant-1024.webp 1024w" sizes="(max-width: 768px) 100vw,
+																																																																													                                (max-width: 1024px) 50vw,
+																																																																													                                33vw" alt="Solutions digitales pour restaurants" class="service-card-home__icon" loading="lazy">
+						<div class="service-card-home__content">
+							<h3 class="service-card-home__title">Solutions Restauration</h3>
+							<p class="service-card-home__description">
+								Outils digitaux pour restaurants : réservation, click & collect, site web.
+							</p>
+							<a href="{{ path('app_service_show', {slug: 'solutions-digitales-restauration-nimes'}) }}" class="service-card-home__link">
+								En savoir plus →
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		{# 3. Section Expertise Métier : TON ATOUT MAJEUR #}
+		<section id="expert-section" class="intro-expert">
+			<div class="intro-expert__container">
+				<p class="hero-home__label" style="text-align: center; color: #666;">PLUS QU'UN DÉVELOPPEUR</p>
+				<h2 class="services-home__title" style="margin-bottom: 1.5rem;">
+					Du "Coup de Feu" au
+					<span class="text-highlight">Code Propre</span>
+				</h2>
+				<p class="services-home__description" style="font-size: 1.2rem;">
+					Pourquoi choisir un développeur qui connaît la réalité de votre métier ?<br>
+					Avec
+					<span class="intro-expert__highlight">30 ans d'expérience en restauration</span>, je ne fais pas que coder.
+																																																																		            Je comprends vos contraintes de temps, vos besoins de rentabilité et la nécessité d'outils fiables qui ne plantent pas en plein service.
+				</p>
+				<p class="services-home__description" style="margin-top: 1rem;">
+					Que vous soyez restaurateur, artisan ou gérant de PME à Nîmes, je parle votre langage avant de parler informatique.
+				</p>
+			</div>
+		</section>
+
+
+		{# FAQ Section #}
+		<section class="faq-home">
+			<div class="faq-home__container">
+				<h2 class="faq-home__title">
+					Questions
+					<span class="text-highlight">fréquentes</span>
+				</h2>
+
+				<div class="faq-item">
+					<h3 class="faq-item__question">Combien coûte un site internet ou une application ?</h3>
+					<p class="faq-item__answer">
+						Le tarif dépend de vos besoins spécifiques. Après un premier échange, je vous fournis un devis détaillé.
+																																																																		                    Comptez généralement entre 2000€ et 10000€ selon la complexité.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-item__question">Combien de temps faut-il pour réaliser un projet ?</h3>
+					<p class="faq-item__answer">
+						Un site vitrine simple : 2-3 semaines. Un site professionnel ou une application : 4-8 semaines.
+																																																																		                    Je vous donne un planning précis dès le début du projet.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-item__question">Travaillez-vous uniquement avec des clients à Nîmes ?</h3>
+					<p class="faq-item__answer">
+						Je travaille principalement à Nîmes et dans le Gard, mais aussi dans toute l'Occitanie
+																																																																		                    et en France à distance selon le projet.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-item__question">Pourquoi choisir un développeur freelance à Nîmes plutôt qu'une agence web ?</h3>
+					<p class="faq-item__answer">
+						Un freelance local comme moi offre un contact direct, plus de flexibilité, des tarifs
+																																																																		                    transparents et une connaissance du marché nîmois. Vous ne payez pas les coûts de structure
+																																																																		                    d'une agence, tout en bénéficiant d'une expertise professionnelle et d'un accompagnement personnalisé.
+					</p>
+				</div>
+
+				<div class="faq-item">
+					<h3 class="faq-item__question">Quelles technologies utilisez-vous pour créer des sites internet à Nîmes ?</h3>
+					<p class="faq-item__answer">
+						Je développe principalement avec Symfony (framework PHP moderne) pour les sites web robustes et sécurisés,
+																																																																		                    et React Native pour les applications mobiles iOS/Android. Ces technologies professionnelles garantissent
+																																																																		                    performance, sécurité et évolutivité à long terme.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		{# CTA Section #}
+		<section
+			class="cta-home">
+			{# 3D Background Element #}
+			<img src="{{ asset('images/swirl_orange.webp') }}" alt="" class="cta-3d cta-3d--center">
+
+			<div class="cta-home__container">
+				<h2 class="cta-home__title">
+					Prêt à démarrer votre
+					<span class="text-highlight">projet</span>
+					?
+				</h2>
+				<p class="cta-home__description">
+					Contactez-moi pour un devis gratuit et sans engagement
+				</p>
+				<a href="{{ path('app_contact') }}" class="btn-home btn-home--primary">
+					Demander un devis
+				</a>
+			</div>
+		</section>
+	</div>
 {% endblock %}

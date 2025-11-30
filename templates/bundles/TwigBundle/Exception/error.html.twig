@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Une erreur est survenue | Digitalfy{% endblock %}
+
+{% block meta_description %}Une erreur inattendue s'est produite.{% endblock %}
+
+{% block body %}
+<section class="section section--cream" style="min-height: 70vh; display: flex; align-items: center;">
+    <div class="container text-center">
+        <div style="max-width: 600px; margin: 0 auto;">
+            {# Icône d'erreur animée #}
+            <div style="font-size: 8rem; margin-bottom: 2rem; animation: bounce 2s ease-in-out infinite;">
+                ⚠️
+            </div>
+
+            <h1 class="mb-4" style="font-size: 3rem; color: #1A1A1A;">
+                {% if status_code is defined %}{{ status_code }}{% else %}Erreur{% endif %}
+            </h1>
+
+            <h2 class="mb-4" style="font-size: 1.5rem; font-weight: 500; color: #666;">
+                Une erreur est survenue
+            </h2>
+
+            <p class="text-lg text-gray mb-8">
+                {% if status_text is defined and status_text %}
+                    {{ status_text }}
+                {% else %}
+                    Désolé, une erreur inattendue s'est produite. Veuillez réessayer ultérieurement.
+                {% endif %}
+            </p>
+
+            {# Actions rapides #}
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="javascript:history.back()" class="btn btn--secondary btn--lg">
+                    ← Retour
+                </a>
+                <a href="{{ path('app_home') }}" class="btn btn--primary btn--lg">
+                    🏠 Retour à l'accueil
+                </a>
+                <a href="{{ path('app_contact') }}" class="btn btn--secondary btn--lg">
+                    💬 Nous contacter
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.btn--secondary {
+    background-color: #fff;
+    color: #1A1A1A;
+    border: 2px solid #E5E7EB;
+}
+
+.btn--secondary:hover {
+    background-color: #F9FAFB;
+    border-color: #D1D5DB;
+}
+</style>
+{% endblock %}

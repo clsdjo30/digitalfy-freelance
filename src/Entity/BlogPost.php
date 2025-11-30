@@ -5,10 +5,13 @@ namespace App\Entity;
 use App\Repository\BlogPostRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: BlogPostRepository::class)]
 #[ORM\HasLifecycleCallbacks]
+#[Vich\Uploadable]
 class BlogPost
 {
     #[ORM\Id]
@@ -36,8 +39,22 @@ class BlogPost
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[Vich\UploadableField(mapping: 'blog_images', fileNameProperty: 'featuredImage')]
+    private ?File $featuredImageFile = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $featuredImage = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\Length(max: 125)]
+    private ?string $imageAlt = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\Length(max: 100)]
+    private ?string $focusKeyword = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?int $readingTime = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $publishedAt = null;
@@ -146,6 +163,22 @@ class BlogPost
         return $this;
     }
 
+    public function setFeaturedImageFile(?File $featuredImageFile = null): void
+    {
+        $this->featuredImageFile = $featuredImageFile;
+
+        if (null !== $featuredImageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTime();
+        }
+    }
+
+    public function getFeaturedImageFile(): ?File
+    {
+        return $this->featuredImageFile;
+    }
+
     public function getPublishedAt(): ?\DateTimeInterface
     {
         return $this->publishedAt;
@@ -214,6 +247,42 @@ class BlogPost
     public function setUpdatedAt(\DateTimeInterface $updatedAt): static
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getImageAlt(): ?string
+    {
+        return $this->imageAlt;
+    }
+
+    public function setImageAlt(?string $imageAlt): static
+    {
+        $this->imageAlt = $imageAlt;
+
+        return $this;
+    }
+
+    public function getFocusKeyword(): ?string
+    {
+        return $this->focusKeyword;
+    }
+
+    public function setFocusKeyword(?string $focusKeyword): static
+    {
+        $this->focusKeyword = $focusKeyword;
+
+        return $this;
+    }
+
+    public function getReadingTime(): ?int
+    {
+        return $this->readingTime;
+    }
+
+    public function setReadingTime(?int $readingTime): static
+    {
+        $this->readingTime = $readingTime;
 
         return $this;
     }
