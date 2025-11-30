@@ -10,6 +10,12 @@
 node_modules/
 ###< symfony/framework-bundle ###
 
+### CLAUDE + CODEX ###
+/.claude/
+CLAUDE.md
+AGENTS.md
+###< CLAUDE ###
+
 ###> phpunit/phpunit ###
 /phpunit.xml
 /.phpunit.cache/
@@ -26,6 +32,7 @@ node_modules/
 
 ### Documentation ###
 docs/
+articles/
 DEPLOIEMENT_O2SWITCH.md
 ANALYSE_CONTENU_SEO.md
 CHECKLIST_SEO_CONVERSION.md
@@ -36,4 +43,6 @@ SETUP_DATABASE.md
 SETUP_PHASE1.md
 TESTS_README.md
 TESTS_WINDOWS.md
+SEO_RECOMMENDATIONS.md
+SEO_IMPLEMENTATION_CHECKLIST.md
 
